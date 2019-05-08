@@ -1,0 +1,7 @@
+@import "../_mixins/font-face";
+
+@include font-face("MabryPro-Light", "../fonts/MabryPro/MabryPro-Light/MabryPro-Light");
+@include font-face("MabryPro-Regular", "../fonts/MabryPro/MabryPro-Regular/MabryPro-Regular");
+@include font-face("MabryPro-Medium", "../fonts/MabryPro/MabryPro-Medium/MabryPro-Medium");
+@include font-face("MabryPro-Bold", "../fonts/MabryPro/MabryPro-Bold/MabryPro-Bold");
+@include font-face("MabryPro-Black", "../fonts/MabryPro/MabryPro-Black/MabryPro-Black");

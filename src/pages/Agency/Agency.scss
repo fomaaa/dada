@@ -1,0 +1,400 @@
+.agency {
+  height: 100%;
+  overflow: hidden;
+  .agencyScroll, .agencyScroll-in {
+    height: 100%;
+    width: 100%;
+  }
+  .overlay-white {
+    &-left, &-right {
+      width: 50%;
+      background-color: white;
+      position: fixed;
+      height: 100%;
+      z-index: 14;
+      @include breakpoint($wideWidthMax) {
+        display: none;
+      }
+    }
+    &-left {
+      left: 0;
+      top: -100%;
+    }
+    &-right {
+      right: 0;
+      top: 100%;
+    }
+  }
+}
+
+.agency-page {
+  top: 0;
+  right: 0;
+  width: 100%;
+  position: relative;
+  background-color: white;
+  @include breakpoint($wideWidth) {
+    width: 50%;
+    float: left;
+    top: 5.4em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+  }
+  .header {
+    height: 12.5em;
+    @include breakpoint($wideWidth) {
+      display: none;
+    }
+  }
+  .agency-content {
+    background-color: white;
+    &-block {
+      span, p {
+        display: block;
+      }
+      .agency-block-in {
+        padding: 2.6em .625em 0;
+        @include breakpoint($wideWidth) {
+          padding: 3.34em 1.1em 0;
+          z-index: 2;
+        }
+      }
+      &.agency-intro-text {
+        color: #ffffff;
+        @include breakpoint($wideWidth) {
+          height: 10.7em;
+        }
+        .intro-text-block-overlay {
+          background-color: #000000;
+          height: 100%;
+          width: 100%;
+          overflow: hidden;
+        }
+        .intro-text-block {
+          padding: 1.25em .625em 1.25em;
+          @include breakpoint($wideWidthMax) {
+            max-width: 28em;
+          }
+          @include breakpoint($wideWidth) {
+            padding: 4.2em 1.1em 1.2em;
+          }
+        }
+        h3, p {
+          display: inline;
+          line-height: 1.25;
+          letter-spacing: .025em;
+          @include breakpoint($wideWidth) {
+            display: block;
+            letter-spacing: .033em;
+            line-height: 1.34;
+            font-size: 98%;
+            &:before {
+              display: block;
+              content: '';
+              position: absolute;
+              bottom: 0;
+              height: 0;
+              width: 100%;
+              background-color: black;
+              z-index: 6;
+            }
+          }
+        }
+        h3 {
+          @include breakpoint($wideWidth) {
+            margin-bottom: .1em;
+          }
+        }
+      }
+      .agency-title {
+        font-family: 'MabryPro-Bold', sans-serif;
+        font-size: 187.5%;
+        line-height: 1.07;
+        letter-spacing: .0133em;
+        text-transform: uppercase;
+        margin-bottom: 1.17em;
+        @include breakpoint($wideWidth) {
+          font-size: 188.9%;
+          line-height: 1.18;
+          margin-bottom: .9em;
+          letter-spacing: .0117em;
+        }
+      }
+      .agency-title-anim {
+        @include breakpoint($wideWidth) {
+          height: 4em;
+        }
+        .agency-title {
+          @include breakpoint($wideWidth) {
+            overflow: hidden;
+          }
+        }
+      }
+      .agency-head-text {
+        font-family: 'MabryPro-Bold', sans-serif;
+        font-size: 100%;
+        line-height: 1.25;
+        letter-spacing: .0375em;
+        text-transform: uppercase;
+        @include breakpoint($wideWidth) {
+          line-height: 1.33;
+          letter-spacing: .0333em;
+        }
+      }
+      .agency-text {
+        font-family: 'MabryPro-Regular', sans-serif;
+        font-size: 100%;
+        line-height: 1.25;
+        letter-spacing: .025em;
+        @include breakpoint($wideWidth) {
+          line-height: 1.33;
+          letter-spacing: .0333em;
+        }
+      }
+      .agency-paragraph-item {
+        margin-bottom: 1.9em;
+        &:last-child {
+          margin-bottom: 0;
+        }
+        @include breakpoint($wideWidth) {
+          margin-bottom: 1.7em;
+        }
+        .agency-list {
+          @include breakpoint($wideWidth) {
+            height: 6.5em;
+          }
+          ul {
+            list-style: disc;
+            @include breakpoint($wideWidth) {
+              overflow: hidden;
+            }
+            li {
+              margin-left: 1.1em;
+              @include breakpoint($wideWidth) {
+                margin-left: 1.1em;
+              }
+            }
+          }
+        }
+      }
+      &.agency-nav-block {
+        z-index: 13;
+        @include breakpoint($wideWidth) {
+          height: 5.8em;
+        }
+        .agency-nav {
+          z-index: 12;
+          @include breakpoint($wideWidthMax) {
+            max-width: 16em;
+          }
+          @include breakpoint($wideWidth) {
+            height: 5.8em;
+            width: 100%;
+            background-color: white;
+          }
+          .agency-nav-overlay {
+            width: 100%;
+            height: 100%;
+            @include breakpoint($wideWidth) {
+              overflow: hidden;
+              background-color: white;
+              position: absolute;
+              bottom: 0;
+              right: 0;
+              height: 5.8em;
+              max-height: 11.2em;
+            }
+          }
+          &-overlay {
+            @include breakpoint($wideWidth) {
+              background-color: white;
+              overflow: hidden;
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              width: 100%;
+              height: 0;
+              z-index: 2;
+            }
+          }
+          .nav-fixed {
+            @include breakpoint($wideWidth) {
+              position: fixed !important;
+              background-color: white;
+              z-index: 1;
+              left: 0;
+              width: 50%;
+              max-height: 11.2em;
+              height: 100%;
+              top: 0;
+            }
+          }
+          &-container {
+            width: 100%;
+            background-color: white;
+            padding: 1.25em .625em 1.25em;
+            display: flex;
+            align-items: flex-end;
+            flex-direction: row;
+            @include breakpoint($wideWidth) {
+              height: 5.8em;
+              padding: 0;
+              position: absolute;
+              bottom: 0;
+              right: 0;
+            }
+            .agency-anchors {
+              width: 100%;
+              @include breakpoint($wideWidth) {
+                height: calc(1em * 5.4 + 1em * .3 * 2 + 1em * 5.2 - 1em * 5.4);
+              }
+            }
+            .agency-nav-anchor {
+              display: flex;
+              flex-direction: row;
+              flex-wrap: wrap;
+              align-items: flex-start;
+              justify-content: flex-start;
+              width: 100%;
+              @include breakpoint($wideWidth) {
+                align-items: flex-end;
+                height: 17%;
+                bottom: auto;
+                top: 77%;
+                position: absolute;
+                width: calc(100% - 1.2em);
+                left: .6em;
+              }
+            }
+            .nav-item {
+              cursor: pointer;
+              display: inherit;
+              @include breakpoint($wideWidthMax) {
+                &:nth-child(odd) {
+                  margin-right: 1.9em;
+                }
+                &:nth-child(-n+2) {
+                  margin-bottom: .7em;
+                }
+              }
+              @include breakpoint($wideWidth) {
+                margin-right: 1.2em;
+                margin-bottom: 0;
+              }
+              &:before {
+                @include breakpoint($wideWidth) {
+                  display: block;
+                  content: '';
+                  position: absolute;
+                  overflow: hidden;
+                  bottom: -.3em;
+                  left: 0;
+                  height: 0;
+                  width: 100%;
+                  z-index: 2;
+                  background-color: white;
+                }
+              }
+              h3 {
+                text-transform: uppercase;
+                transition: color .3s ease;
+                line-height: 1.13;
+                font-family: 'MabryPro-Regular', sans-serif;
+                letter-spacing: .025em;
+                @include breakpoint($wideWidth) {
+                  line-height: 1;
+                  letter-spacing: .0111em;
+                  &:hover {
+                    color: $purple;
+                  }
+                }
+              }
+              &.active {
+                h3 {
+                  font-family: 'MabryPro-Bold', sans-serif;
+                }
+              }
+            }
+          }
+        }
+      }
+      &.agency-animate-block {
+        //z-index: 12;
+        @include breakpoint($wideWidth) {
+          width: 50vw;
+          height: 27.78vw;
+        }
+        .agency-animate {
+          &:before {
+            display: block;
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+          }
+          @include breakpoint($wideWidth) {
+            width: 50vw;
+            height: 27.78vw;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+          }
+          &-img {
+            background-color: white;
+            display: block;
+            z-index: 1;
+            &-text {
+              display: block;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translateX(-50%) translateY(-50%);
+              width: 75%;
+              z-index: 4;
+              @include breakpoint($wideWidth) {
+                width: 35.5475vw;
+                top: 13.89vw;
+              }
+            }
+            @include breakpoint($wideWidth) {
+              width: 50vw;
+              height: 27.78vw;
+            }
+          }
+          &-video {
+            position: absolute;
+            display: block;
+            width: calc(100vw + 2px);
+            height: calc(100vw / 1.78 + 2px);
+            top: -1px;
+            left: -1px;
+            border: none;
+            z-index: 2;
+            @include breakpoint($wideWidth) {
+              width: calc(50vw + 2px);
+              height: calc(50vw / 1.78 + 2px);
+            }
+          }
+        }
+      }
+      .agency-block-overlay {
+        overflow: hidden;
+        background-color: white;
+        height: 0;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        position: absolute;
+        z-index: 2;
+      }
+      &.agency-services-block {
+        background-color: white;
+      }
+    }
+  }
+}

@@ -1,0 +1,443 @@
+.header {
+  width: 100%;
+  flex-grow: 1;
+  height: 19.9em;
+  &-not-main {
+    height: calc(100% - 11.2em);
+  }
+  @include breakpoint($wideWidth) {
+    height: 11.2em;
+  }
+  & .header-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    .menu {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      align-items: stretch;
+      justify-content: stretch;
+      .menu-wr {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: stretch;
+        justify-content: stretch;
+        @include breakpoint($wideWidth) {
+          flex-direction: row;
+        }
+        .menu-item {
+          display: flex;
+          flex-direction: column;
+          justify-content: stretch;
+          align-items: stretch;
+          width: 100%;
+          height: 100%;
+          cursor: pointer;
+          top: 0;
+          right: 0;
+          &.menu-works {
+            height: 170%;
+            @include breakpoint($wideWidth) {
+              width: 50%;
+              height: 100%;
+            }
+            .menu-works-color {
+              position: absolute;
+              right: 0;
+              width: 100%;
+              background-color: white;
+              @include breakpoint($wideWidth) {
+                height: 100%;
+                transition: background-color .2s ease;
+              }
+              &:hover {
+                @include breakpoint($wideWidth) {
+                  background-color: black;
+                  color: white;
+                }
+              }
+              .menu-title-overlay {
+                @include breakpoint($wideWidth) {
+                  width: calc(100% - 1.2em);
+                  height: 77%;
+                  left: .6em;
+                  position: absolute;
+                  bottom: calc(12.81558% + 10.34602%);
+                  overflow: hidden;
+                  h2 {
+                    width: 100%;
+                    left: 0;
+                    overflow: hidden;
+                    position: absolute;
+                    bottom: 0;
+                  }
+                }
+              }
+              .menu-logo-wr-overlay {
+                @include breakpoint($wideWidth) {
+                  width: calc(100% - 1.2em);
+                  left: .6em;
+                  height: 13%;
+                  position: absolute;
+                  bottom: 10.3%;
+                  overflow: hidden;
+                }
+              }
+              .menu-logo-wr-overlay {
+                height: 17%;
+                bottom: auto;
+                top: 77%;
+                .menu-logo-wr {
+                  bottom: auto;
+                  top: 0;
+                  h3 {
+                    line-height: 1;
+                  }
+                }
+              }
+              &.menu-out {
+                @include breakpoint($wideWidth) {
+                  top: auto;
+                  bottom: 0;
+                  height: 0;
+                  transition: background-color .4s ease, height .7s ease;
+                  .menu-offset {
+                    height: 0;
+                  }
+                  .menu-title-overlay {
+                    transition: height .46s ease .3s;
+                    height: 0;
+                  }
+                  .menu-logo-wr-overlay {
+                    transition: height .346s ease .4s;
+                    height: 0;
+                  }
+                }
+              }
+              &.menu-in {
+                @include breakpoint($wideWidth) {
+                  height: 100%;
+                  top: 0;
+                  bottom: auto;
+                  transition: background-color .6s ease, height .6s ease;
+                  .menu-content-overlay {
+                    //top: 5.4em;
+                    bottom: auto;
+                  }
+                  .menu-offset {
+                    height: 5.4em;
+                  }
+                  .menu-title-overlay {
+                    transition: height .6s ease;
+                    height: 77%;
+                    bottom: auto;
+                    top: 0;
+                    h2 {
+                      bottom: auto;
+                      top: 0;
+                    }
+                  }
+                  .menu-logo-wr-overlay {
+                    transition: height .6s ease;
+                    height: 17%;
+                    bottom: auto;
+                    top: 77%;
+                    .menu-logo-wr {
+                      bottom: auto;
+                      top: 0;
+                    }
+                  }
+                }
+              }
+            }
+          }
+          &.menu-agency {
+            @include breakpoint($wideWidth) {
+              width: 50%;
+              height: 100%;
+            }
+            .menu-agency-color {
+              position: absolute;
+              right: 0;
+              width: 100%;
+              height: 100%;
+              background-color: $purple;
+              @include breakpoint($wideWidth) {
+                height: 100%;
+                transition: background-color .2s ease;
+              }
+
+              &:hover {
+                @include breakpoint($wideWidth) {
+                  background-color: black;
+                  color: white;
+                }
+              }
+              .menu-title-overlay {
+                @include breakpoint($wideWidth) {
+                  z-index: 2;
+                  width: calc(100% - 1.2em);
+                  height: 77%;
+                  left: .6em;
+                  position: absolute;
+                  bottom: calc(12.81558% + 10.34602%);
+                  overflow: hidden;
+                  h2 {
+                    width: 100%;
+                    left: 0;
+                    overflow: hidden;
+                    position: absolute;
+                    bottom: 0;
+                  }
+                }
+              }
+              .menu-logo-wr-overlay {
+                @include breakpoint($wideWidth) {
+                  width: calc(100% - 1.2em);
+                  left: .6em;
+                  height: 13%;
+                  position: absolute;
+                  bottom: 10.3%;
+                  overflow: hidden;
+                }
+              }
+              .menu-logo-wr-overlay {
+                height: 13%;
+                bottom: auto;
+                top: 77%;
+                .menu-logo-wr {
+                  bottom: auto;
+                  top: 0;
+                  h3 {
+                    line-height: 1;
+                  }
+                }
+              }
+              &.menu-out {
+                @include breakpoint($wideWidth) {
+                  top: auto;
+                  bottom: 0;
+                  height: 0;
+                  transition: background-color .4s ease, height .7s ease;
+                  .menu-offset {
+                    height: 0;
+                  }
+                  .menu-title-overlay {
+                    transition: height .46s ease .3s;
+                    height: 0;
+                  }
+                  .menu-logo-wr-overlay {
+                    transition: height .46s ease .4s;
+                    height: 0;
+                  }
+                }
+              }
+              &.menu-in {
+                @include breakpoint($wideWidth) {
+                  height: 100%;
+                  top: 0;
+                  bottom: auto;
+                  transition: background-color .6s ease, height .6s ease;
+                  .menu-content-overlay {
+                    //top: 5.4em;
+                    bottom: auto;
+                  }
+                  .menu-offset {
+                    height: 5.4em;
+                  }
+                  .menu-title-overlay {
+                    transition: height .6s ease;
+                    height: 77%;
+                    bottom: auto;
+                    top: 0;
+                    h2 {
+                      bottom: auto;
+                      top: 0;
+                    }
+                  }
+                  .menu-logo-wr-overlay {
+                    transition: height .6s ease;
+                    height: 17%;
+                    bottom: auto;
+                    top: 77%;
+                    .menu-logo-wr {
+                      bottom: auto;
+                      top: 0;
+                    }
+                  }
+                }
+              }
+            }
+          }
+          &.menu-fixed {
+            @include breakpoint($wideWidthMax) {
+              &:not(.router-link-active) {
+                width: 50%;
+                position: absolute;
+                top: 0;
+                height: 46%;
+                z-index: 8;
+                .menu-offset {
+                  display: none;
+                }
+                .menu-content {
+                  padding: 3.8em 1em .8em;
+                  text-align: center;
+                  h2 {
+                    font-size: 100%;
+                    font-family: MabryPro-Regular, sans-serif;
+                    letter-spacing: .0374em;
+                    line-height: 1;
+                    margin-bottom: 0;
+                  }
+                  .menu-logo-wr {
+                    display: none;
+                  }
+                }
+                &.menu-agency {
+                  right: 0;
+                }
+                &.menu-works {
+                  left: 0;
+                }
+              }
+            }
+            @include breakpoint($wideWidth) {
+              position: fixed;
+              top: 0;
+              left: 0;
+              height: 11.2em;
+              z-index: -1;
+              &.menu-agency {
+                left: auto;
+                right: 0;
+                z-index: 7;
+              }
+              &.menu-works {
+                right: auto;
+                left: 0;
+                z-index: 7;
+              }
+            }
+          }
+        }
+        .menu-content {
+          flex-grow: 1;
+          padding: 0 .6em .6em;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          align-items: stretch;
+          justify-content: flex-start;
+          transition: background-color .2s ease;
+          @include breakpoint($wideWidth) {
+            padding: 0 .6em .6em;
+            overflow: hidden;
+            height: 100%;
+          }
+          &-overlay {
+            width: 100%;
+            height: auto;
+            overflow: hidden;
+            @include breakpoint($wideWidth) {
+              height: 5.8em;
+              position: absolute;
+              bottom: 0;
+              right: 0;
+            }
+          }
+          .menu-logo-wr {
+            display: flex;
+            flex-wrap: nowrap;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            @include breakpoint($wideWidth) {
+              position: absolute;
+              width: 100%;
+              bottom: 0;
+            }
+          }
+        }
+
+      }
+    }
+  }
+}
+
+.header-not-main {
+  display: none;
+  @include breakpoint($wideWidth) {
+    display: block;
+  }
+}
+
+.menu-transform {
+  position: absolute;
+  z-index: 15;
+  display: none;
+  overflow: hidden;
+  @include breakpoint($wideWidth) {
+    cursor: pointer;
+    display: block;
+    text-align: center;
+    will-change: transform;
+    transform: translate3d(0,0,0);
+    backface-visibility: hidden;
+    height: 2.74em;
+    .menu-content {
+      padding: .7em 1.5em .7em 1.5em;
+      width: 9.5em;
+      h2 {
+        letter-spacing: calc(1em / 36);
+        line-height: 1.11;
+        font-size: 100%;
+        font-family: 'MabryPro-Regular', sans-serif;
+      }
+    }
+    &.menu-works {
+      background-color: $purple;
+      left: 0;
+      color: #000;
+      &:hover {
+        @include breakpoint($wideWidth) {
+          background-color: #ffffff;
+        }
+      }
+    }
+    &.menu-agency {
+      color: #000;
+      background-color: $purple;
+      right: 0;
+      top: 0;
+      will-change: transform;
+      backface-visibility: hidden;
+      &:hover {
+        @include breakpoint($wideWidth) {
+          background-color: #ffffff;
+        }
+      }
+    }
+  }
+  &.menu-transform-fixed {
+    @include breakpoint($wideWidth) {
+      position: fixed;
+      transform: translateY(-100%);
+      top: calc(1em * 5.4);
+      &:hover {
+        background-color: #000000;
+        color: #ffffff;
+      }
+    }
+  }
+}
+
+.menu-item {
+  transition: background-color .2s cubic-bezier(.645, .045, .355, 1);
+}

@@ -1,0 +1,464 @@
+.works {
+  height: 100%;
+  overflow: hidden;
+  .worksScroll, .worksScroll-in {
+    height: 100%;
+    width: 100%;
+  }
+  .overlay-white {
+    &-left, &-right {
+      width: 50%;
+      background-color: white;
+      position: fixed;
+      height: 100%;
+      z-index: 16;
+      @include breakpoint($wideWidthMax) {
+        display: none;
+      }
+    }
+    &-left {
+      left: 0;
+      top: -100%;
+    }
+    &-right {
+      right: 0;
+      top: 100%;
+    }
+  }
+}
+
+.works-page {
+  top: 0;
+  right: 0;
+  width: 100%;
+  position: relative;
+  @include breakpoint($wideWidth) {
+    width: 50%;
+    float: right;
+    top: 5.4em;
+    min-height: calc(100% - 5.4em);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+  }
+  .header {
+    height: 12.53em;
+    @include breakpoint($wideWidth) {
+      display: none;
+    }
+  }
+  .works-content {
+    &-white {
+      background-color: white;
+    }
+    &-block {
+      &.works-intro-text {
+        color: #ffffff;
+        @include breakpoint($wideWidth) {
+          height: 6.9em;
+        }
+        .intro-text-block-overlay {
+          background-color: #000000;
+          height: 100%;
+          width: 100%;
+          overflow: hidden;
+        }
+        .intro-text-block {
+          padding: 1.25em calc(1em * 1.25 / 2) 1.25em;
+          @include breakpoint($wideWidthMax) {
+            max-width: 28em;
+          }
+          @include breakpoint($wideWidth) {
+            padding: 4.2em 1.1em 1.2em;
+          }
+        }
+        h3, p {
+          display: inline;
+          line-height: 1.25;
+          letter-spacing: calc(1em / 40);
+          @include breakpoint($wideWidth) {
+            display: block;
+            letter-spacing: calc(1em / 30);
+            line-height: 1.34;
+            font-size: 98%;
+            &:before {
+              display: block;
+              content: '';
+              position: absolute;
+              bottom: 0;
+              height: 0;
+              width: 100%;
+              background-color: black;
+              z-index: 6;
+            }
+          }
+        }
+        h3 {
+          @include breakpoint($wideWidth) {
+            margin-bottom: .1em;
+          }
+        }
+      }
+      &.works-projects {
+        @include breakpoint($wideWidth) {
+          padding-bottom: 2.8em;
+        }
+        .works-projects-nav {
+          z-index: 3;
+          @include breakpoint($wideWidth) {
+            height: calc(1em * 5.4 + 1em * .3 * 2 + 1em * 5.2 - 1em * 5.4);
+            background-color: white;
+          }
+          .projects-nav-overlay {
+            width: 100%;
+            height: 100%;
+            @include breakpoint($wideWidth) {
+              overflow: hidden;
+              background-color: white;
+              position: absolute;
+              bottom: 0;
+              right: 0;
+              height: calc(1em * 5.4 + 1em * .3 * 2 + 1em * 5.2 - 1em * 5.4);
+              max-height: calc(1em * 5.4 + 1em * .3 * 2 + 1em * 5.2);
+            }
+          }
+          .nav-fixed {
+            @include breakpoint($wideWidth) {
+              position: fixed;
+              background-color: white;
+              z-index: 1;
+              right: 0;
+              width: 50%;
+              height: 100%;
+              top: 0;
+            }
+          }
+          &-container {
+            padding: 1.25em calc(1em * 1.25 / 2) 1.25em;
+            width: 100%;
+            height: 5.5em;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-items: flex-start;
+            justify-content: space-between;
+            @include breakpoint($wideWidth) {
+              align-items: flex-end;
+              height: calc(1em * 5.4 + 1em * .3 * 2 + 1em * 5.2 - 1em * 5.4);
+              padding: 0 1.1em .6em;
+              position: absolute;
+              bottom: 0;
+              right: 0;
+            }
+          }
+          .works-projects-filtration {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            position: relative;
+            width: 100%;
+            height: 100%;
+            @include breakpoint($wideWidth) {
+              flex-wrap: nowrap;
+              height: 17%;
+              bottom: auto;
+              top: 77%;
+              position: absolute;
+              width: calc(100% - 1.2em);
+              left: .6em;
+            }
+            .projects-filtration-item {
+              cursor: pointer;
+              margin-right: 1.6em;
+              margin-bottom: 0;
+              text-align: center;
+              display: flex;
+              flex-wrap: nowrap;
+              flex-direction: row;
+              align-items: center;
+              justify-content: center;
+              position: absolute;
+              top: 0;
+              &:before {
+                @include breakpoint($wideWidth) {
+                  display: block;
+                  content: '';
+                  position: absolute;
+                  overflow: hidden;
+                  bottom: 0;
+                  left: 0;
+                  height: 0;
+                  width: 100%;
+                  z-index: 2;
+                  background-color: white;
+                }
+              }
+              &.filtration-item {
+                &-all {
+                  right: 0;
+                }
+                &-creative {
+                  left: 0;
+                }
+                &-branding {
+                  left: 7.1em;
+                }
+                &-digital {
+                  left: 0;
+                  top: auto;
+                  bottom: 0;
+                }
+                &-video {
+                  left: 6.1em;
+                  top: auto;
+                  bottom: 0;
+                }
+              }
+              @include breakpoint($wideWidth) {
+                margin-right: 1.1em;
+                margin-bottom: 0;
+                display: flex;
+                flex-wrap: nowrap;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                bottom: 0;
+                top: auto;
+                &.filtration-item {
+                  &-branding {
+                    left: 6.1em;
+                  }
+                  &-digital {
+                    left: 12.6em;
+                  }
+                  &-video {
+                    left: 17.7em;
+                  }
+                }
+              }
+              &.filtration-item-digital {
+                margin-bottom: 0;
+              }
+              &:last-child {
+                margin-right: 0;
+                margin-bottom: 0;
+              }
+              h3 {
+                transition: color .3s ease;
+                line-height: 1.25;
+                font-family: 'MabryPro-Regular', sans-serif;
+                @include breakpoint($wideWidth) {
+                  line-height: 1;
+                  font-size: 100%;
+                  letter-spacing: calc(1em / 42);
+                  transition: color .3s ease;
+                  &:hover {
+                    color: $purple;
+                  }
+                }
+              }
+              &.active {
+                h3 {
+                  font-family: 'MabryPro-Bold', sans-serif;
+                  letter-spacing: calc(1em / 25.8);
+                  @include breakpoint($wideWidth) {
+                    letter-spacing: calc(-1em * .01);
+                  }
+                }
+              }
+              &:hover {
+                @include breakpoint($wideWidth) {
+                  color: $accent;
+                }
+              }
+            }
+          }
+        }
+        .works-projects-container {
+          width: 100%;
+          height: 100%;
+          .projects-overlay {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: flex-start;
+            margin-top: -1px;
+          }
+          .works-projects-card-overlay {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: $purple;
+            &.card-overlay-start {
+              @include breakpoint($wideWidth) {
+                max-height: 0;
+                transition: max-height .5s cubic-bezier(.645, .045, .355, 1) .2s, background-color 10ms cubic-bezier(.645, .045, .355, 1) 500ms;
+                .card-content-overlay {
+                  max-height: 0;
+                  transition: max-height .3s cubic-bezier(.645, .045, .355, 1) .5s;
+                }
+              }
+            }
+            &.card-overlay-transition {
+              @include breakpoint($wideWidth) {
+                max-height: 100%;
+                .card-content-overlay {
+                  max-height: 100%;
+                }
+              }
+            }
+          }
+          .works-projects-card-small {
+            .works-projects-card-overlay {
+              &.card-overlay-start {
+                @include breakpoint($wideWidth) {
+                  transition: max-height .5s cubic-bezier(.645, .045, .355, 1) .3s, background-color 10ms cubic-bezier(.645, .045, .355, 1) 500ms;
+                  .card-content-overlay {
+                    transition: max-height .3s cubic-bezier(.645, .045, .355, 1) .6s;
+                  }
+                }
+              }
+            }
+          }
+          .works-projects-card {
+            cursor: pointer;
+            width: 50%;
+            position: relative;
+            overflow: hidden;
+            @include breakpoint($wideWidth) {
+              height: calc(50vw / 1.6);
+            }
+            .works-card-in {
+              width: 100%;
+              height: 100%;
+              background-color: transparent;
+            }
+            .overlay-card {
+              overflow: hidden;
+              width: 100%;
+              height: 100%;
+              bottom: 0;
+              left: 0;
+              @include breakpoint($wideWidth) {
+                position: absolute;
+                will-change: transform;
+                transition: all .2s cubic-bezier(.645, .045, .355, 1);
+                backface-visibility: hidden;
+                transform: translateZ(0);
+              }
+              .projects-card-img {
+                //border: 2px solid transparent;
+                will-change: transform;
+                display: block;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: calc(100% + 1px);
+                background-origin: border-box;
+                background-clip: border-box;
+                backface-visibility: hidden;
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: cover;
+                image-rendering: auto;
+              }
+            }
+            .projects-card {
+              &-content {
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                padding: calc(1em * 1.38 / 2) calc(1em * 1.25 / 2) calc(1em * 1.25 / 2);
+                color: #ffffff;
+                position: absolute;
+                pointer-events: none;
+                @include breakpoint($wideWidth) {
+                  padding: 1.1em;
+                  overflow: hidden;
+                }
+                .card-content-overlay {
+                  overflow: hidden;
+                }
+              }
+              &-title {
+                display: block;
+                z-index: 2;
+                pointer-events: none;
+                width: 100%;
+                max-width: 100%;
+                line-height: 1.13;
+                letter-spacing: calc(1em / 27);
+                font-family: 'MabryPro-Bold', sans-serif;
+                @include breakpoint($wideWidth) {
+                  letter-spacing: calc(1em / 45);
+                  line-height: 1.07;
+                  font-size: 76%;
+                }
+              }
+              &-text {
+                z-index: 2;
+                pointer-events: none;
+                display: none;
+                color: rgba(255, 255, 255, .6);
+                .place {
+                  display: inline;
+                }
+                @include breakpoint($wideWidth) {
+                  display: block;
+                  letter-spacing: normal;
+                  font-size: 76%;
+                  line-height: 1.07;
+                }
+              }
+            }
+            &-big {
+              width: 100%;
+              &:hover {
+                @include breakpoint($wideWidth) {
+                  .overlay-card {
+                    width: 50%;
+                    height: 50%;
+                  }
+                }
+              }
+            }
+            &-small {
+              width: 50%;
+              .overlay-card {
+                .projects-card-img {
+                  width: 100%;
+                  height: calc(100% + 1px);
+                  left: 0;
+                }
+              }
+              &:hover {
+                @include breakpoint($wideWidth) {
+                  .overlay-card {
+                    width: 50%;
+                    height: 50%;
+                  }
+                }
+              }
+            }
+            .overlay-card.card-img-active {
+              @include breakpoint($wideWidth) {
+                width: 50%;
+                height: 50%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+.header-mini {
+  width: 100%;
+  .menu {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    @include breakpoint($wideWidth) {
+      overflow: hidden;
+    }
+    &-item {
+      width: 50%;
+      cursor: pointer;
+      @include breakpoint($wideWidth) {
+        .menu-item-overlay {
+          position: absolute;
+          left: 0;
+          width: 100%;
+          height: 102%;
+          z-index: 2;
+          background-color: white;
+        }
+      }
+      &-block {
+        padding: 1.25em;
+        @include breakpoint($wideWidth) {
+          padding: .9em;
+        }
+      }
+      &.menu-works {
+        background-color: #ffffff;
+        @include breakpoint($wideWidth) {
+          .menu-item-overlay {
+            top: -102%;
+          }
+        }
+      }
+      &.menu-agency {
+        background-color: $purple;
+        @include breakpoint($wideWidth) {
+          .menu-item-overlay {
+            top: 102%;
+          }
+        }
+      }
+      &:hover {
+        @include breakpoint($wideWidth) {
+          background-color: #000000;
+          color: #ffffff;
+        }
+      }
+    }
+  }
+  &-top {
+    .menu {
+      &-item {
+        &-block {
+          padding: 3.8em 1em .8em;
+          @include breakpoint($wideWidth) {
+            padding: .9em;
+          }
+        }
+      }
+    }
+  }
+  &-bottom {
+    .menu {
+      &-item {
+        .menu-mini-title {
+          line-height: 1.25;
+          letter-spacing: 1px;
+          @include breakpoint($wideWidth) {
+            line-height: 1.11;
+            letter-spacing: .0278em;
+          }
+        }
+      }
+    }
+  }
+}

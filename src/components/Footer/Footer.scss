@@ -1,0 +1,179 @@
+.footer {
+  width: 100%;
+  background-color: #000000;
+  &.footer-black {
+    @include breakpoint($wideWidth) {
+      height: 5.2em;
+    }
+  }
+  &-column {
+    background-color: #ffffff;
+    .contacts-container {
+      color: #000000;
+      flex-direction: column;
+      line-height: 1.25;
+      @include breakpoint($wideWidth) {
+        padding: 3.6em 1.4em .75em;
+        height: auto;
+        line-height: 1.29;
+      }
+      .contacts-item {
+        margin-bottom: 1.25em;
+        @include breakpoint($wideWidth) {
+          position: relative;
+        }
+        &-social {
+          margin-bottom: 0;
+          @include breakpoint($wideWidth) {
+            left: 0;
+          }
+        }
+        &-america {
+          @include breakpoint($wideWidth) {
+            left: 0;
+          }
+        }
+        &-russia {
+          @include breakpoint($wideWidth) {
+            left: 0;
+          }
+        }
+        span, a {
+          color: #000000;
+        }
+        .contact {
+          &-email {
+            .email-link {
+              color: #000000;
+              &:hover {
+                @include breakpoint($wideWidth) {
+                  color: $purple;
+                }
+              }
+            }
+          }
+          &-social {
+            .social-item {
+              &:hover {
+                @include breakpoint($wideWidth) {
+                  color: #000000;
+                }
+              }
+            }
+          }
+        }
+        &-assessment {
+          margin-bottom: -.6em;
+          margin-top: 1.25em;
+          @include breakpoint($wideWidth) {
+            margin-top: 1.4em;
+            margin-bottom: 0;
+          }
+          a {
+            color: rgba(0, 0, 0, .4);
+            font-family: MabryPro-Regular, sans-serif;
+            font-size: 62%;
+            font-weight: normal;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: 1.8;
+            letter-spacing: normal;
+            text-decoration: underline;
+            transition: color .3s ease;
+            @include breakpoint($wideWidth) {
+              font-size: 70%;
+              &:hover {
+                color: $purple;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.contacts-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  padding: 6em .6em 1.2em;
+  color: #ffffff;
+  line-height: 1.25;
+  font-size: 100%;
+  font-family: 'MabryPro-Regular', sans-serif;
+  @include breakpoint($wideWidth) {
+    flex-direction: row;
+    padding: 1.4em;
+    font-size: 77.8%;
+    line-height: 1.29;
+    height: 100%;
+  }
+  .contacts-item {
+    margin-bottom: 1.25em;
+    @include breakpoint($wideWidth) {
+      margin-bottom: 0;
+      position: absolute;
+    }
+    &-social {
+      margin-bottom: 0;
+      @include breakpoint($wideWidth) {
+        left: 50%;
+      }
+    }
+    &-america {
+      @include breakpoint($wideWidth) {
+        left: 25%;
+      }
+    }
+    &-russia {
+      @include breakpoint($wideWidth) {
+        left: 1.4em;
+      }
+    }
+    span, a {
+      line-height: 1.29;
+      display: inline-block;
+      color: #ffffff;
+      letter-spacing: .0286em;
+    }
+    .contact {
+      &-city {
+        text-transform: uppercase;
+        font-family: 'MabryPro-Bold', sans-serif;
+      }
+      &-email {
+        margin-bottom: 1.3em;
+        @include breakpoint($wideWidth) {
+          margin-bottom: 1.4em;
+          //margin-bottom: 0;
+        }
+        .email-link {
+          color: #ffffff;
+          text-decoration: none;
+          transition: color .3s ease;
+          &:hover {
+            @include breakpoint($wideWidth) {
+              color: $purple;
+            }
+          }
+        }
+      }
+      &-social {
+        .social-item {
+          color: $purple;
+          transition: color .3s ease;
+          &:hover {
+            @include breakpoint($wideWidth) {
+              color: #ffffff;
+            }
+          }
+        }
+      }
+    }
+  }
+}

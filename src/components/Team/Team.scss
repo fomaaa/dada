@@ -1,0 +1,326 @@
+.agency-team-new {
+  background-color: white;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-content: stretch;
+  .team-item-block {
+    overflow: hidden;
+    cursor: pointer;
+    text-align: left;
+    width: 50%;
+    height: calc(50vw / .75);
+    flex-grow: 4;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+    @include breakpoint($wideWidth) {
+      width: 25%;
+      height: calc(12.5vw / .75);
+    }
+    &.team-item-block-null {
+      cursor: default;
+      &.team-item-block-null-all {
+        @include breakpoint($wideWidthMax) {
+          display: none;
+        }
+      }
+      & ~ .team-item-block-null {
+        @include breakpoint($wideWidthMax) {
+          display: none;
+        }
+      }
+    }
+    .block-for-img {
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+    }
+    .black {
+      background-color: black;
+      .img-white {
+        opacity: 0;
+      }
+    }
+    .white {
+      background-color: white;
+      .img-black {
+        opacity: 0;
+      }
+    }
+    .content {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+      transition: width .2s ease, height .2s ease;
+      position: absolute;
+      padding: calc(1em * .7) calc(1em * .6);
+      background-color: $purple;
+      @include breakpoint($wideWidth) {
+        padding: calc(1em * .6) calc(1em * .6);
+      }
+      .info-fio, .info-profession {
+        display: block;
+      }
+      .info-fio {
+        font-family: 'MabryPro-Bold', sans-serif;
+        font-size: 100%;
+        line-height: 1.25;
+        letter-spacing: calc(1em * .02);
+        color: #ffffff;
+        margin-bottom: calc(1em * .2);
+        @include breakpoint($wideWidth) {
+          font-size: 66.7%;
+        }
+      }
+      .info-profession {
+        display: block;
+        font-family: 'MabryPro-Regular', sans-serif;
+        font-size: 100%;
+        line-height: 1.25;
+        letter-spacing: calc(1em * .02);
+        color: rgba(255, 255, 255, .6);
+        @include breakpoint($wideWidth) {
+          font-size: 66.7%;
+        }
+      }
+    }
+    .img-team {
+      z-index: 10;
+      opacity: 1;
+      flex-grow: 2;
+      width: 100%;
+      height: 100%;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: cover;
+      transform-origin: 0 bottom;
+      position: absolute;
+      top: auto;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-origin: border-box;
+      background-clip: border-box;
+      backface-visibility: hidden;
+      image-rendering: -o-crisp-edges;
+      image-rendering: unset;
+      -ms-interpolation-mode: nearest-neighbor;
+      zoom: 1;
+      transition: all .2s ease, filter .2s ease, opacity 0s ease;
+      &.img-white {
+        background-color: white;
+      }
+      &.img-black {
+        background-color: black;
+      }
+    }
+    .block-big {
+      width: 100%;
+      height: 100%;
+      flex-grow: 2;
+      display: flex;
+      flex-wrap: nowrap;
+      flex-direction: row;
+      justify-content: stretch;
+      align-items: stretch;
+      &.black {
+        .star {
+          transform-origin: 0 bottom;
+          .star-svg {
+            transition: transform .1s ease;
+            transform: translate3d(0, 0, 0) rotate(-180deg);
+          }
+        }
+      }
+      &:before {
+        display: block;
+        background-color: $purple;
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      &.hovered {
+        .img-team {
+          width: 50%;
+          height: 50%;
+        }
+      }
+      &:hover {
+        @include breakpoint($wideWidth) {
+          .img-team {
+            width: 50%;
+            height: 50%;
+          }
+        }
+      }
+      &.zero-block {
+        cursor: default;
+        &:before {
+          display: none;
+        }
+      }
+    }
+    .block-small {
+      width: 50%;
+      height: 50%;
+      &.black {
+        .star {
+          .star-svg {
+            transition: transform .1s ease;
+            transform: translate3d(0, 0, 0) rotate(-180deg);
+          }
+        }
+      }
+      &:before {
+        display: block;
+        background-color: $purple;
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transition: width .2s ease, height .2s ease;
+      }
+      &:first-child {
+        top: 0;
+        left: 0;
+        .content {
+          top: 0;
+          left: 0;
+          justify-content: flex-end;
+        }
+        &:before {
+          top: 0;
+          left: 0;
+        }
+      }
+      &:nth-child(2) {
+        top: 0;
+        right: 0;
+        .content {
+          top: 0;
+          right: 0;
+          justify-content: flex-end;
+        }
+        &:before {
+          top: 0;
+          right: 0;
+        }
+      }
+      &:nth-child(3) {
+        bottom: 0;
+        left: 0;
+        .content {
+          bottom: 0;
+          left: 0;
+        }
+        &:before {
+          bottom: 0;
+          left: 0;
+        }
+      }
+      &:last-child {
+        bottom: 0;
+        right: 0;
+        .content {
+          bottom: 0;
+          right: 0;
+        }
+        &:before {
+          bottom: 0;
+          right: 0;
+        }
+      }
+      .content {
+        @include breakpoint($wideWidth) {
+          pointer-events: none;
+        }
+        .info-fio, .info-profession {
+          transition: opacity .1s ease .21s;
+          opacity: 0;
+          visibility: hidden;
+          width: 100%;
+          @include breakpoint($wideWidth) {
+            pointer-events: none;
+          }
+        }
+      }
+      &.hover-index {
+        z-index: 11;
+        .content {
+          z-index: 10;
+        }
+      }
+      &.hovered {
+        &:before {
+          @include breakpoint($wideWidthMax) {
+            width: 200%;
+            height: 200%;
+            pointer-events: none;
+          }
+        }
+        .content {
+          width: calc(200% + 1px);
+          height: 200%;
+          .info-fio, .info-profession {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+      }
+      &.zero-block {
+        cursor: default;
+        &:before {
+          display: none;
+        }
+      }
+    }
+  }
+  .star {
+    &:active, &:hover, &:focus, &:active {
+      outline: none;
+    }
+    width: 2em;
+    height: 2em;
+    position: absolute;
+    z-index: 10;
+    bottom: 1px;
+    left: 1px;
+    cursor: pointer;
+    transform-origin: 0 bottom;
+    @include breakpoint($wideWidth) {
+      width: 1.4em;
+      height: 1.4em;
+    }
+    .star-svg {
+      &:active, &:hover, &:focus, &:active {
+        outline: none;
+      }
+      bottom: 0;
+      right: 0;
+      position: absolute;
+      width: 100%;
+      height: auto;
+      display: block;
+      pointer-events: none;
+      transform: translate3d(0, 0, 0);
+      transition: transform .1s ease;
+      transform-origin: center center;
+      .st0 {
+        fill: #8200E6;
+      }
+    }
+  }
+}
