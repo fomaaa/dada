@@ -1,58 +1,65 @@
 <template>
-  <div class="case"
-       style="height: 100%; width: 140%; z-index: 3; overflow: hidden; position: absolute; top: 0; left: 0;">
-    <div class="case-for-overlay" style="height: 100%; width: 100vw; z-index: 3; position: absolute; top: 0; left: 0;"
-         ref="mainScroll"
-         v-bar="{preventParentScroll: false, useScrollbarPseudo: false, overrideFloatingScrollbar: true}">
-      <div class="case-page case-custom-scroll-js" id="container-scroll-js">
-        <div class="case-overlay--purple"></div>
-        <div class="case-content" id="case-content-js">
-          <div class="case-section-first container-100vh">
-            <logo-block></logo-block>
-            <header class="header-mini header-mini-top">
-              <header-mini></header-mini>
-            </header>
-            <div class="case-head-image-overlay">
-              <div class="case-head-image" :style="{backgroundImage: 'url('+ caseData.preview +')'}"></div>
-              <!--<iframe class="case-head-video" width="100%" height="350px" :src="block.video_url.replace('watch?v=', '/embed/')" frameborder="0" v-for="block in blocks" v-if="block.type == '1' && block.video_url"-->
-                      <!--allow="autoplay; encrypted-media" hspace="0" vspace="0" allowtransparency="true"-->
-                      <!--allowfullscreen="allowfullscreen"></iframe>-->
-            </div>
-            <div class="wrapper">
-              <div class="case-head-text">
-                <span class="MainLetterhead">{{caseData.title}}</span>
-                <span class="Campaign">{{caseData.campaign}}</span>
-              </div>
-            </div>
-          </div>
-          <div class="container-case-content">
-            <section class="case-section wrapper case-text-container" v-for="block in blocks" v-if="block.type == '1'">
-              <div class="case-text-content" @click="clickGtm('click', 'fromCaseToWorks', 'byTag')">
-                <div class="case-links clearfix">
+	<div class="case"
+		 style="height: 100%; width: 140%; z-index: 3; overflow: hidden; position: absolute; top: 0; left: 0;">
+		<div class="case-for-overlay"
+			 style="height: 100%; width: 100vw; z-index: 3; position: absolute; top: 0; left: 0;"
+			 ref="mainScroll"
+			 v-bar="{preventParentScroll: false, useScrollbarPseudo: false, overrideFloatingScrollbar: true}">
+			<div class="case-page case-custom-scroll-js" id="container-scroll-js">
+				<div class="case-overlay--purple"></div>
+				<div class="case-content" id="case-content-js">
+					<div class="case-section-first container-100vh">
+						<logo-block></logo-block>
+						<header class="header-mini header-mini-top">
+							<header-mini></header-mini>
+						</header>
+						<div class="case-head-image-overlay">
+							<div v-if="headBlock"
+								 class="case-head-image"
+								 :style="{backgroundImage: 'url('+ headBlock.head_block_image +')'}"></div>
+							<div v-else
+								 class="case-head-image"
+								 :style="{backgroundImage: 'url('+ caseData.preview +')'}"></div>
+						</div>
+						<div class="wrapper">
+							<div class="case-head-text">
+								<span class="MainLetterhead">{{caseData.title}}</span>
+								<span class="Campaign">{{caseData.campaign}}</span>
+							</div>
+						</div>
+					</div>
+					<div class="container-case-content">
+						<section class="case-section wrapper case-text-container"
+								 v-for="block in blocks" v-if="block.type == '1'">
+							<div class="case-text-content"
+								 @click="clickGtm('click', 'fromCaseToWorks', 'byTag')">
+								<div class="case-links clearfix">
                   <span class="NavigationLinks-wr" v-for="tag in caseData.tags" :key="tag.id"><router-link
-                    :to="{name: 'WorksComponent'}" tag="a" class="NavigationLinks">{{tag}}</router-link><span
-                    class="place">,&nbsp;</span></span>
-                  <div class="SiteLink-wr" v-if="block.site_url">
+						  :to="{name: 'WorksComponent'}" tag="a"
+						  class="NavigationLinks">{{tag}}</router-link><span
+						  class="place">,&nbsp;</span></span>
+									<div class="SiteLink-wr" v-if="block.site_url">
                     <span class="site-link-icon">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="9" viewBox="0 0 18 9">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="9"
+						   viewBox="0 0 18 9">
                           <g fill="#8200E6" fill-rule="evenodd">
                               <path
-                                d="M7.412 4.198A3.2 3.2 0 0 0 4.198.983 3.2 3.2 0 0 0 .983 4.198a3.2 3.2 0 0 0 3.215 3.214 3.2 3.2 0 0 0 3.214-3.214M0 4.198A4.203 4.203 0 0 1 4.198 0a4.202 4.202 0 0 1 4.197 4.198 4.201 4.201 0 0 1-4.197 4.197A4.203 4.203 0 0 1 0 4.198"/>
+									  d="M7.412 4.198A3.2 3.2 0 0 0 4.198.983 3.2 3.2 0 0 0 .983 4.198a3.2 3.2 0 0 0 3.215 3.214 3.2 3.2 0 0 0 3.214-3.214M0 4.198A4.203 4.203 0 0 1 4.198 0a4.202 4.202 0 0 1 4.197 4.198 4.201 4.201 0 0 1-4.197 4.197A4.203 4.203 0 0 1 0 4.198"/>
                               <path d="M4.28 4.654h9.45v-.936H4.28z"/>
                               <path
-                                d="M17.026 4.198A3.2 3.2 0 0 0 13.811.983a3.2 3.2 0 0 0-3.213 3.215 3.2 3.2 0 0 0 3.213 3.214 3.2 3.2 0 0 0 3.215-3.214m-7.412 0A4.202 4.202 0 0 1 13.811 0a4.202 4.202 0 0 1 4.198 4.198 4.202 4.202 0 0 1-4.198 4.197 4.202 4.202 0 0 1-4.197-4.197"/>
+									  d="M17.026 4.198A3.2 3.2 0 0 0 13.811.983a3.2 3.2 0 0 0-3.213 3.215 3.2 3.2 0 0 0 3.213 3.214 3.2 3.2 0 0 0 3.215-3.214m-7.412 0A4.202 4.202 0 0 1 13.811 0a4.202 4.202 0 0 1 4.198 4.198 4.202 4.202 0 0 1-4.198 4.197 4.202 4.202 0 0 1-4.197-4.197"/>
                           </g>
                       </svg>
                     </span>
-                    <a class="SiteLink" :href="block.site_url" target="_blank">{{block.site_url.replace('https://',
-                      '').replace('http://', '').replace('www.', '')}}</a>
-                  </div>
-                </div>
-                <case-lead :leadText="block.text"></case-lead>
-                <case-text :textText="block.text2"></case-text>
-              </div>
-            </section>
-            <section :class="['case-section',
+										<a class="SiteLink" :href="block.site_url" target="_blank">{{block.site_url.replace('https://',
+											'').replace('http://', '').replace('www.', '')}}</a>
+									</div>
+								</div>
+								<case-lead :leadText="block.text"></case-lead>
+								<case-text :textText="block.text2"></case-text>
+							</div>
+						</section>
+						<section :class="['case-section',
                 block.indent ? 'zero-offset-bottom': '',
                 block.type == '8' ? 'case-image-gallery' : '',
                 block.type == '7' ? 'wrapper case-medium-image-container' : '',
@@ -62,81 +69,90 @@
                 block.type == '9' ? 'case-video-container' : '',
                 (block.type == '4' && !block.wide) ? 'wrapper case-video-container' : '',
                 block.type == '2' || block.type == '3' ? 'wrapper case-text-container' : '',]"
-                     v-for="(block, key) in blocks" v-if="blocks.length !== 0">
-              <case-lead v-if="block.type == '2'" :leadText="block.text"></case-lead>
-              <case-text v-if="block.type == '3'" :textText="block.text"></case-text>
-              <case-video v-if="block.type == '4'" :videoUrl="block.video"
-                          :videoDescription="block.description"></case-video>
-              <case-img-big v-if="block.type == '5'" :imageBigUrl="block.image"
-                            :imageBigCaption="block.description"></case-img-big>
-              <case-img-mini v-if="block.type == '6'" :imageMiniUrl="[block.image, block.image2]"
-                             :imageMiniCaption="[block.description, block.description2]"></case-img-mini>
-              <case-img-medium v-if="block.type == '7'" :imageMediumUrl="block.image"
-                               :imageMediumCaption="block.description"></case-img-medium>
-              <case-gallery v-if="block.type == '8'" :galleryArr="block.gallery"></case-gallery>
-              <case-double-video v-if="block.type == '9'" :videoDoubleUrl="block.video" :videoDoubleUrl2="block.video2"
-                                 :videoDoubleDescription="block.description"
-                                 :videoDoubleDescription2="block.description2"></case-double-video>
-            </section>
-            <div class="case-selector wrapper">
-              <div class="case-selector-container case-selector-container-mb">
-                <router-link v-scroll-to="{el: '#app', duration: 200}"
-                             :to="{name: 'CaseComponent', params: {case : this.caseData.urlPrev}}" tag="div"
-                             class="case-selector-item selector-item-prev none-outline"
-                             @click="clickGtm('click', 'fromCaseToPrevCase',tag.id)">
-                  <span class="selector-arrow">←</span>
-                  <span>{{textPrev}}</span>
-                  <span>{{textWork}}</span>
-                </router-link>
-                <router-link v-scroll-to="{el: '#app', duration: 200}"
-                             :to="{name: 'CaseComponent', params: {case : this.caseData.urlNext}}" tag="div"
-                             class="case-selector-item selector-item-next none-outline"
-                             @click="clickGtm('click', 'fromCaseToNextCase','')">
-                  <span>→</span>
-                  <span class="selector-arrow">{{textNext}}</span>
-                  <span>{{textWork}}</span>
-                </router-link>
-              </div>
-              <div class="case-selector-container case-selector-container-pc">
-                <router-link :to="{name: 'CaseComponent', params: {case : this.caseData.urlPrev}}" tag="div"
-                             class="case-selector-item selector-item-prev none-outline"
-                             @click="clickGtm('click', 'fromCaseToPrevCase',tag.id)">
-                  <div class="case-prev">
-                    <span class="selector-arrow">←</span>
-                    <span>{{textPrev}}</span>
-                    <span>{{textWork}}</span>
-                  </div>
-                  <div class="prev-info clearfix">
-                    <span class="prev-title">■ {{caseData.titlePrev}}</span><br>
-                    <span class="prev-campaign">{{caseData.campaignPrev}}</span>
-                  </div>
-                </router-link>
-                <router-link :to="{name: 'CaseComponent', params: {case : this.caseData.urlNext}}" tag="div"
-                             class="case-selector-item selector-item-next none-outline"
-                             @click="clickGtm('click', 'fromCaseToNextCase','')">
-                  <div class="case-next">
-                    <span class="selector-arrow">{{textNext}}</span>
-                    <span>{{textWork}}</span>
-                    <span>→</span>
-                  </div>
-                  <div class="next-info">
-                    <span class="next-title">{{caseData.titleNext}} ■</span><br>
-                    <span class="next-campaign">{{caseData.campaignNext}}</span>
-                  </div>
-                </router-link>
-              </div>
-            </div>
-          </div>
-        </div>
-        <header class="header-mini header-mini-bottom">
-          <header-mini></header-mini>
-        </header>
-        <footer class="footer footer-black" style="z-index: 5;">
-          <footer-block></footer-block>
-        </footer>
-      </div>
-    </div>
-  </div>
+								 v-for="(block, key) in blocks" v-if="blocks.length !== 0">
+							<case-lead v-if="block.type == '2'" :leadText="block.text"></case-lead>
+							<case-text v-if="block.type == '3'" :textText="block.text"></case-text>
+							<case-video v-if="block.type == '4'" :videoUrl="block.video"
+										:videoDescription="block.description"></case-video>
+							<case-img-big v-if="block.type == '5'" :imageBigUrl="block.image"
+										  :imageBigCaption="block.description"></case-img-big>
+							<case-img-mini v-if="block.type == '6'"
+										   :imageMiniUrl="[block.image, block.image2]"
+										   :imageMiniCaption="[block.description, block.description2]"></case-img-mini>
+							<case-img-medium v-if="block.type == '7'" :imageMediumUrl="block.image"
+											 :imageMediumCaption="block.description"></case-img-medium>
+							<case-gallery v-if="block.type == '8'"
+										  :galleryArr="block.gallery"></case-gallery>
+							<case-double-video
+									v-if="block.type == '9'"
+									:block="block">
+							</case-double-video>
+						</section>
+						<div class="case-selector wrapper">
+							<div class="case-selector-container case-selector-container-mb">
+								<router-link v-scroll-to="{el: '#app', duration: 200}"
+											 :to="{name: 'CaseComponent', params: {case : this.caseData.urlPrev}}"
+											 tag="div"
+											 class="case-selector-item selector-item-prev none-outline"
+											 @click="clickGtm('click', 'fromCaseToPrevCase',tag.id)">
+									<span class="selector-arrow">←</span>
+									<span>{{textPrev}}</span>
+									<span>{{textWork}}</span>
+								</router-link>
+								<router-link v-scroll-to="{el: '#app', duration: 200}"
+											 :to="{name: 'CaseComponent', params: {case : this.caseData.urlNext}}"
+											 tag="div"
+											 class="case-selector-item selector-item-next none-outline"
+											 @click="clickGtm('click', 'fromCaseToNextCase','')">
+									<span>→</span>
+									<span class="selector-arrow">{{textNext}}</span>
+									<span>{{textWork}}</span>
+								</router-link>
+							</div>
+							<div class="case-selector-container case-selector-container-pc">
+								<router-link
+										:to="{name: 'CaseComponent', params: {case : this.caseData.urlPrev}}"
+										tag="div"
+										class="case-selector-item selector-item-prev none-outline"
+										@click="clickGtm('click', 'fromCaseToPrevCase',tag.id)">
+									<div class="case-prev">
+										<span class="selector-arrow">←</span>
+										<span>{{textPrev}}</span>
+										<span>{{textWork}}</span>
+									</div>
+									<div class="prev-info clearfix">
+										<span class="prev-title">■ {{caseData.titlePrev}}</span><br>
+										<span class="prev-campaign">{{caseData.campaignPrev}}</span>
+									</div>
+								</router-link>
+								<router-link
+										:to="{name: 'CaseComponent', params: {case : this.caseData.urlNext}}"
+										tag="div"
+										class="case-selector-item selector-item-next none-outline"
+										@click="clickGtm('click', 'fromCaseToNextCase','')">
+									<div class="case-next">
+										<span class="selector-arrow">{{textNext}}</span>
+										<span>{{textWork}}</span>
+										<span>→</span>
+									</div>
+									<div class="next-info">
+										<span class="next-title">{{caseData.titleNext}} ■</span><br>
+										<span class="next-campaign">{{caseData.campaignNext}}</span>
+									</div>
+								</router-link>
+							</div>
+						</div>
+					</div>
+				</div>
+				<header class="header-mini header-mini-bottom">
+					<header-mini></header-mini>
+				</header>
+				<footer class="footer footer-black" style="z-index: 5;">
+					<footer-block></footer-block>
+				</footer>
+			</div>
+		</div>
+	</div>
 </template>
 
 <script>
@@ -174,6 +190,7 @@
         container100vh: '',
         fontGlobal: null,
         caseData: [],
+        headBlock: [],
         blocks: [],
         textWork: (window.isru) ? 'работа' : 'work',
         textPrev: (window.isru) ? 'Предыдущая' : 'Previous',
@@ -185,6 +202,7 @@
         this.$http.get('/api/' + this.$route.params.lang + '/' + this.$route.params.case).then(response => {
           this.caseData = response.data.cases;
           this.blocks = response.data.blocks;
+          this.headBlock = response.data.headBlock;
         }, response => {
           // error callback
         });
@@ -256,7 +274,7 @@
       this.$http.get('/api/' + this.$route.params.lang + '/' + this.$route.params.case).then(response => {
         this.caseData = response.data.cases;
         this.blocks = response.data.blocks;
-
+        this.headBlock = response.data.headBlock;
         this.curUrl = this.caseData.url;
       }, response => {
 
@@ -291,8 +309,7 @@
         setTimeout(function () {
           next();
         }, 190);
-      }
-      else {
+      } else {
         next();
       }
     },
