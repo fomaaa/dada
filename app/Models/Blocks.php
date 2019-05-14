@@ -425,7 +425,9 @@ class Blocks extends Model
 
     public function setContentAttribute($value)
     {
-        $old = json_decode($this->attributes['content']);
+        if (isset($this->attributes['content'])) {
+            $old = json_decode($this->attributes['content']);
+        }
         // Определяем тип блока
         $type=$this->attributes['type'];
         $data=[
