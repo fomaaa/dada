@@ -356,7 +356,7 @@ class AppController extends Controller
         }
         $cases = $cases->map(function ($case) {
             return collect($case->toArray())
-                ->only(['created_at', 'id', 'sort', 'url', 'preview', 'title', 'tags', 'campaign']);
+                ->only(['created_at', 'id', 'sort', 'url',  'title', 'tags', 'campaign']);
         });
         return response()->json($cases);
     }
@@ -424,7 +424,7 @@ class AppController extends Controller
 
         $cases = $cases->map(function ($case) {
             return collect($case->toArray())
-                ->only(['created_at', 'id', 'sort', 'url', 'preview', 'cases_preview','title', 'tags', 'campaign', 'cursor_color', 'preview_type', 'video_preview_type']);
+                ->only(['created_at', 'id', 'sort', 'url',  'cases_preview','title', 'tags', 'campaign', 'cursor_color', 'preview_type', 'video_preview_type']);
         });
         return response()->json($cases);
     }
@@ -495,7 +495,23 @@ class AppController extends Controller
             ->get(['content']);
         if (!empty($headBlock['0'])) {
             $headBlock = $headBlock[0]->content;
+            unset($headBlock['text_en']);
+            unset($headBlock['text_ru']);
+            unset($headBlock['text2_en']);
+            unset($headBlock['text2_ru']);
+            unset($headBlock['indent']);
+            unset($headBlock['wide']);
+            unset($headBlock['description_ru']);
+            unset($headBlock['description_en']);            
+            unset($headBlock['description2_ru']);
+            unset($headBlock['description2_en']);
+            unset($headBlock['site_url']);
+            unset($headBlock['tags']);
+            unset($headBlock['gallery']);
+            unset($headBlock['image']);
+            unset($headBlock['image2']);
         }
+        // print_r($headBlock);
 
         foreach ($blocksContent as $key => $item) {
             Blocks::fillContentData($blocksAll[$key], $item, $lang);
