@@ -1,0 +1,63 @@
+@import 'fancybox';
+
+#cursor {
+	pointer-events: none;
+	z-index: 9999999;
+	position: absolute;
+
+	&.showing-text {
+
+		.cursor__default {
+			display: none;
+		}
+
+		.cursor__text {
+			display: block;
+		}
+	}
+
+	&.color-white {
+		color: #fff;
+	}
+
+	&.color-black {
+		color: #000;
+	}
+
+	.cursor__text {
+		display: none;
+		font-size: 25px;
+		line-height: 30px;
+		text-align: center;
+		letter-spacing: 0.5px;
+		text-transform: uppercase;
+	}
+}
+
+.cursor__default {
+	background-image: url('../static/img/cursor_default.svg');
+	background-size: cover;
+	width: 42px;
+	height: 41px;
+}
+
+.popupVideoLink {
+	display: block;
+
+	&[style='display: none;'] {
+		display: block !important;
+	}
+
+	> * {
+		pointer-events: none;
+	}
+}
+
+
+.case-head-image,
+.projects-card-img {
+
+	video {
+		object-fit: cover;
+	}
+}

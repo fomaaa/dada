@@ -14,15 +14,30 @@
 							<header-mini></header-mini>
 						</header>
 						<div class="case-head-image-overlay">
-							<div v-if="headBlock"
+							<a :href="headBlock.popup_video_link"
+							   v-if="headBlock && headBlock.popup_video_link"
+							   class="case-head-image"
+							   data-fancybox
+							   :data-cursor="headBlock.cursor_color === '0' || headBlock.cursor_color === '1' ? 'PLAY' : ''"
+							   :data-cursor-color="headBlock.cursor_color === '0' ? 'white' : 'black'"
+							   :style="{backgroundImage: 'url('+ headBlock.head_block_image +')'}">
+								<video v-if="headBlock.head_block_video_type === '0'"
+									   width="100%" height="100%"
+									   muted playsinline autoplay loop>
+									<source :src="headBlock.head_block_video">
+								</video>
+							</a>
+
+							<div v-else-if="headBlock && !headBlock.popup_video_link"
 								 class="case-head-image"
 								 :style="{backgroundImage: 'url('+ headBlock.head_block_image +')'}"></div>
+
 							<div v-else
 								 class="case-head-image"
 								 :style="{backgroundImage: 'url('+ caseData.preview +')'}"></div>
 						</div>
 						<div class="wrapper">
-							<div class="case-head-text">
+							<div class="case-head-text" style="pointer-events: none">
 								<span class="MainLetterhead">{{caseData.title}}</span>
 								<span class="Campaign">{{caseData.campaign}}</span>
 							</div>
