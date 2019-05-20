@@ -124,6 +124,12 @@ class Blocks extends Model
                 }
                 if (isset($item->content['image_preview'])) {
                     $block->image_preview = $item->content['image_preview'];
+                }             
+                if (isset($item->content['show_this_block_head'])) {
+                    $block->show_this_block = $item->content['show_this_block_head'];
+                }
+                if (isset($item->content['this_block_video_link'])) {
+                    $block->this_block_video_link = $item->content['this_block_video_link'];
                 }
                 break;
             case 1: //1 => 'Main Letterhead & Navigation Links'
@@ -183,7 +189,12 @@ class Blocks extends Model
                         $block->video_link = $item->content['head_block_video_link'];
                     }
                 }
-
+                if (isset($item->content['show_this_block_head'])) {
+                    $block->show_this_block = $item->content['show_this_block_head'];
+                }                
+                if (isset($item->content['this_block_video_link'])) {
+                    $block->this_block_video_link = $item->content['this_block_video_link'];
+                }
                 break;
             case 5:
             case 7://5 => 'Big Image'
@@ -250,7 +261,9 @@ class Blocks extends Model
                 } elseif ($block->video_block_type1 == 1) {
                     $block->video_block_image1 = $item->content['video_block_image1'];
                 }
-
+                // if (isset($item->content['show_this_block1'])) {
+                //     $block->show_this_block1 = $item->content['show_this_block1'];
+                // }
                 //video2
 
                 $block->video_cursor_2 = $item->content['video_cursor_2'];
@@ -272,7 +285,9 @@ class Blocks extends Model
                 } elseif ($block->video_block_type2 == 1) {
                     $block->video_block_image2 = $item->content['video_block_image2'];
                 }
-
+                // if (isset($item->content['show_this_block2'])) {
+                //     $block->show_this_block2 = $item->content['show_this_block2'];
+                // }
                 break;
         }
     }
@@ -470,6 +485,7 @@ class Blocks extends Model
         {
             case 0: //0 => 'Head Image'
                 $data['preview_type'] = $value['preview_type'];
+                $data['cursor_color'] = $value['cursor_color'];
 
                 if ($data['preview_type'] == 0) {
                     if (isset($value['image_preview'])) {
@@ -479,7 +495,6 @@ class Blocks extends Model
                 } elseif ($data['preview_type'] == 1) {
                     if (isset($value['video_preview_type'])) {
                         $data['video_preview_type'] = $value['video_preview_type'];
-                        $data['cursor_color'] = $value['cursor_color'];
                         if (isset($value['video_preview'])) {
                             $file = $value['video_preview'];
                             $file = $this->uploadFile($file);
@@ -494,12 +509,12 @@ class Blocks extends Model
                         }
                     }
                 }
-                 $data['head_block_type'] = $value['head_block_type'];
+                $data['head_block_type'] = $value['head_block_type'];
+                $data['head_cursor_color'] = $value['head_cursor_color'];
 
                 if ($data['head_block_type'] == 1) {
                     if (isset($value['head_block_video_type'])) {
                         $data['head_block_video_type'] = $value['head_block_video_type'];
-                        $data['head_cursor_color'] = $value['head_cursor_color'];
                         if (isset($value['head_block_video'])) {
                             $file = $value['head_block_video'];
                             $file = $this->uploadFile($file);
@@ -522,7 +537,11 @@ class Blocks extends Model
 
                  if ($data['popup']) {
                     $data['popup_video_link'] = $value['popup_video_link'];
-                 }
+                 } 
+                    // $data['show_this_block_head'] = $value['show_this_block_head'];
+                 // echo '<pre>';
+                 // print_r($value);
+                 // dd($data);
                 break;
             case 1: //1 => 'Main Letterhead & Navigation Links'
                 // Теги в нижний кейс
@@ -546,12 +565,12 @@ class Blocks extends Model
                 $data['text_ru']= $value['text_ru'];
                 break;
             case 4: //4 => 'Video Container'
-                 $data['head_block_type'] = $value['head_block_type'];
+                $data['head_block_type'] = $value['head_block_type'];
+                $data['head_cursor_color'] = $value['head_cursor_color'];
 
                 if ($data['head_block_type'] == 1) {
                     if (isset($value['head_block_video_type'])) {
                         $data['head_block_video_type'] = $value['head_block_video_type'];
-                        $data['head_cursor_color'] = $value['head_cursor_color'];
                         if (isset($value['head_block_video'])) {
                             $file = $value['head_block_video'];
                             $file = $this->uploadFile($file);
@@ -574,6 +593,11 @@ class Blocks extends Model
 
                  if ($data['popup']) {
                     $data['popup_video_link'] = $value['popup_video_link'];
+                 } else {
+                    $data['show_this_block_head'] = $value['show_this_block_head'];
+                    if ($data['show_this_block_head']) {
+                        $data['this_block_video_link'] = $value['this_block_video_link'];
+                    }
                  }
 
                 $data['wide']= $value['wide'];
@@ -661,7 +685,10 @@ class Blocks extends Model
 
                 if ($data['popup_video1']) {
                     $data['video_url1'] = $value['video_url1'];
-                }
+                } 
+                // else {
+                //     $data['show_this_block1'] = $value['show_this_block1'];
+                // }
                 // dd($value);
                 if ($data['video_block_type1'] == 0) {
                     $data['video_block_video_type_1'] = $value['video_block_video_type_1'];
@@ -689,7 +716,10 @@ class Blocks extends Model
                 $data['popup_video2'] = $value['popup_video2'];
                 if ($data['popup_video2']) {
                     $data['video_url2'] = $value['video_url2'];
-                }
+                } 
+                // else {
+                //     $data['show_this_block2'] = $value['show_this_block2'];
+                // }
 
                 if ($data['video_block_type2'] == 0) {
                     $data['video_block_video_type_2'] = $value['video_block_video_type_2'];
