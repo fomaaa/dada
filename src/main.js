@@ -100,3 +100,9 @@ document.addEventListener("mousemove", function (e) {
   cursor.style.top = e.y + "px";
   cursor.style.left = e.x + "px";
 });
+
+
+document.addEventListener('click', function () {
+  $('#cursor').addClass('is-clicked')
+  setTimeout(() => $('#cursor').removeClass('is-clicked'), 150);
+});

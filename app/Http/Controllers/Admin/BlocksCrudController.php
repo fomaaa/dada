@@ -148,7 +148,7 @@ class BlocksCrudController extends CrudController
             'label' => 'Ссылка на видео',
             'fake' => true,
             'store_in' => 'content',
-        ], 
+        ],
         [
             'label' => 'Видео превью',
             'name' => 'head_block_video',
@@ -156,12 +156,12 @@ class BlocksCrudController extends CrudController
             'upload' => true,
             'fake' => true,
             'store_in' => 'content',
-        ],        
+        ],
         [
             'label' => 'Цвет курсора для видео',
             'fake' => true,
             'type' => 'radio',
-            'name' => 'head_cursor_color', 
+            'name' => 'head_cursor_color',
             'options' => [
                     0 => 'Белый',
                     1 => 'Черный'
@@ -169,7 +169,7 @@ class BlocksCrudController extends CrudController
             'default' => 0,
             'inline' => true,
             'store_in' => 'content',
-        ], 
+        ],
         [
             'name' => 'popup',
             'label' => 'Открывать в popup-окне ',
@@ -193,7 +193,7 @@ class BlocksCrudController extends CrudController
             'label' => 'Ссылка на видео в popup окне',
             'fake' => true,
             'store_in' => 'content',
-        ], 
+        ],
         [
             'name' => 'title',
             'label' => __('blocks.title'),
@@ -260,7 +260,7 @@ class BlocksCrudController extends CrudController
             'label' => 'Ссылка на видео (видео 1)',
             'fake' => true,
             'store_in' => 'content',
-        ], 
+        ],
         [
             'label' => 'Видео превью (видео 1)',
             'name' => 'video_block_video1',
@@ -292,7 +292,7 @@ class BlocksCrudController extends CrudController
             'label' => __('blocks.video'),
             'fake' => true,
             'store_in' => 'content',
-        ],        
+        ],
         [
             'name' => 'video_url',
             'label' => __('blocks.video'),
@@ -303,7 +303,7 @@ class BlocksCrudController extends CrudController
             'label' => 'Цвет курсора для (видео 1)',
             'fake' => true,
             'type' => 'radio',
-            'name' => 'video_cursor_1', 
+            'name' => 'video_cursor_1',
             'options' => [
                     0 => 'Белый',
                     1 => 'Черный'
@@ -311,7 +311,7 @@ class BlocksCrudController extends CrudController
             'default' => 0,
             'inline' => true,
             'store_in' => 'content',
-        ], 
+        ],
         [
             'name' => 'site_url',
             'label' => __('blocks.site'),
@@ -395,7 +395,7 @@ class BlocksCrudController extends CrudController
             'label' => 'Ссылка на видео (видео 2)',
             'fake' => true,
             'store_in' => 'content',
-        ], 
+        ],
         [
             'label' => 'Видео превью (видео 2)',
             'name' => 'video_block_video2',
@@ -432,7 +432,7 @@ class BlocksCrudController extends CrudController
             'label' => 'Цвет курсора для (видео 2)',
             'fake' => true,
             'type' => 'radio',
-            'name' => 'video_cursor_2', 
+            'name' => 'video_cursor_2',
             'options' => [
                     0 => 'Белый',
                     1 => 'Черный'
@@ -440,7 +440,7 @@ class BlocksCrudController extends CrudController
             'default' => 0,
             'inline' => true,
             'store_in' => 'content',
-        ], 
+        ],
         [
             'label' => __('blocks.second_image'),
             'name' => 'image2',
@@ -555,7 +555,7 @@ class BlocksCrudController extends CrudController
             'label' => 'Ссылка на видео для списка работ',
             'fake' => true,
             'store_in' => 'content',
-        ], 
+        ],
         [
             'label' => 'Видео превью для списка работ',
             'name' => 'video_preview',
@@ -563,7 +563,7 @@ class BlocksCrudController extends CrudController
             'upload' => true,
             'fake' => true,
             'store_in' => 'content',
-        ],        
+        ],
         [
             'label' => 'Фото превью для списка работ',
             'name' => 'image_preview',
@@ -577,7 +577,7 @@ class BlocksCrudController extends CrudController
             'label' => 'Цвет курсора для списка работ',
             'fake' => true,
             'type' => 'radio',
-            'name' => 'cursor_color', 
+            'name' => 'cursor_color',
             'options' => [
                     0 => 'Белый',
                     1 => 'Черный'
@@ -585,7 +585,7 @@ class BlocksCrudController extends CrudController
             'default' => 0,
             'inline' => true,
             'store_in' => 'content',
-        ], 
+        ],
         ]);
         /*$this->crud->addField([   // Upload
             'name' => 'imagess',

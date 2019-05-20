@@ -5,6 +5,17 @@
 	z-index: 9999999;
 	position: absolute;
 
+	&.is-clicked {
+
+		.cursor__default {
+			transform: rotate(-10deg) translateZ(0);
+		}
+	}
+
+	&.is-hidden {
+		display: none;
+	}
+
 	&.showing-text {
 
 		.cursor__default {
@@ -31,6 +42,7 @@
 		text-align: center;
 		letter-spacing: 0.5px;
 		text-transform: uppercase;
+		position: relative;
 	}
 }
 
@@ -39,6 +51,9 @@
 	background-size: cover;
 	width: 42px;
 	height: 41px;
+	position: relative;
+	transform-origin: 100% 50%;
+	transition: .15s transform ease-in-out;
 }
 
 .popupVideoLink {
@@ -59,5 +74,30 @@
 
 	video {
 		object-fit: cover;
+	}
+}
+
+.case-video-item {
+
+	.video-overlay {
+		position: relative;
+
+		.video__bg {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-size: cover;
+			background-position: center center;
+		}
+
+		.video__popup {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
 	}
 }

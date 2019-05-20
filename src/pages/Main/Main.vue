@@ -768,6 +768,22 @@
 
       setTimeout(function () {
         isThis.isCookieShow = true;
+
+        $('#canvas, .chess-item').hover(function () {
+          $('#cursor').addClass('is-hidden')
+        }, function () {
+          $('#cursor').removeClass('is-hidden')
+        })
+
+
+        $(document).mouseleave(function () {
+          $('#cursor').addClass('is-hidden')
+        });
+
+        $(document).mouseenter(function () {
+          $('#cursor').removeClass('is-hidden')
+        });
+
       }, 1000);
 
     },

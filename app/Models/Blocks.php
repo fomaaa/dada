@@ -112,16 +112,16 @@ class Blocks extends Model
 
                 if (isset($item->content['video_preview'])) {
                     $block->video_preview = $item->content['video_preview'];
-                }                 
+                }
                 if (isset($item->content['video_preview_type'])) {
                     $block->video_preview_type = $item->content['video_preview_type'];
-                }                 
+                }
                 if (isset($item->content['link_preview'])) {
                     $block->link_preview = $item->content['link_preview'];
-                } 
+                }
                 if (isset($item->content['cursor_color'])) {
                     $block->cursor_color = $item->content['cursor_color'];
-                }               
+                }
                 if (isset($item->content['image_preview'])) {
                     $block->image_preview = $item->content['image_preview'];
                 }
@@ -152,7 +152,6 @@ class Blocks extends Model
                 break;
             case 4: //4 => 'Video Container'
 
-
                 if (isset($item->content['wide']) && $item->content['wide'] == 1) {
                     $block->wide = true;
                 } else {
@@ -163,7 +162,7 @@ class Blocks extends Model
                     $block->popup_link = $item->content['popup_video_link'];
                 } else {
                     $block->popup = false;
-                }                
+                }
 
                 if (isset($item->content['description_' . $lang])) {
                     $block->description = $item->content['description_' . $lang];
@@ -239,7 +238,7 @@ class Blocks extends Model
                 if ( $block->popup_video1) {
                     $block->video_url1 = $item->content['video_url1'];
                 }
-                
+
                 if ($block->video_block_type1 == 0) {
                     $block->video_block_video_type_1 = $item->content['video_block_video_type_1'];
 
@@ -300,7 +299,7 @@ class Blocks extends Model
                    $constraint->upsize();
                });
            }
-           
+
            //for gif's , need another way for save animation.
            if ($image->mime() == 'image/gif') {
                 $img = str_replace('data:image/gif;base64,', '', $value);
@@ -312,7 +311,7 @@ class Blocks extends Model
                 $filename = md5($value . time()) . '.'.$extension;
                 \Storage::disk($disk)->put($destinationPath . '/' . $filename, $image->stream());
            }
-            
+
            // Ресайз картинок
            /*switch($type)
            {
@@ -356,7 +355,7 @@ class Blocks extends Model
 
            \Storage::disk($disk)->delete($destinationPath . '/' . $filename_before);
             */
-           
+
            return '/'.$destinationPath.$filename;
        }
        // Не base64, значит пришёл путь до картинки
@@ -485,7 +484,7 @@ class Blocks extends Model
                             $file = $value['video_preview'];
                             $file = $this->uploadFile($file);
                             if ($file) {
-                                $data['video_preview'] = '/storage/app/public' . $file; 
+                                $data['video_preview'] = '/storage/app/public' . $file;
                             }
                         } else if ($old->video_preview) {
                              $data['video_preview'] = $old->video_preview;
@@ -505,7 +504,7 @@ class Blocks extends Model
                             $file = $value['head_block_video'];
                             $file = $this->uploadFile($file);
                             if ($file) {
-                                $data['head_block_video'] = '/storage/app/public' . $file; 
+                                $data['head_block_video'] = '/storage/app/public' . $file;
                             }
                         } else if ($old->head_block_video) {
                              $data['head_block_video'] = $old->head_block_video;
@@ -514,7 +513,7 @@ class Blocks extends Model
                             $data['head_block_video_link'] = $value['head_block_video_link'];
                         }
                     }
-                } else {                
+                } else {
                     $img = Blocks::uploadImage($value['head_block_image']);
                     $data['head_block_image']=   '/storage/app/public' . $img;
                 }
@@ -557,7 +556,7 @@ class Blocks extends Model
                             $file = $value['head_block_video'];
                             $file = $this->uploadFile($file);
                             if ($file) {
-                                $data['head_block_video'] = '/storage/app/public' . $file; 
+                                $data['head_block_video'] = '/storage/app/public' . $file;
                             }
                         } else if (isset($old->head_block_video)) {
                              $data['head_block_video'] = $old->head_block_video;
@@ -566,7 +565,7 @@ class Blocks extends Model
                             $data['head_block_video_link'] = $value['head_block_video_link'];
                         }
                     }
-                } else {                
+                } else {
                     $img = Blocks::uploadImage($value['head_block_image']);
                     $data['head_block_image']=   '/storage/app/public' . $img;
                 }
@@ -578,7 +577,7 @@ class Blocks extends Model
                  }
 
                 $data['wide']= $value['wide'];
-               
+
                 if(isset($value['description_ru'])){
                     $data['description_ru']= $value['description_ru'];
                 }

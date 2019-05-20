@@ -87,7 +87,7 @@
 </head>
 <body>
 <style>
-	* {
+	html, body, * {
 		cursor: none !important;
 	}
 </style>

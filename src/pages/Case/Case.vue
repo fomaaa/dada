@@ -82,13 +82,12 @@
                 block.type == '5' ? 'case-big-image-container' : '',
                 block.type == '4' ? 'case-video-container' : '',
                 block.type == '9' ? 'case-video-container' : '',
-                (block.type == '4' && !block.wide) ? 'wrapper case-video-container' : '',
+                (block.type == '4' && !block.wide) ? 'case-video-container' : '',
                 block.type == '2' || block.type == '3' ? 'wrapper case-text-container' : '',]"
 								 v-for="(block, key) in blocks" v-if="blocks.length !== 0">
 							<case-lead v-if="block.type == '2'" :leadText="block.text"></case-lead>
 							<case-text v-if="block.type == '3'" :textText="block.text"></case-text>
-							<case-video v-if="block.type == '4'" :videoUrl="block.video"
-										:videoDescription="block.description"></case-video>
+							<case-video v-if="block.type == '4'" :block="block"></case-video>
 							<case-img-big v-if="block.type == '5'" :imageBigUrl="block.image"
 										  :imageBigCaption="block.description"></case-img-big>
 							<case-img-mini v-if="block.type == '6'"
