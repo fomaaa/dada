@@ -775,8 +775,7 @@
           $('#cursor').removeClass('is-hidden')
         })
 
-
-        $(document).mouseleave(function () {
+        $(document).mouseleave(function (e) {
           $('#cursor').addClass('is-hidden')
         });
 

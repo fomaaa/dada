@@ -99,6 +99,10 @@ const cursor = document.getElementById('cursor');
 document.addEventListener("mousemove", function (e) {
   cursor.style.top = e.y + "px";
   cursor.style.left = e.x + "px";
+
+  if ($(e.target).is('canvas')) {
+    $('#cursor').addClass('is-hidden')
+  }
 });
 
 
