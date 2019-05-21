@@ -1,6 +1,6 @@
 <template>
 	<div class="case-video case-double-video" style="width: 100%;">
-		<div class="case-video-item" style="background-color: red;">
+		<div class="case-video-item">
 
 			<a v-if="block.popup_video1 && block.video_block_type1 === '0'"
 			   class="popupVideoLink"
@@ -60,7 +60,7 @@
 			<span v-if="block.description"
 				  class="Caption case-video-text">{{block.description}}</span>
 		</div>
-		<div class="case-video-item" style="background-color: red;">
+		<div class="case-video-item">
 
 			<a v-if="block.popup_video2 && block.video_block_type2 === '0'"
 			   class="popupVideoLink"

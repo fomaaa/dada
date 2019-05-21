@@ -3,17 +3,29 @@
 		<div class="case-video-item">
 			<div class="video-overlay">
 				<div class="video__bg"
-					 :style="{ 'background-image': 'url(' + block.image + ')' }"
+					 :style="{ 'background-image': 'url(' + block.block_image + ')' }"
 				></div>
 				<a v-if="block.popup"
 				   :href="block.popup_link"
 				   data-fancybox
-				   data-cursor="PLAY"
-				   data-cursor-color="black"
+				   :data-cursor="block.cursor_color ? 'PLAY' : ''"
+				   :data-cursor-color="block.cursor_color === '0' ? 'white' : 'black'"
 				   class="video__popup"></a>
-				<!--        <iframe width="100%" height="350px" :src="videoUrl.replace('watch?v=', '/embed/')" frameborder="0"-->
-				<!--                allow="autoplay; encrypted-media" hspace="0" vspace="0" allowtransparency="true"-->
-				<!--                allowfullscreen="allowfullscreen"></iframe>-->
+
+				<a href="javascript:void(0);"
+				   v-if="block.this_block_video_link"
+				   :data-cursor="block.cursor_color ? 'PLAY' : ''"
+				   :data-cursor-color="block.cursor_color === '0' ? 'white' : 'black'"
+				   @click="showVideoInBlock = !showVideoInBlock"
+				   :class="{'is-active': showVideoInBlock}"
+				   class="videoPlayInBlock">
+
+					<iframe width="100%" height="100%"
+							v-if="block.this_block_video_link"
+							:src="showVideoInBlock ? block.this_block_video_link.replace('watch?v=', 'embed/') + '?autoplay=1' : block.this_block_video_link.replace('watch?v=', 'embed/')"
+							></iframe>
+
+				</a>
 			</div>
 			<span v-if="block.description"
 				  class="Caption case-video-text">{{block.description}}</span>
@@ -24,6 +36,16 @@
 <script>
   export default {
     name: "CaseVideo",
-    props: ['block']
+    props: ['block'],
+    data: () => ({
+      showVideoInBlock: false
+    }),
+	mounted() {
+      $('iframe').hover(function () {
+        $('#cursor').addClass('is-hidden')
+      }, function () {
+        $('#cursor').removeClass('is-hidden')
+      })
+    }
   }
 </script>
