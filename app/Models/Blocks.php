@@ -131,6 +131,20 @@ class Blocks extends Model
                 if (isset($item->content['this_block_video_link'])) {
                     $block->this_block_video_link = $item->content['this_block_video_link'];
                 }
+                if (isset($item->content['show_this_block_head'])) {
+                    $block->show_this_block = $item->content['show_this_block_head'];
+
+                    if (isset($item->content['show_this_block_video_type'])) {
+                        $block->this_block_video_type = $item->content['show_this_block_video_type'];
+                    }                        
+                    if (isset($item->content['this_block_video_link'])) {
+                        $block->this_block_video_link = $item->content['this_block_video_link'];
+                    }    
+
+                    if (isset($item->content['this_block_video_url'])) {
+                        $block->this_block_video_url = $item->content['this_block_video_url'];
+                    }
+                }
                 break;
             case 1: //1 => 'Main Letterhead & Navigation Links'
                 $block->tags = $item->content['tags'];
@@ -175,13 +189,16 @@ class Blocks extends Model
                 } else {
                     $block->description = null;
                 }
+                if (isset($item->content['head_cursor_color'])) {
+                    $block->cursor_color = $item->content['head_cursor_color'];
+                }
 
                 $block->content_type = $item->content['head_block_type'];
                 if ($block->content_type == 0) {
                     $block->image = $item->content['head_block_image'];
                 } else {
                     $block->video_type = $item->content['head_block_video_type'];
-                    $block->cursor_color = $item->content['head_cursor_color'];
+                   
 
                     if ($block->video_type == 0) {
                          $block->video = $item->content['head_block_video'];
@@ -189,12 +206,22 @@ class Blocks extends Model
                         $block->video_link = $item->content['head_block_video_link'];
                     }
                 }
+
                 if (isset($item->content['show_this_block_head'])) {
                     $block->show_this_block = $item->content['show_this_block_head'];
-                }                
-                if (isset($item->content['this_block_video_link'])) {
-                    $block->this_block_video_link = $item->content['this_block_video_link'];
+
+                    if (isset($item->content['show_this_block_video_type'])) {
+                        $block->show_this_block_video_type = $item->content['show_this_block_video_type'];
+                    }                        
+                    if (isset($item->content['this_block_video_link'])) {
+                        $block->this_block_video_link = $item->content['this_block_video_link'];
+                    }    
+
+                    if (isset($item->content['this_block_video_url'])) {
+                        $block->this_block_video_url = $item->content['this_block_video_url'];
+                    }
                 }
+               
                 break;
             case 5:
             case 7://5 => 'Big Image'
@@ -596,7 +623,19 @@ class Blocks extends Model
                  } else {
                     $data['show_this_block_head'] = $value['show_this_block_head'];
                     if ($data['show_this_block_head']) {
-                        $data['this_block_video_link'] = $value['this_block_video_link'];
+                        $data['show_this_block_video_type'] = $value['show_this_block_video_type'];
+                        if ($data['show_this_block_video_type'] == 0) {
+                            if (isset($value['this_block_video_url'])) {
+                                $data['this_block_video_url'] = '/storage/app/public' . Blocks::uploadFile($value['this_block_video_url']);
+                            } else {
+                                if (isset($old->this_block_video_url)) {
+                                    $data['this_block_video_url'] = $old->this_block_video_url;
+                                }
+                            }
+                        } else if ($data['show_this_block_video_type'] == 1) {
+                            $data['this_block_video_link'] = $value['this_block_video_link'];
+                            
+                        }
                     }
                  }
 
