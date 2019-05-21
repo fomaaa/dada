@@ -192,10 +192,9 @@ class Blocks extends Model
                 if (isset($item->content['head_cursor_color'])) {
                     $block->cursor_color = $item->content['head_cursor_color'];
                 }
-
                 $block->content_type = $item->content['head_block_type'];
                 if ($block->content_type == 0) {
-                    $block->image = $item->content['head_block_image'];
+                    $block->block_image = $item->content['head_block_image'];
                 } else {
                     $block->video_type = $item->content['head_block_video_type'];
                    
@@ -397,7 +396,6 @@ class Blocks extends Model
 
            \Storage::disk($disk)->delete($destinationPath . '/' . $filename_before);
             */
-
            return '/'.$destinationPath.$filename;
        }
        // Не base64, значит пришёл путь до картинки
@@ -601,6 +599,7 @@ class Blocks extends Model
                         if (isset($value['head_block_video'])) {
                             $file = $value['head_block_video'];
                             $file = $this->uploadFile($file);
+
                             if ($file) {
                                 $data['head_block_video'] = '/storage/app/public' . $file;
                             }
@@ -783,7 +782,7 @@ class Blocks extends Model
                 break;
         }
         //Записываем в Content
-
+        // dd($data);
         $content = json_encode($data);
         //dd($content);
         $this->attributes['content'] = $content;
