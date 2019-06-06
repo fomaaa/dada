@@ -3,17 +3,54 @@
 		<div class="case-video-item">
 			<div class="video-overlay">
 				<div class="video__bg"
-					 :style="{ 'background-image': 'url(' + block.image + ')' }"
+					 v-if="block.block_image"
+					 :style="{ 'background-image': 'url(' + block.block_image + ')' }"
 				></div>
+				<div class="video__bg"
+					 v-if="block.video">
+					<video v-if="block.video"
+						   width="100%" height="100%"
+						   autoplay muted
+						   playsinline loop>
+						<source :src="block.video">
+					</video>
+				</div>
+
 				<a v-if="block.popup"
 				   :href="block.popup_link"
 				   data-fancybox
-				   data-cursor="PLAY"
-				   data-cursor-color="black"
+				   :data-cursor="block.cursor_color ? 'PLAY' : ''"
+				   :data-cursor-color="block.cursor_color === '0' ? 'white' : 'black'"
 				   class="video__popup"></a>
-				<!--        <iframe width="100%" height="350px" :src="videoUrl.replace('watch?v=', '/embed/')" frameborder="0"-->
-				<!--                allow="autoplay; encrypted-media" hspace="0" vspace="0" allowtransparency="true"-->
-				<!--                allowfullscreen="allowfullscreen"></iframe>-->
+
+				<a href="javascript:void(0);"
+				   v-if="block.this_block_video_link"
+				   :data-cursor="block.cursor_color ? 'PLAY' : ''"
+				   :data-cursor-color="block.cursor_color === '0' ? 'white' : 'black'"
+				   @click="showVideoInBlock1 = !showVideoInBlock1"
+				   :class="{'is-active': showVideoInBlock1}"
+				   class="videoPlayInBlock">
+
+					<iframe width="100%" height="100%"
+							v-if="block.this_block_video_link"
+							:src="showVideoInBlock1 ? block.this_block_video_link.replace('watch?v=', 'embed/') + '?autoplay=1' : block.this_block_video_link.replace('watch?v=', 'embed/')"
+							></iframe>
+				</a>
+
+
+				<a href="javascript:void(0);"
+				   v-if="block.this_block_video_url"
+				   :data-cursor="block.cursor_color && !showVideoInBlock2 ? 'PLAY' : 'PAUSE'"
+				   :data-cursor-color="block.cursor_color === '0' ? 'white' : 'black'"
+				   @click="showVideoInBlock2 = !showVideoInBlock2"
+				   :class="{'is-active': showVideoInBlock2}"
+				   class="videoPlayInBlock videoPlayInBlock--videoInline">
+					<video v-if="block.this_block_video_url"
+						   width="100%" height="100%"
+						   playsinline loop>
+						<source :src="block.this_block_video_url">
+					</video>
+				</a>
 			</div>
 			<span v-if="block.description"
 				  class="Caption case-video-text">{{block.description}}</span>
@@ -24,6 +61,17 @@
 <script>
   export default {
     name: "CaseVideo",
-    props: ['block']
+    props: ['block'],
+    data: () => ({
+      showVideoInBlock1: false,
+      showVideoInBlock2: false
+    }),
+	mounted() {
+      $('iframe').hover(function () {
+        $('#cursor').addClass('is-hidden')
+      }, function () {
+        $('#cursor').removeClass('is-hidden')
+      })
+    }
   }
 </script>

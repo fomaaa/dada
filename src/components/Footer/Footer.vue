@@ -7,7 +7,7 @@
     </div>
     <div class="contacts-item contacts-item-america">
       <div class="contact-city"><span>Los Angeles</span></div>
-      <div class="contact-address"><span>818 W 7th St #930,<br>CA 90017</span></div>
+      <div class="contact-address"><span>1120 S Grand Ave #1318<br>CA 90015</span></div>
       <!--<div class="contact-phone">Phone <a href="tel:+13103953500" class="phone-number">+1 (310) 395-3500</a></div>-->
     </div>
     <div class="contacts-item contacts-item-social">

@@ -74,6 +74,20 @@ new Vue({
         $('#cursor').removeClass('showing-text color-white color-black');
       }
     }, "[data-cursor]");
+
+    $('#canvas, .chess-item').hover(function () {
+      $('#cursor').addClass('is-hidden')
+    }, function () {
+      $('#cursor').removeClass('is-hidden')
+    })
+
+    $(document).mouseleave(function (e) {
+      $('#cursor').addClass('is-hidden')
+    });
+
+    $(document).mouseenter(function () {
+      $('#cursor').removeClass('is-hidden')
+    });
   }
   // components: {
   // 	App
@@ -103,6 +117,20 @@ document.addEventListener("mousemove", function (e) {
   if ($(e.target).is('canvas')) {
     $('#cursor').addClass('is-hidden')
   }
+});
+
+$(document).on('click', '.videoPlayInBlock--videoInline', function () {
+  const self = $(this);
+
+  setTimeout(() => {
+    if (self.hasClass('is-active')) {
+      self.find('video').get(0).play();
+      $('.cursor__text').html('PAUSE');
+    } else {
+      $('.cursor__text').html('PLAY');
+      self.find('video').get(0).pause();
+    }
+  }, 100)
 });
 
 

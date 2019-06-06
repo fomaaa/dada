@@ -17,7 +17,9 @@
               <div v-show="isCookieShow && isCookies !== '1' && $route.name == 'MainComponent'"
                    :class="['cookie-block', isCookieInfoShow ? 'cookie-show-info': '', isCookieDelTransition ? 'cookie-del-transition' : '']">
                 <div class="cookie-overlay"></div>
-                <span class="close" @click="cookieClose()"></span>
+                <div class="closeWrapper">
+                  <span class="close" @click="cookieClose()"></span>
+                </div>
                 <div class="cookie-first">
                   <span>Сайт использует файлы cookie.</span>
                   <transition name="cookie-fade">
@@ -768,21 +770,6 @@
 
       setTimeout(function () {
         isThis.isCookieShow = true;
-
-        $('#canvas, .chess-item').hover(function () {
-          $('#cursor').addClass('is-hidden')
-        }, function () {
-          $('#cursor').removeClass('is-hidden')
-        })
-
-        $(document).mouseleave(function (e) {
-          $('#cursor').addClass('is-hidden')
-        });
-
-        $(document).mouseenter(function () {
-          $('#cursor').removeClass('is-hidden')
-        });
-
       }, 1000);
 
     },

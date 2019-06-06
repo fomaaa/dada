@@ -77,6 +77,17 @@
 	}
 }
 
+.case-video {
+
+	&.fullWidth {
+		width: 100%;
+	}
+
+	&.centerBlock {
+		//@extend .wrapper;
+	}
+}
+
 .case-video-item {
 
 	.video-overlay {
@@ -99,5 +110,50 @@
 			right: 0;
 			bottom: 0;
 		}
+	}
+}
+
+.video__bg {
+
+	video {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		object-fit: cover;
+	}
+}
+
+.videoPlayInBlock {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 2;
+
+	&.is-active {
+
+		> * {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+
+	> * {
+		opacity: 0;
+		visibility: hidden;
+	}
+
+
+	video {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		object-fit: cover;
+		pointer-events: none;
 	}
 }

@@ -82,7 +82,7 @@
                 block.type == '5' ? 'case-big-image-container' : '',
                 block.type == '4' ? 'case-video-container' : '',
                 block.type == '9' ? 'case-video-container' : '',
-                (block.type == '4' && !block.wide) ? 'case-video-container' : '',
+                (block.type == '4' && !block.wide) ? 'case-video-container wrapper' : '',
                 block.type == '2' || block.type == '3' ? 'wrapper case-text-container' : '',]"
 								 v-for="(block, key) in blocks" v-if="blocks.length !== 0">
 							<case-lead v-if="block.type == '2'" :leadText="block.text"></case-lead>
