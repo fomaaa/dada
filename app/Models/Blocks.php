@@ -200,9 +200,13 @@ class Blocks extends Model
                    
 
                     if ($block->video_type == 0) {
-                         $block->video = $item->content['head_block_video'];
+                        if (isset($item->content['head_block_video'])) {
+                            $block->video = $item->content['head_block_video'];
+                        }
                     } else {
-                        $block->video_link = $item->content['head_block_video_link'];
+                        if (isset($item->content['head_block_video_link'])) {
+                            $block->video_link = $item->content['head_block_video_link'];
+                        }
                     }
                 }
 
