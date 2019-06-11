@@ -107,8 +107,13 @@ class Blocks extends Model
     {
         switch ($block->type) {
             case 0: //0 => 'Head Image'
-                $block->image = $item->content['image'];
-                $block->preview_type = $item->content['preview_type'];
+                if (isset($item->content['image'])) {
+                    $block->image = $item->content['image'];
+                }
+
+                if (isset($item->content['preview_type'])) {
+                    $block->preview_type = $item->content['preview_type'];
+                }
 
                 if (isset($item->content['video_preview'])) {
                     $block->video_preview = $item->content['video_preview'];
@@ -132,7 +137,9 @@ class Blocks extends Model
                     $block->this_block_video_link = $item->content['this_block_video_link'];
                 }
                 if (isset($item->content['show_this_block_head'])) {
-                    $block->show_this_block = $item->content['show_this_block_head'];
+                    if (isset($item->content['show_this_block_head'])) {
+                        $block->show_this_block = $item->content['show_this_block_head'];
+                    }
 
                     if (isset($item->content['show_this_block_video_type'])) {
                         $block->this_block_video_type = $item->content['show_this_block_video_type'];
@@ -192,22 +199,27 @@ class Blocks extends Model
                 if (isset($item->content['head_cursor_color'])) {
                     $block->cursor_color = $item->content['head_cursor_color'];
                 }
-                $block->content_type = $item->content['head_block_type'];
-                if ($block->content_type == 0) {
-                    $block->block_image = $item->content['head_block_image'];
-                } else {
-                    $block->video_type = $item->content['head_block_video_type'];
-                   
 
-                    if ($block->video_type == 0) {
-                        if (isset($item->content['head_block_video'])) {
-                            $block->video = $item->content['head_block_video'];
-                        }
+                if (isset($item->content['head_block_type'])) {
+                    $block->content_type = $item->content['head_block_type'];
+
+                    if ($block->content_type == 0) {
+                        $block->block_image = $item->content['head_block_image'];
                     } else {
-                        if (isset($item->content['head_block_video_link'])) {
-                            $block->video_link = $item->content['head_block_video_link'];
+                        $block->video_type = $item->content['head_block_video_type'];
+                       
+
+                        if ($block->video_type == 0) {
+                            if (isset($item->content['head_block_video'])) {
+                                $block->video = $item->content['head_block_video'];
+                            }
+                        } else {
+                            if (isset($item->content['head_block_video_link'])) {
+                                $block->video_link = $item->content['head_block_video_link'];
+                            }
                         }
                     }
+                    
                 }
 
                 if (isset($item->content['show_this_block_head'])) {
@@ -271,49 +283,80 @@ class Blocks extends Model
                 } else {
                     $block->description2 = null;
                 }
+                if (isset($item->content['video_cursor_1'])) {
+                    $block->video_cursor_1 = $item->content['video_cursor_1'];
+                }
 
-                $block->video_cursor_1 = $item->content['video_cursor_1'];
-                $block->video_block_type1 = $item->content['video_block_type1'];
-                $block->popup_video1 = $item->content['popup_video1'];
+                if (isset($item->content['video_block_type1'])) {
+                    $block->video_block_type1 = $item->content['video_block_type1'];
+                }
+
+                if (isset($item->content['popup_video1'])) {
+                    $block->popup_video1 = $item->content['popup_video1'];
+                }
 
                 if ( $block->popup_video1) {
                     $block->video_url1 = $item->content['video_url1'];
                 }
 
-                if ($block->video_block_type1 == 0) {
-                    $block->video_block_video_type_1 = $item->content['video_block_video_type_1'];
+                if (isset($item->content['video_block_type1'])) {
+                    if ($block->video_block_type1 == 0) {
+                        $block->video_block_video_type_1 = $item->content['video_block_video_type_1'];
 
-                    if ($block->video_block_video_type_1 == 0) {
-                        $block->video_block_video1 = $item->content['video_block_video1'];
-                    } elseif ($block->video_block_video_type_1 == 1) {
-                        $block->video_block_link1 = $item->content['video_block_link1'];
+                        if ($block->video_block_video_type_1 == 0) {
+                            if (isset($item->content['video_block_video1'])) {
+                                $block->video_block_video1 = $item->content['video_block_video1'];
+                                
+                            }
+                        } elseif ($block->video_block_video_type_1 == 1) {
+                            if (isset($item->content['video_block_link1'])) {
+                                $block->video_block_link1 = $item->content['video_block_link1'];
+                            }
+                        }
+                    } elseif ($block->video_block_type1 == 1) {
+                        $block->video_block_image1 = $item->content['video_block_image1'];
                     }
-                } elseif ($block->video_block_type1 == 1) {
-                    $block->video_block_image1 = $item->content['video_block_image1'];
+                    
                 }
                 // if (isset($item->content['show_this_block1'])) {
                 //     $block->show_this_block1 = $item->content['show_this_block1'];
                 // }
                 //video2
+                if (isset($item->content['video_cursor_2'])) {
+                    $block->video_cursor_2 = $item->content['video_cursor_2'];
+                }                
+                if (isset($item->content['video_block_type2'])) {
+                    $block->video_block_type2 = $item->content['video_block_type2'];
 
-                $block->video_cursor_2 = $item->content['video_cursor_2'];
-                $block->video_block_type2 = $item->content['video_block_type2'];
-                $block->popup_video2 = $item->content['popup_video2'];
+                }                
+                if (isset($item->content['popup_video2'])) {
+                    $block->popup_video2 = $item->content['popup_video2'];
+                }
+                
+                
+                
 
                 if ( $block->popup_video2) {
                     $block->video_url2 = $item->content['video_url2'];
                 }
+                if (isset($item->content['video_block_type2'])) {
+                    if ($block->video_block_type2 == 0) {
+                        $block->video_block_video_type_2 = $item->content['video_block_video_type_2'];
 
-                if ($block->video_block_type2 == 0) {
-                    $block->video_block_video_type_2 = $item->content['video_block_video_type_2'];
+                        if ($block->video_block_video_type_2 == 0) {
+                            if (isset($item->content['video_block_video2'])) {
 
-                    if ($block->video_block_video_type_2 == 0) {
-                        $block->video_block_video2 = $item->content['video_block_video2'];
-                    } elseif ($block->video_block_video_type_2 == 1) {
-                        $block->video_block_link2 = $item->content['video_block_link2'];
+                                $block->video_block_video2 = $item->content['video_block_video2'];
+                            }
+                        } elseif ($block->video_block_video_type_2 == 1) {
+                            if (isset($item->content['video_block_link2'])) {
+                                $block->video_block_link2 = $item->content['video_block_link2'];
+                            }
+                        }
+                    } elseif ($block->video_block_type2 == 1) {
+                        $block->video_block_image2 = $item->content['video_block_image2'];
                     }
-                } elseif ($block->video_block_type2 == 1) {
-                    $block->video_block_image2 = $item->content['video_block_image2'];
+                    
                 }
                 // if (isset($item->content['show_this_block2'])) {
                 //     $block->show_this_block2 = $item->content['show_this_block2'];
