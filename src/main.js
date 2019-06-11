@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+
 var VueCookie = require('vue-cookie');
 // Tell Vue to use the plugin
 Vue.use(VueCookie);
@@ -53,7 +54,41 @@ Vue.use(Vuebar);
 new Vue({
   router,
   el: '#app',
-  render: h => h(App)
+  render: h => h(App),
+  mounted() {
+    $(document).on({
+      mouseenter: function () {
+        let self = $(this);
+        $('#cursor').addClass('showing-text');
+        $('.cursor__text').html(self.data('cursor'));
+
+        if (self.data('cursor-color') === 'black') {
+          $('#cursor').addClass('color-black');
+        }
+
+        if (self.data('cursor-color') === 'white') {
+          $('#cursor').addClass('color-white');
+        }
+      },
+      mouseleave: function () {
+        $('#cursor').removeClass('showing-text color-white color-black');
+      }
+    }, "[data-cursor]");
+
+    $('#canvas, .chess-item').hover(function () {
+      $('#cursor').addClass('is-hidden')
+    }, function () {
+      $('#cursor').removeClass('is-hidden')
+    })
+
+    $(document).mouseleave(function (e) {
+      $('#cursor').addClass('is-hidden')
+    });
+
+    $(document).mouseenter(function () {
+      $('#cursor').removeClass('is-hidden')
+    });
+  }
   // components: {
   // 	App
   // },
@@ -71,3 +106,35 @@ Vue.use(VueGtm, {
 //     // ignoredViews: ['homepage'] // If router, you can exclude some routes name (case insensitive) (optional)
 });
 
+import '@fancyapps/fancybox';
+
+const cursor = document.getElementById('cursor');
+
+document.addEventListener("mousemove", function (e) {
+  cursor.style.top = e.y + "px";
+  cursor.style.left = e.x + "px";
+
+  if ($(e.target).is('canvas')) {
+    $('#cursor').addClass('is-hidden')
+  }
+});
+
+$(document).on('click', '.videoPlayInBlock--videoInline', function () {
+  const self = $(this);
+
+  setTimeout(() => {
+    if (self.hasClass('is-active')) {
+      self.find('video').get(0).play();
+      $('.cursor__text').html('PAUSE');
+    } else {
+      $('.cursor__text').html('PLAY');
+      self.find('video').get(0).pause();
+    }
+  }, 100)
+});
+
+
+document.addEventListener('click', function () {
+  $('#cursor').addClass('is-clicked')
+  setTimeout(() => $('#cursor').removeClass('is-clicked'), 150);
+});

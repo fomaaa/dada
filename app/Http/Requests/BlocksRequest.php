@@ -70,17 +70,17 @@ class BlocksRequest extends FormRequest
                 ]);
             break;
             case 4: //4 => 'Video Container',
-                $data->validate($request,
-                [
-                    'video_url' => 'required|active_url',
-                ],                
-                [
-                    'video_preview' => 'required'
-                ],
-                [
-                    'video_url.required' => __('errors.crudVideoUrlRequired'),
-                    'video_url.active_url' => __('errors.crudVideoUrlActive'),
-                ]);
+                // $data->validate($request,
+                // [
+                //     'video_url' => 'required|active_url',
+                // ],                
+                // [
+                //     'video_preview' => 'required'
+                // ],
+                // [
+                //     'video_url.required' => __('errors.crudVideoUrlRequired'),
+                //     'video_url.active_url' => __('errors.crudVideoUrlActive'),
+                // ]);
                 break;
             case 5:  //5 => 'Big Image',
                 $data->validate($request,

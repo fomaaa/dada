@@ -76,16 +76,16 @@ class BlocksCrudController extends CrudController
             //8 => 'Image Gallery',
             //9 => 'Two video',
             'hide_when' => [
-                0 => ['site_url', 'wide', 'text_ru', 'text_en', 'text2_ru', 'text2_en', 'title','indent',  'image2', 'video_url', 'video_url2', 'description_ru', 'description_en', 'description2_ru', 'description2_en', 'tags', 'gallery', 'image','video_block_type1','video_block_video_type_1','video_block_image1','video_block_link1','video_block_video1','popup_video1','video_url1','video_block_type2','video_block_video_type_2','video_block_image2','video_block_link2','video_block_video2','popup_video2','video_url2', 'video_cursor_1', 'video_cursor_2'],
-                1 => ['video_url', 'wide','title','indent', 'image', 'image2', 'video_url2', 'description2_ru', 'description2_en', 'description_ru', 'description_en',  'gallery', 'video_preview', 'popup', 'preview_type', 'cursor_color', 'video_preview_type', 'image_preview', 'link_preview', 'popup_video_link', 'head_block_type', 'head_cursor_color', 'head_block_image','video_block_type1','video_block_video_type_1','video_block_image1','video_block_link1','video_block_video1','popup_video1','video_url1','video_block_type2','video_block_video_type_2','video_block_image2','video_block_link2','video_block_video2','popup_video2','video_url2', 'video_cursor_1', 'video_cursor_2'],
-                2 => ['site_url', 'wide','text2_ru', 'text2_en', 'title','indent', 'image', 'image2', 'video_url', 'video_url2', 'description_ru', 'description_en', 'description2_ru', 'description2_en' , 'tags', 'gallery', 'video_preview', 'popup', 'preview_type', 'cursor_color', 'video_preview_type', 'image_preview', 'link_preview', 'popup_video_link', 'head_block_type', 'head_cursor_color', 'head_block_image','video_block_type1','video_block_video_type_1','video_block_image1','video_block_link1','video_block_video1','popup_video1','video_url1','video_block_type2','video_block_video_type_2','video_block_image2','video_block_link2','video_block_video2','popup_video2','video_url2', 'video_cursor_1', 'video_cursor_2'],
-                3 => ['site_url', 'wide','text2_ru', 'text2_en', 'title','indent', 'image', 'image2', 'video_url', 'video_url2', 'description_ru', 'description_en', 'description2_ru', 'description2_en' , 'tags', 'gallery', 'video_preview', 'popup', 'preview_type', 'cursor_color', 'video_preview_type', 'image_preview', 'link_preview', 'popup_video_link' , 'head_block_type', 'head_cursor_color','separator','separator2','separator3' , 'head_block_image','video_block_type1','video_block_video_type_1','video_block_image1','video_block_link1','video_block_video1','popup_video1','video_url1','video_block_type2','video_block_video_type_2','video_block_image2','video_block_link2','video_block_video2','popup_video2','video_url2', 'video_cursor_1', 'video_cursor_2'],
-                4 => ['site_url', 'text_ru', 'text_en','text2_ru', 'text2_en', 'title','indent', 'image', 'image2', 'video_url2', 'description2_ru', 'description2_en' , 'tags', 'gallery', 'preview_type', 'cursor_color', 'video_preview_type', 'image_preview', 'link_preview', 'popup' , 'popup_video_link' , 'head_block_type', 'head_cursor_color', 'head_block_image' ,'video_block_type1','video_block_video_type_1','video_block_image1','video_block_link1','video_block_video1','popup_video1','video_url1','video_block_type2','video_block_video_type_2','video_block_image2','video_block_link2','video_block_video2','popup_video2','video_url2', 'video_preview', 'video_cursor_1', 'video_cursor_2'],
-                5 => ['site_url', 'wide','text_ru', 'text_en','text2_ru', 'text2_en', 'title', 'video_url', 'video_url2', 'image2', 'description2_ru', 'description2_en' , 'tags', 'gallery', 'video_preview', 'popup', 'preview_type', 'cursor_color', 'video_preview_type', 'image_preview', 'link_preview', 'popup_video_link' , 'head_block_type', 'head_cursor_color', 'head_block_image','video_block_type1','video_block_video_type_1','video_block_image1','video_block_link1','video_block_video1','popup_video1','video_url1','video_block_type2','video_block_video_type_2','video_block_image2','video_block_link2','video_block_video2','popup_video2','video_url2', 'video_cursor_1', 'video_cursor_2' ],
-                6 => ['site_url', 'wide','text_ru', 'text_en','text2_ru', 'text2_en', 'title', 'video_url', 'video_url2', 'tags', 'gallery', 'video_preview', 'popup', 'preview_type', 'cursor_color', 'video_preview_type', 'image_preview', 'link_preview', 'popup_video_link', 'head_block_type', 'head_cursor_color' , 'head_block_image','video_block_type1','video_block_video_type_1','video_block_image1','video_block_link1','video_block_video1','popup_video1','video_url1','video_block_type2','video_block_video_type_2','video_block_image2','video_block_link2','video_block_video2','popup_video2','video_url2', 'video_cursor_1', 'video_cursor_2'],
-                7 => ['site_url', 'wide','text_ru', 'text_en','text2_ru', 'text2_en', 'title', 'video_url', 'video_url2', 'image2', 'description2_ru', 'description2_en' , 'tags', 'gallery', 'video_preview', 'popup', 'preview_type', 'cursor_color', 'video_preview_type', 'image_preview', 'link_preview', 'popup_video_link', 'head_block_type', 'head_cursor_color', 'head_block_image' ,'video_block_type1','video_block_video_type_1','video_block_image1','video_block_link1','video_block_video1','popup_video1','video_url1','video_block_type2','video_block_video_type_2','video_block_image2','video_block_link2','video_block_video2','popup_video2','video_url2', 'video_cursor_1', 'video_cursor_2'],
-                8 => ['site_url', 'wide','text_ru', 'text_en','text2_ru', 'text2_en', 'title', 'video_url', 'video_url2', 'indent',  'image', 'image2', 'description_ru', 'description_en', 'description2_ru', 'description2_en' , 'tags', 'video_preview', 'popup', 'preview_type', 'cursor_color', 'video_preview_type', 'image_preview', 'link_preview', 'popup_video_link' , 'head_block_type', 'head_cursor_color', 'head_block_image', 'cursor_color','video_block_type1','video_block_video_type_1','video_block_image1','video_block_link1','video_block_video1','popup_video1','video_url1','video_block_type2','video_block_video_type_2','video_block_image2','video_block_link2','video_block_video2','popup_video2','video_url2', 'video_cursor_1', 'video_cursor_2'],
-                9 => ['site_url', 'text_ru', 'text_en','text2_ru', 'text2_en', 'title','indent', 'wide', 'image', 'image2', 'tags', 'gallery', 'video_preview', 'popup', 'preview_type', 'cursor_color', 'video_preview_type', 'image_preview', 'link_preview', 'popup_video_link' , 'head_block_type', 'head_cursor_color', 'head_block_image', 'video_url', ],
+                0 => ['site_url', 'wide', 'text_ru', 'text_en', 'text2_ru', 'text2_en', 'title','indent',  'image2', 'video_url', 'video_url2', 'description_ru', 'description_en', 'description2_ru', 'description2_en', 'tags', 'gallery', 'image','video_block_type1','video_block_video_type_1','video_block_image1','video_block_link1','video_block_video1','popup_video1','video_url1','video_block_type2','video_block_video_type_2','video_block_image2','video_block_link2','video_block_video2','popup_video2','video_url2', 'video_cursor_1', 'video_cursor_2', 'show_this_block2', 'show_this_block1', 'this_block_video_link'],
+                1 => ['video_url', 'wide','title','indent', 'image', 'image2', 'video_url2', 'description2_ru', 'description2_en', 'description_ru', 'description_en',  'gallery', 'video_preview', 'popup', 'preview_type', 'cursor_color', 'video_preview_type', 'image_preview', 'link_preview', 'popup_video_link', 'head_block_type', 'head_cursor_color', 'head_block_image','video_block_type1','video_block_video_type_1','video_block_image1','video_block_link1','video_block_video1','popup_video1','video_url1','video_block_type2','video_block_video_type_2','video_block_image2','video_block_link2','video_block_video2','popup_video2','video_url2', 'video_cursor_1', 'video_cursor_2', 'show_this_block2', 'show_this_block1', 'show_this_block_head', 'show_this_block_video_type', 'this_block_video_url', 'head_block_video_type', 'head_block_video', 'head_block_video_link', 'this_block_video_link'],
+                2 => ['site_url',  'wide','text2_ru', 'text2_en', 'title','indent', 'image', 'image2', 'video_url', 'video_url2', 'description_ru', 'description_en', 'description2_ru', 'description2_en' , 'tags', 'gallery', 'video_preview', 'popup', 'preview_type', 'cursor_color', 'video_preview_type', 'image_preview', 'link_preview', 'popup_video_link', 'head_block_type', 'head_cursor_color', 'head_block_image','video_block_type1','video_block_video_type_1','video_block_image1','video_block_link1','video_block_video1','popup_video1','video_url1','video_block_type2','video_block_video_type_2','video_block_image2','video_block_link2','video_block_video2','popup_video2','video_url2', 'video_cursor_1', 'video_cursor_2', 'show_this_block2', 'show_this_block1', 'show_this_block_head', 'show_this_block_video_type', 'this_block_video_url', 'head_block_video_type', 'head_block_video', 'head_block_video_link', 'this_block_video_link'],
+                3 => ['site_url', 'wide','text2_ru', 'text2_en', 'title','indent', 'image', 'image2', 'video_url', 'video_url2', 'description_ru', 'description_en', 'description2_ru', 'description2_en' , 'tags', 'gallery', 'video_preview', 'popup', 'preview_type', 'cursor_color', 'video_preview_type', 'image_preview', 'link_preview', 'popup_video_link' , 'head_block_type', 'head_cursor_color','separator','separator2','separator3' , 'head_block_image','video_block_type1','video_block_video_type_1','video_block_image1','video_block_link1','video_block_video1','popup_video1','video_url1','video_block_type2','video_block_video_type_2','video_block_image2','video_block_link2','video_block_video2','popup_video2','video_url2', 'video_cursor_1', 'video_cursor_2', 'show_this_block2', 'show_this_block1', 'show_this_block_head', 'show_this_block_video_type', 'this_block_video_url', 'head_block_video_type', 'head_block_video', 'head_block_video_link', 'this_block_video_link'],
+                4 => ['site_url', 'text_ru', 'text_en','text2_ru', 'text2_en', 'title','indent', 'image', 'image2', 'video_url2', 'description2_ru', 'description2_en' , 'tags', 'gallery', 'preview_type', 'cursor_color', 'video_preview_type', 'image_preview', 'popup_video1', 'video_url1', 'video_url','video_block_type1_1','video_block_type1', 'video_block_video_type_1', 'video_block_video1','video_block_type2','video_block_video_type_2','video_block_image2','video_block_link2','video_block_video2','popup_video2','video_url2', 'video_preview', 'video_cursor_1', 'video_cursor_2', 'show_this_block2', 'show_this_block1', 'video_block_link1', 'video_block_image1', 'popup_video_link', 'show_this_block_video_type'],
+                5 => ['site_url', 'wide','text_ru', 'text_en','text2_ru', 'text2_en', 'title', 'video_url', 'video_url2', 'image2', 'description2_ru', 'description2_en' , 'tags', 'gallery', 'video_preview', 'popup', 'preview_type', 'cursor_color', 'video_preview_type', 'image_preview', 'link_preview', 'popup_video_link' , 'head_block_type', 'head_cursor_color', 'head_block_image','video_block_type1','video_block_video_type_1','video_block_image1','video_block_link1','video_block_video1','popup_video1','video_url1','video_block_type2','video_block_video_type_2','video_block_image2','video_block_link2','video_block_video2','popup_video2','video_url2', 'video_cursor_1', 'video_cursor_2','show_this_block2', 'show_this_block1', 'show_this_block_head','show_this_block_video_type', 'this_block_video_url','head_block_video_type', 'head_block_video', 'head_block_video_link', 'this_block_video_link' ],
+                6 => ['site_url', 'wide','text_ru', 'text_en','text2_ru', 'text2_en', 'title', 'video_url', 'video_url2', 'tags', 'gallery', 'video_preview', 'popup', 'preview_type', 'cursor_color', 'video_preview_type', 'image_preview', 'link_preview', 'popup_video_link', 'head_block_type', 'head_cursor_color' , 'head_block_image','video_block_type1','video_block_video_type_1','video_block_image1','video_block_link1','video_block_video1','popup_video1','video_url1','video_block_type2','video_block_video_type_2','video_block_image2','video_block_link2','video_block_video2','popup_video2','video_url2', 'video_cursor_1', 'video_cursor_2', 'show_this_block2', 'show_this_block1', 'show_this_block_head', 'show_this_block_video_type', 'this_block_video_url','head_block_video_type', 'head_block_video', 'head_block_video_link', 'this_block_video_link'],
+                7 => ['site_url', 'wide','text_ru', 'text_en','text2_ru', 'text2_en', 'title', 'video_url', 'video_url2', 'image2', 'description2_ru', 'description2_en' , 'tags', 'gallery', 'video_preview', 'popup', 'preview_type', 'cursor_color', 'video_preview_type', 'image_preview', 'link_preview', 'popup_video_link', 'head_block_type', 'head_cursor_color', 'head_block_image' ,'video_block_type1','video_block_video_type_1','video_block_image1','video_block_link1','video_block_video1','popup_video1','video_url1','video_block_type2','video_block_video_type_2','video_block_image2','video_block_link2','video_block_video2','popup_video2','video_url2', 'video_cursor_1', 'video_cursor_2', 'show_this_block2', 'show_this_block1', 'show_this_block_head','show_this_block_video_type', 'this_block_video_url','head_block_video_type', 'head_block_video', 'head_block_video_link', 'this_block_video_link'],
+                8 => ['site_url', 'wide','text_ru', 'text_en','text2_ru', 'text2_en', 'title', 'video_url', 'video_url2', 'indent',  'image', 'image2', 'description_ru', 'description_en', 'description2_ru', 'description2_en' , 'tags', 'video_preview', 'popup', 'preview_type', 'cursor_color', 'video_preview_type', 'image_preview', 'link_preview', 'popup_video_link' , 'head_block_type', 'head_cursor_color', 'head_block_image', 'cursor_color','video_block_type1','video_block_video_type_1','video_block_image1','video_block_link1','video_block_video1','popup_video1','video_url1','video_block_type2','video_block_video_type_2','video_block_image2','video_block_link2','video_block_video2','popup_video2','video_url2', 'video_cursor_1', 'video_cursor_2', 'show_this_block2', 'show_this_block1', 'show_this_block_head','show_this_block_video_type', 'this_block_video_url','head_block_video_type', 'head_block_video', 'head_block_video_link', 'this_block_video_link'],
+                9 => ['site_url', 'text_ru', 'text_en','text2_ru', 'text2_en', 'title','indent', 'wide', 'image', 'image2', 'tags', 'gallery', 'video_preview', 'popup', 'preview_type', 'cursor_color', 'video_preview_type', 'image_preview', 'link_preview', 'popup_video_link' , 'head_block_type', 'head_cursor_color', 'head_block_image', 'video_url', 'show_this_block2', 'show_this_block1', 'show_this_block_head','show_this_block_video_type', 'this_block_video_url','head_block_video_type', 'head_block_video', 'head_block_video_link', 'this_block_video_link'],
             ],
             'default' => 0
         ],
@@ -100,7 +100,7 @@ class BlocksCrudController extends CrudController
             ],
 
             'hide_when' => [
-                0 => ['head_block_video_type', 'head_block_video', 'head_cursor_color'],
+                0 => ['head_block_video_type', 'head_block_video'],
                 1 => ['head_block_image'],
             ],
             'default' => 0,
@@ -134,7 +134,6 @@ class BlocksCrudController extends CrudController
                 '0' => 'Загрузка файла',
                 '1' => 'Ссылка'
             ],
-
             'hide_when' => [
                 0 => ['head_block_video_link'],
                 1 => ['head_block_video']
@@ -148,7 +147,10 @@ class BlocksCrudController extends CrudController
             'label' => 'Ссылка на видео',
             'fake' => true,
             'store_in' => 'content',
-        ], 
+        ],
+
+
+
         [
             'label' => 'Видео превью',
             'name' => 'head_block_video',
@@ -156,12 +158,12 @@ class BlocksCrudController extends CrudController
             'upload' => true,
             'fake' => true,
             'store_in' => 'content',
-        ],        
+        ],
         [
             'label' => 'Цвет курсора для видео',
             'fake' => true,
             'type' => 'radio',
-            'name' => 'head_cursor_color', 
+            'name' => 'head_cursor_color',
             'options' => [
                     0 => 'Белый',
                     1 => 'Черный'
@@ -169,7 +171,7 @@ class BlocksCrudController extends CrudController
             'default' => 0,
             'inline' => true,
             'store_in' => 'content',
-        ], 
+        ],
         [
             'name' => 'popup',
             'label' => 'Открывать в popup-окне ',
@@ -182,9 +184,53 @@ class BlocksCrudController extends CrudController
 
             'hide_when' => [
                 0 => ['popup_video_link'],
-                1 => [''],
+                1 => ['show_this_block_head', 'this_block_video_url'],
             ],
             'default' => 0,
+            'fake' => true,
+            'store_in' => 'content',
+        ],
+        [
+            'label' => 'Воспроизведести в этом блоке',
+            'name' => 'show_this_block_head',
+            'type' => 'toggle',
+            'inline' => true,
+            'options' => [
+                '0' => 'Нет',
+                '1' => 'Да'
+            ],
+
+            'hide_when' => [
+                0 => ['show_this_block_video_type', 'this_block_video_url']
+                // 1 => ['video_block_video2']
+            ],
+            'default' => 0,
+            'fake' => true,
+            'store_in' => 'content',
+        ],
+        [
+            'label' => 'Тип видео в этом блоке',
+            'name' => 'show_this_block_video_type',
+            'type' => 'toggle',
+            'inline' => true,
+            'options' => [
+                '0' => 'Загрузка',
+                '1' => 'Ссылка'
+            ],
+
+            'hide_when' => [
+                0 => ['this_block_video_link'],
+                1 => ['this_block_video_url']
+            ],
+            'default' => 0,
+            'fake' => true,
+            'store_in' => 'content',
+        ],
+        [
+            'label' => 'Видео в этом блоке',
+            'name' => 'this_block_video_url',
+            'type' => 'upload',
+            'upload' => true,
             'fake' => true,
             'store_in' => 'content',
         ],
@@ -193,7 +239,14 @@ class BlocksCrudController extends CrudController
             'label' => 'Ссылка на видео в popup окне',
             'fake' => true,
             'store_in' => 'content',
-        ], 
+        ],
+
+        [
+            'name' => 'this_block_video_link',
+            'label' => 'Ссылка на видео в этом блоке',
+            'fake' => true,
+            'store_in' => 'content',
+        ],
         [
             'name' => 'title',
             'label' => __('blocks.title'),
@@ -223,7 +276,7 @@ class BlocksCrudController extends CrudController
 
             'hide_when' => [
                 0 => ['video_block_image1'],
-                1 => ['video_block_video_type_1', 'video_cursor_1', 'video_block_video1']
+                1 => ['video_block_video_type_1', 'video_block_video1']
             ],
             'default' => 0,
             'fake' => true,
@@ -260,7 +313,7 @@ class BlocksCrudController extends CrudController
             'label' => 'Ссылка на видео (видео 1)',
             'fake' => true,
             'store_in' => 'content',
-        ], 
+        ],
         [
             'label' => 'Видео превью (видео 1)',
             'name' => 'video_block_video1',
@@ -281,18 +334,36 @@ class BlocksCrudController extends CrudController
 
             'hide_when' => [
                 0 => ['video_url1'],
-                1 => [''],
+                1 => ['show_this_block1'],
             ],
             'default' => 0,
             'fake' => true,
             'store_in' => 'content',
         ],
+        //  [
+        //     'label' => 'Воспроизведести в этом блоке (видео 1)',
+        //     'name' => 'show_this_block1',
+        //     'type' => 'toggle',
+        //     'inline' => true,
+        //     'options' => [
+        //         '0' => 'Нет',
+        //         '1' => 'Да'
+        //     ],
+
+        //     'hide_when' => [
+        //         // 0 => []
+        //         // 1 => ['video_block_video2']
+        //     ],
+        //     'default' => 0,
+        //     'fake' => true,
+        //     'store_in' => 'content',
+        // ],
         [
             'name' => 'video_url1',
             'label' => __('blocks.video'),
             'fake' => true,
             'store_in' => 'content',
-        ],        
+        ],
         [
             'name' => 'video_url',
             'label' => __('blocks.video'),
@@ -303,7 +374,7 @@ class BlocksCrudController extends CrudController
             'label' => 'Цвет курсора для (видео 1)',
             'fake' => true,
             'type' => 'radio',
-            'name' => 'video_cursor_1', 
+            'name' => 'video_cursor_1',
             'options' => [
                     0 => 'Белый',
                     1 => 'Черный'
@@ -311,7 +382,7 @@ class BlocksCrudController extends CrudController
             'default' => 0,
             'inline' => true,
             'store_in' => 'content',
-        ], 
+        ],
         [
             'name' => 'site_url',
             'label' => __('blocks.site'),
@@ -358,7 +429,7 @@ class BlocksCrudController extends CrudController
 
             'hide_when' => [
                 0 => ['video_block_image2'],
-                1 => ['video_block_video_type_2', 'video_cursor_2', 'video_block_video2']
+                1 => ['video_block_video_type_2',  'video_block_video2']
             ],
             'default' => 0,
             'fake' => true,
@@ -381,7 +452,7 @@ class BlocksCrudController extends CrudController
             'default' => 0,
             'fake' => true,
             'store_in' => 'content',
-        ],
+        ],        
         [
             'label' => 'Изображение (видео 2)',
             'name' => 'video_block_image2',
@@ -395,7 +466,7 @@ class BlocksCrudController extends CrudController
             'label' => 'Ссылка на видео (видео 2)',
             'fake' => true,
             'store_in' => 'content',
-        ], 
+        ],
         [
             'label' => 'Видео превью (видео 2)',
             'name' => 'video_block_video2',
@@ -416,12 +487,30 @@ class BlocksCrudController extends CrudController
 
             'hide_when' => [
                 0 => ['video_url2'],
-                1 => [''],
+                1 => ['show_this_block2'],
             ],
             'default' => 0,
             'fake' => true,
             'store_in' => 'content',
         ],
+        // [
+        //     'label' => 'Воспроизведести в этом блоке (видео 2)',
+        //     'name' => 'show_this_block2',
+        //     'type' => 'toggle',
+        //     'inline' => true,
+        //     'options' => [
+        //         '0' => 'Нет',
+        //         '1' => 'Да'
+        //     ],
+
+        //     'hide_when' => [
+        //         // 0 => []
+        //         // 1 => ['video_block_video2']
+        //     ],
+        //     'default' => 0,
+        //     'fake' => true,
+        //     'store_in' => 'content',
+        // ],
         [
             'name' => 'video_url2',
             'label' => __('blocks.video'),
@@ -432,7 +521,7 @@ class BlocksCrudController extends CrudController
             'label' => 'Цвет курсора для (видео 2)',
             'fake' => true,
             'type' => 'radio',
-            'name' => 'video_cursor_2', 
+            'name' => 'video_cursor_2',
             'options' => [
                     0 => 'Белый',
                     1 => 'Черный'
@@ -440,7 +529,7 @@ class BlocksCrudController extends CrudController
             'default' => 0,
             'inline' => true,
             'store_in' => 'content',
-        ], 
+        ],
         [
             'label' => __('blocks.second_image'),
             'name' => 'image2',
@@ -524,11 +613,11 @@ class BlocksCrudController extends CrudController
             ],
 
             'hide_when' => [
-                0 => ['video_preview', 'video_preview_type', 'cursor_color'],
-                1 => ['image_preview'],
-                2 => ['video_preview', 'video_preview_type', 'image_preview', 'link_preview', 'cursor_color', ]
+                0 => ['video_preview', 'video_preview_type'], //Изображение
+                1 => ['image_preview'], //видео
+                2 => ['video_preview', 'video_preview_type', 'image_preview', 'link_preview'] //нет
             ],
-            'default' => 3,
+            'default' => 0,
             'fake' => true,
             'store_in' => 'content',
         ],
@@ -555,7 +644,7 @@ class BlocksCrudController extends CrudController
             'label' => 'Ссылка на видео для списка работ',
             'fake' => true,
             'store_in' => 'content',
-        ], 
+        ],
         [
             'label' => 'Видео превью для списка работ',
             'name' => 'video_preview',
@@ -563,7 +652,7 @@ class BlocksCrudController extends CrudController
             'upload' => true,
             'fake' => true,
             'store_in' => 'content',
-        ],        
+        ],
         [
             'label' => 'Фото превью для списка работ',
             'name' => 'image_preview',
@@ -577,7 +666,7 @@ class BlocksCrudController extends CrudController
             'label' => 'Цвет курсора для списка работ',
             'fake' => true,
             'type' => 'radio',
-            'name' => 'cursor_color', 
+            'name' => 'cursor_color',
             'options' => [
                     0 => 'Белый',
                     1 => 'Черный'
@@ -585,7 +674,7 @@ class BlocksCrudController extends CrudController
             'default' => 0,
             'inline' => true,
             'store_in' => 'content',
-        ], 
+        ],
         ]);
         /*$this->crud->addField([   // Upload
             'name' => 'imagess',

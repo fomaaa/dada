@@ -13,7 +13,17 @@
               </div>
             </div>
             <div class="overlay-card">
-              <div class="projects-card-img" :style="{backgroundImage: 'url('+ getSrc(preview) +')'}"></div>
+              <div class="projects-card-img"
+                   v-if="previewType === '0'"
+                   :style="{backgroundImage: 'url('+ getSrc(preview) +')'}"></div>
+              <div class="projects-card-img"
+                   v-if="previewType === '1'">
+                <video v-if="preview"
+                       width="100%" height="100%"
+                       muted playsinline autoplay loop>
+                  <source :src="preview">
+                </video>
+              </div>
             </div>
           </div>
         </div>
@@ -143,6 +153,6 @@
     destroyed() {
       console.log('casePreview-destroyed');
     },
-    props: ['cardsTrigger', 'fontGlobalMy', 'screenWidth', 'screenHeight', 'index', 'url', 'preview', 'title', 'campaign']
+    props: ['cardsTrigger', 'fontGlobalMy', 'screenWidth', 'screenHeight', 'index', 'url', 'preview', 'previewType', 'title', 'campaign']
   }
 </script>

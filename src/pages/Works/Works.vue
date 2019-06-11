@@ -1,81 +1,91 @@
 <template>
-<transition :name='transition' :duration='{enter: 600, leave: 500}'>
-  <div class="works"
-       style= "width: 100%; position: absolute; top: 0; z-index: 7; background-color: transparent">
-    <div class="overlay-white-left"></div>
-    <div class="overlay-white-right"></div>
-    <div class="worksScroll works-custom-scroll-js" ref="worksScrollPage"
-         v-bar="{preventParentScroll: false, useScrollbarPseudo: false, overrideFloatingScrollbar: true}">
-      <div class="worksScroll-in clearfix container-works-scroll-js" id="perfect-scroll-wrapper" ref="scrollWrapper"
-           infinite-wrapper v-on:scroll="worksScrollPage">
-        <div class="works-page">
-          <header class="header">
-            <header-block></header-block>
-          </header>
-          <div class="menu-offset-works-page"></div>
-          <div class="works-page-in" style="height: 100%; width: 100%;">
-            <div class="works-content">
-              <router-link :to="{name: 'AgencyComponent'}" tag="div"
-                           class="menu-agency menu-item none-outline menu-transform"
-                           v-show="$route.name == 'WorksComponent'">
-                <div @click="clickGtm('click', 'fromWorksToAgency', '')" class="menu-content menu-content-agency">
-                  <h2 class="menu-title">{{textAgency}}</h2>
-                </div>
-              </router-link>
-              <section class="works-content-block works-intro-text first-block-js">
-                <div class="intro-text-block-overlay">
-                  <div class="intro-text-block">{{works_intro_text}}</div>
-                </div>
-              </section>
-              <section class="works-content-block works-projects">
-                <nav class="works-projects-nav">
-                  <div class="projects-nav-overlay nav-container-js">
-                    <div class="works-projects-nav-container">
-                      <div class="works-projects-filtration">
+	<transition :name='transition' :duration='{enter: 600, leave: 500}'>
+		<div class="works"
+			 style="width: 100%; position: absolute; top: 0; z-index: 7; background-color: transparent">
+			<div class="overlay-white-left"></div>
+			<div class="overlay-white-right"></div>
+			<div class="worksScroll works-custom-scroll-js" ref="worksScrollPage"
+				 v-bar="{preventParentScroll: false, useScrollbarPseudo: false, overrideFloatingScrollbar: true}">
+				<div class="worksScroll-in clearfix container-works-scroll-js"
+					 id="perfect-scroll-wrapper" ref="scrollWrapper"
+					 infinite-wrapper v-on:scroll="worksScrollPage">
+					<div class="works-page">
+						<header class="header">
+							<header-block></header-block>
+						</header>
+						<div class="menu-offset-works-page"></div>
+						<div class="works-page-in" style="height: 100%; width: 100%;">
+							<div class="works-content">
+								<router-link :to="{name: 'AgencyComponent'}" tag="div"
+											 class="menu-agency menu-item none-outline menu-transform"
+											 v-show="$route.name == 'WorksComponent'">
+									<div @click="clickGtm('click', 'fromWorksToAgency', '')"
+										 class="menu-content menu-content-agency">
+										<h2 class="menu-title">{{textAgency}}</h2>
+									</div>
+								</router-link>
+								<section
+										class="works-content-block works-intro-text first-block-js">
+									<div class="intro-text-block-overlay">
+										<div class="intro-text-block">{{works_intro_text}}</div>
+									</div>
+								</section>
+								<section class="works-content-block works-projects">
+									<nav class="works-projects-nav">
+										<div class="projects-nav-overlay nav-container-js">
+											<div class="works-projects-nav-container">
+												<div class="works-projects-filtration">
                       <span class="projects-filtration-item filtration-item-creative"
-                            :class="{ active: tabSelect == 'creative' }"
-                            @click="tabSelect = 'creative'; tagsTake()"><h3>Creative</h3></span>
-                        <span class="projects-filtration-item filtration-item-branding"
-                              :class="{ active: tabSelect == 'branding' }"
-                              @click="tabSelect = 'branding'; tagsTake()"><h3>Branding</h3></span>
-                        <span class="projects-filtration-item filtration-item-digital"
-                              :class="{ active: tabSelect == 'digital' }"
-                              @click="tabSelect = 'digital'; tagsTake()"><h3>Digital</h3></span>
-                        <span class="projects-filtration-item filtration-item-video"
-                              :class="{ active: tabSelect == 'video' }"
-                              @click="tabSelect = 'video'; tagsTake()"><h3>Video</h3></span>
-                        <span class="projects-filtration-item filtration-item-all"
-                              :class="{ active: tabSelect == 'all' }"
-                              @click="tabSelect = 'all'; tagsTake()"><h3
-                          class="nav-text-point-js">All</h3></span>
-                      </div>
-                    </div>
-                  </div>
-                </nav>
-                <div class="nav-bottom-point-js"
-                     style="width: 100%; height: 1px; opacity: 0;"></div>
-                <div class="works-projects-container">
-                  <div class="projects-overlay">
-                    <case-preview v-for="(card, index) in cards" :fontGlobalMy='fontGlobal'
-                         :screenWidth='window.width'
-                         :screenHeight='window.height' :cardsTrigger="cardsPreviewOverlayTrigger" :index="index"
-                         :preview="card.preview" :title="card.title"
-                         :campaign="card.campaign" :url="card.url" :key='index'>
-                    </case-preview>
-                  </div>
-                </div>
-                <infinite-loading @distance="1" @infinite="infiniteCards" ref="infiniteLoading"></infinite-loading>
-              </section>
-            </div>
-          </div>
-          <footer class="footer footer-column">
-            <footer-block></footer-block>
-          </footer>
-        </div>
-      </div>
-    </div>
-  </div>
-</transition>
+							:class="{ active: tabSelect == 'creative' }"
+							@click="tabSelect = 'creative'; tagsTake()"><h3>Creative</h3></span>
+													<span class="projects-filtration-item filtration-item-branding"
+														  :class="{ active: tabSelect == 'branding' }"
+														  @click="tabSelect = 'branding'; tagsTake()"><h3>Branding</h3></span>
+													<span class="projects-filtration-item filtration-item-digital"
+														  :class="{ active: tabSelect == 'digital' }"
+														  @click="tabSelect = 'digital'; tagsTake()"><h3>Digital</h3></span>
+													<span class="projects-filtration-item filtration-item-video"
+														  :class="{ active: tabSelect == 'video' }"
+														  @click="tabSelect = 'video'; tagsTake()"><h3>Video</h3></span>
+													<span class="projects-filtration-item filtration-item-all"
+														  :class="{ active: tabSelect == 'all' }"
+														  @click="tabSelect = 'all'; tagsTake()"><h3
+															class="nav-text-point-js">All</h3></span>
+												</div>
+											</div>
+										</div>
+									</nav>
+									<div class="nav-bottom-point-js"
+										 style="width: 100%; height: 1px; opacity: 0;"></div>
+									<div class="works-projects-container">
+										<div class="projects-overlay">
+											<case-preview v-for="(card, index) in cards"
+														  :fontGlobalMy='fontGlobal'
+														  :screenWidth='window.width'
+														  :previewType="card.preview_type"
+														  :screenHeight='window.height'
+														  :cardsTrigger="cardsPreviewOverlayTrigger"
+														  :index="index"
+														  :preview="card.cases_preview"
+														  :title="card.title"
+														  :campaign="card.campaign" :url="card.url"
+														  :key='index'>
+											</case-preview>
+										</div>
+									</div>
+									<infinite-loading @distance="1" @infinite="infiniteCards"
+													  ref="infiniteLoading"></infinite-loading>
+								</section>
+							</div>
+						</div>
+						<footer class="footer footer-column">
+							<footer-block></footer-block>
+						</footer>
+					</div>
+				</div>
+			</div>
+		</div>
+	</transition>
 </template>
 
 
@@ -140,7 +150,7 @@
     },
 
     computed: {
-      wideBreakpoint () {
+      wideBreakpoint() {
         return this.window.width >= this.wideWidth
       },
       // transitionDuration () {
@@ -277,8 +287,7 @@
               this.MainContainer.setAttribute('style', 'height: calc(100% - ' + navBottomPointTopPointEm + 'em); top: auto; bottom: 0;');
               this.navContainer.setAttribute('style', 'height: calc(' + navBottomPointTopPointEm + 'em);');
               this.blockNav.setAttribute('style', 'margin-top: -1px;');
-            }
-            else if (wayBoost < menuTransformTitleTopPoint && wayForStop <= wayScroll) {
+            } else if (wayBoost < menuTransformTitleTopPoint && wayForStop <= wayScroll) {
               this.menuOffsetActivePage.setAttribute('style', 'height: calc(' + navBottomPointTopPointEm + 'em - 1em * 0.3 * 2 - 1em * 5.2 + ' + wayForStopEm + 'em);');
               this.menuActive.setAttribute('style', 'height: calc(' + navBottomPointTopPointEm + 'em + ' + wayForStopEm + 'em);');
               this.MainContainer.setAttribute('style', 'height: calc(100% - ' + navBottomPointTopPointEm + 'em - ' + wayForStopEm + 'em); top: auto; bottom: 0;');
@@ -357,10 +366,10 @@
     },
     beforeRouteLeave(to, from, next) {
       const toDepth = to.path.split('/');
-      if(!/(agency|works)/.test(toDepth[2]) && toDepth[2]) {
+      if (!/(agency|works)/.test(toDepth[2]) && toDepth[2]) {
         this.transition = ''
         next()
-      }else {
+      } else {
         let scrollCase = this.$refs.scrollWrapper;
 
         let wrScrollJsTop = scrollCase.scrollTop;
@@ -382,8 +391,7 @@
           setTimeout(function () {
             next();
           }, 190);
-        }
-        else {
+        } else {
           next();
         }
       }

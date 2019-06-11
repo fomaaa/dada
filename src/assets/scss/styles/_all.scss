@@ -1,0 +1,159 @@
+@import 'fancybox';
+
+#cursor {
+	pointer-events: none;
+	z-index: 9999999;
+	position: absolute;
+
+	&.is-clicked {
+
+		.cursor__default {
+			transform: rotate(-10deg) translateZ(0);
+		}
+	}
+
+	&.is-hidden {
+		display: none;
+	}
+
+	&.showing-text {
+
+		.cursor__default {
+			display: none;
+		}
+
+		.cursor__text {
+			display: block;
+		}
+	}
+
+	&.color-white {
+		color: #fff;
+	}
+
+	&.color-black {
+		color: #000;
+	}
+
+	.cursor__text {
+		display: none;
+		font-size: 25px;
+		line-height: 30px;
+		text-align: center;
+		letter-spacing: 0.5px;
+		text-transform: uppercase;
+		position: relative;
+	}
+}
+
+.cursor__default {
+	background-image: url('../static/img/cursor_default.svg');
+	background-size: cover;
+	width: 42px;
+	height: 41px;
+	position: relative;
+	transform-origin: 100% 50%;
+	transition: .15s transform ease-in-out;
+}
+
+.popupVideoLink {
+	display: block;
+
+	&[style='display: none;'] {
+		display: block !important;
+	}
+
+	> * {
+		pointer-events: none;
+	}
+}
+
+
+.case-head-image,
+.projects-card-img {
+
+	video {
+		object-fit: cover;
+	}
+}
+
+.case-video {
+
+	&.fullWidth {
+		width: 100%;
+	}
+
+	&.centerBlock {
+		//@extend .wrapper;
+	}
+}
+
+.case-video-item {
+
+	.video-overlay {
+		position: relative;
+
+		.video__bg {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background-size: cover;
+			background-position: center center;
+		}
+
+		.video__popup {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+		}
+	}
+}
+
+.video__bg {
+
+	video {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		object-fit: cover;
+	}
+}
+
+.videoPlayInBlock {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 2;
+
+	&.is-active {
+
+		> * {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+
+	> * {
+		opacity: 0;
+		visibility: hidden;
+	}
+
+
+	video {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		object-fit: cover;
+		pointer-events: none;
+	}
+}
