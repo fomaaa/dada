@@ -20,6 +20,11 @@ import HeaderMini from './components/Header-Mini/Header-Mini';
 import Logo from './components/Logo/Logo';
 import InfiniteLoading from 'vue-infinite-loading';
 import VueResource from 'vue-resource';
+import VueLazyload from 'vue-lazyload'
+import VueTinyLazyloadImg from 'vue-tiny-lazyload-img'
+
+Vue.use(VueTinyLazyloadImg);
+Vue.use(VueLazyload)
 
 const {detect} = require('detect-browser');
 const browser = detect();
@@ -56,38 +61,7 @@ new Vue({
   el: '#app',
   render: h => h(App),
   mounted() {
-    $(document).on({
-      mouseenter: function () {
-        let self = $(this);
-        $('#cursor').addClass('showing-text');
-        $('.cursor__text').html(self.data('cursor'));
 
-        if (self.data('cursor-color') === 'black') {
-          $('#cursor').addClass('color-black');
-        }
-
-        if (self.data('cursor-color') === 'white') {
-          $('#cursor').addClass('color-white');
-        }
-      },
-      mouseleave: function () {
-        $('#cursor').removeClass('showing-text color-white color-black');
-      }
-    }, "[data-cursor]");
-
-    $('#canvas, .chess-item').hover(function () {
-      $('#cursor').addClass('is-hidden')
-    }, function () {
-      $('#cursor').removeClass('is-hidden')
-    })
-
-    $(document).mouseleave(function (e) {
-      $('#cursor').addClass('is-hidden')
-    });
-
-    $(document).mouseenter(function () {
-      $('#cursor').removeClass('is-hidden')
-    });
   }
   // components: {
   // 	App

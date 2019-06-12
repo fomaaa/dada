@@ -15,6 +15,12 @@
 						<source :src="block.video">
 					</video>
 				</div>
+				<div class="video__bg"
+					 v-if="block.video_link && block. video_type == 1 && block.content_type == 1">
+					<iframe width="100%" height="100%"
+							:src="block.video_link ? block.video_link.replace('watch?v=', 'embed/') : block.video_link.replace('watch?v=', 'embed/')"
+					></iframe>
+				</div>
 
 				<a v-if="block.popup"
 				   :href="block.popup_link"
@@ -36,7 +42,6 @@
 							:src="showVideoInBlock1 ? block.this_block_video_link.replace('watch?v=', 'embed/') + '?autoplay=1' : block.this_block_video_link.replace('watch?v=', 'embed/')"
 							></iframe>
 				</a>
-
 
 				<a href="javascript:void(0);"
 				   v-if="block.this_block_video_url"
