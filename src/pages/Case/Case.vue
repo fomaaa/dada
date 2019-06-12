@@ -32,6 +32,10 @@
 								 class="case-head-image"
 								 :style="{backgroundImage: 'url('+ headBlock.head_block_image +')'}"></div>
 
+							<div v-else-if="headBlock && !headBlock.popup_video_link"
+								 class="case-head-image"
+								 :style="{backgroundImage: 'url('+ headBlock.head_block_image +')'}"></div>
+
 							<div v-else
 								 class="case-head-image"
 								 :style="{backgroundImage: 'url('+ caseData.preview +')'}"></div>
@@ -89,11 +93,15 @@
 							<case-text v-if="block.type == '3'" :textText="block.text"></case-text>
 							<case-video v-if="block.type == '4'" :block="block"></case-video>
 							<case-img-big v-if="block.type == '5'" :imageBigUrl="block.image"
+										  :imageBigThumbUrl="block.image_thumb"
 										  :imageBigCaption="block.description"></case-img-big>
 							<case-img-mini v-if="block.type == '6'"
+										   :imageMiniThumbUrl="[block.image_thumb, block.image2_thumb]"
 										   :imageMiniUrl="[block.image, block.image2]"
 										   :imageMiniCaption="[block.description, block.description2]"></case-img-mini>
-							<case-img-medium v-if="block.type == '7'" :imageMediumUrl="block.image"
+							<case-img-medium v-if="block.type == '7'"
+											 :imageMediumThumbUrl="block.image_thumb"
+											 :imageMediumUrl="block.image"
 											 :imageMediumCaption="block.description"></case-img-medium>
 							<case-gallery v-if="block.type == '8'"
 										  :galleryArr="block.gallery"></case-gallery>

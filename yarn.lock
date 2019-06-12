@@ -4006,6 +4006,11 @@ interpret@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.1.0.tgz#7ed1b1410c6a0e0f78cf95d3b8440c63f78b8614"
 
+intersection-observer@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/intersection-observer/-/intersection-observer-0.5.1.tgz#e340fc56ce74290fe2b2394d1ce88c4353ac6dfa"
+  integrity sha512-Zd7Plneq82kiXFixs7bX62YnuZ0BMRci9br7io88LwDyF3V43cQMI+G5IiTlTNTt+LsDUppl19J/M2Fp9UkH6g==
+
 intervalometer@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/intervalometer/-/intervalometer-1.0.4.tgz#e807229ae8ac2cbf9156cc010eeb207b6e65ad23"
@@ -8073,6 +8078,14 @@ vue-cookie@^1.1.4:
   dependencies:
     tiny-cookie "^1.0"
 
+vue-google-adsense@^1.3.0:
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/vue-google-adsense/-/vue-google-adsense-1.6.0.tgz#908fa493ded367e7126d5ba74006baddb0ae86e7"
+  integrity sha512-y3+f91N2jsPntEUGCqxGHY0sdo0uxR1SzCEvthYzBi5JiOpHKzdIsEMIvAa1Vd/YZGVa3x8Fw9kKCGhpi1xYDA==
+  dependencies:
+    vue "^2.6.10"
+    vue-script2 "2.0.3"
+
 vue-gtm@^1.0.3:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/vue-gtm/-/vue-gtm-1.0.3.tgz#0a34ab8e1eaddb30c4484c8dab8a9aac0d4ccccd"
@@ -8084,6 +8097,16 @@ vue-hot-reload-api@^2.2.0:
 vue-infinite-loading@^2.3.3:
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/vue-infinite-loading/-/vue-infinite-loading-2.3.3.tgz#44922eff526828725fdb3c025e4b3a6d1d61c273"
+
+vue-lazy-background-images@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/vue-lazy-background-images/-/vue-lazy-background-images-1.0.0.tgz#88ce3aa762a7a8828af617575b292b193ba8e350"
+  integrity sha1-iM46p2KnqIKK9hdXWykrGTuo41A=
+
+vue-lazyload@^1.2.6:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/vue-lazyload/-/vue-lazyload-1.2.6.tgz#baa04c172d52a812608eb12c7a6bfb14f5c91079"
+  integrity sha512-6a61+pzwcfowhLRQiPdmRuJ40n/4fL/sEynu8KQZoCf5RVA0NH0X68vplLY0+lUM8mKNScYomaepV+hdjgnZhg==
 
 vue-loader@^13.3.0, vue-loader@^13.7.1:
   version "13.7.2"
@@ -8139,6 +8162,11 @@ vue-router@^3.0.1:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-3.0.1.tgz#d9b05ad9c7420ba0f626d6500d693e60092cc1e9"
 
+vue-script2@2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/vue-script2/-/vue-script2-2.0.3.tgz#74a53a51cc72eeb0c8935f40f0155968a94a2d7c"
+  integrity sha512-sGsFbqCIZDbPq140X1p8T6Y72MoCtkFpQ7CfhknZLqDZxMGWavFqIY/5YsnhqxxatWnYy0us/IoHSDr5l2JZzQ==
+
 vue-scroll-stop@^0.1.5:
   version "0.1.5"
   resolved "https://registry.yarnpkg.com/vue-scroll-stop/-/vue-scroll-stop-0.1.5.tgz#ca19e3f425260287c52b1dda2ea2305a092f7521"
@@ -8186,6 +8214,15 @@ vue-template-es2015-compiler@^1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.6.0.tgz#dc42697133302ce3017524356a6c61b7b69b4a18"
 
+vue-tiny-lazyload-img@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/vue-tiny-lazyload-img/-/vue-tiny-lazyload-img-0.1.0.tgz#cd420080627ff69d3e580d0ab4d80ccfc446a292"
+  integrity sha512-b574zhip5onhkUi2dN9CImExdJXL8066TNsqmQ7c1g8fXO8M6wH6V5Rm1nXVruGws9V01BcTbqL1qgohoFl5Bg==
+  dependencies:
+    intersection-observer "^0.5.1"
+    vue "^2.6.6"
+    vue-google-adsense "^1.3.0"
+
 vue2-scrollbar@^0.0.3:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/vue2-scrollbar/-/vue2-scrollbar-0.0.3.tgz#2db07eea49f1330e483c2b1312862f37711c1d57"
@@ -8206,6 +8243,11 @@ vue@^2.0.0-rc.7, vue@^2.3.3, vue@^2.4.2:
 vue@^2.5.2:
   version "2.5.17"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.5.17.tgz#0f8789ad718be68ca1872629832ed533589c6ada"
+
+vue@^2.6.10, vue@^2.6.6:
+  version "2.6.10"
+  resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.10.tgz#a72b1a42a4d82a721ea438d1b6bf55e66195c637"
+  integrity sha512-ImThpeNU9HbdZL3utgMCq0oiMzAkt1mcgy3/E6zWC/G6AaQoeuFdsl9nDhTDU3X1R6FK7nsIUuRACVcjI+A2GQ==
 
 vuebar@^0.0.18:
   version "0.0.18"

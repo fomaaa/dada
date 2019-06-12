@@ -20,6 +20,11 @@ import HeaderMini from './components/Header-Mini/Header-Mini';
 import Logo from './components/Logo/Logo';
 import InfiniteLoading from 'vue-infinite-loading';
 import VueResource from 'vue-resource';
+import VueLazyload from 'vue-lazyload'
+import VueTinyLazyloadImg from 'vue-tiny-lazyload-img'
+
+Vue.use(VueTinyLazyloadImg);
+Vue.use(VueLazyload)
 
 const {detect} = require('detect-browser');
 const browser = detect();

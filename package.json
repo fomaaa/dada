@@ -21,7 +21,10 @@
         "@fancyapps/fancybox": "^3.5.7",
         "jquery": "^3.4.1",
         "vue": "^2.5.2",
-        "vue-router": "^3.0.1"
+        "vue-lazy-background-images": "^1.0.0",
+        "vue-lazyload": "^1.2.6",
+        "vue-router": "^3.0.1",
+        "vue-tiny-lazyload-img": "^0.1.0"
     },
     "devDependencies": {
         "autoprefixer": "^7.1.2",
