@@ -330,21 +330,20 @@ class AppController extends Controller
                             $item->preview_type = $content['preview_type'];
                             switch($content['preview_type']) {
                                 case 0 : {
-                                    $item->preview = $content['image_preview'];
+                                    $item->cases_preview = $content['image_preview'];
                                     break;
                                 }
                                 case 1 : {
                                     $item->video_preview_type = $content['video_preview_type'];
                                     if (!$item->video_preview_type) {
-                                        $item->preview = $content['video_preview'];
+                                        $item->cases_preview = $content['video_preview'];
                                     } else {
-                                        $item->preview = $link_preview;
+                                        $item->cases_preview = $content['link_preview'];
                                     }
                                     break;
-
                                 } 
                                 case 2 : {
-                                    $item->preview = $block->preview;
+                                    $item->cases_preview = $block->preview;
                                     break;
                                 }
                             }
@@ -356,7 +355,7 @@ class AppController extends Controller
         }
         $cases = $cases->map(function ($case) {
             return collect($case->toArray())
-                ->only(['created_at', 'id', 'sort', 'url',  'title', 'tags', 'campaign']);
+                ->only(['created_at', 'id', 'sort', 'url',  'cases_preview','title', 'tags', 'campaign', 'cursor_color', 'preview_type', 'video_preview_type']);
         });
         return response()->json($cases);
     }
@@ -485,7 +484,6 @@ class AppController extends Controller
         $blocksAll = Blocks::where('case_id', $cases->id)
             ->where('type', '!=', 0)
             ->get(['id', 'type', 'sort']);
-
         $blocksContent = Blocks::where('case_id', $cases->id)
             ->where('type', '!=', 0)
             ->get(['content']);
@@ -493,6 +491,7 @@ class AppController extends Controller
         $headBlock = Blocks::where('case_id', $cases->id)
             ->where('type', '=', 0)
             ->get(['content']);
+
         if (!empty($headBlock['0'])) {
             $headBlock = $headBlock[0]->content;
             unset($headBlock['text_en']);
