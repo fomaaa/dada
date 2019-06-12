@@ -17,8 +17,8 @@
               <div v-show="isCookieShow && isCookies !== '1' && $route.name == 'MainComponent'"
                    :class="['cookie-block', isCookieInfoShow ? 'cookie-show-info': '', isCookieDelTransition ? 'cookie-del-transition' : '']">
                 <div class="cookie-overlay"></div>
-                <div class="closeWrapper">
-                  <span class="close" @click="cookieClose()"></span>
+                <div class="closeWrapper" @click="cookieClose()">
+                  <span class="close"></span>
                 </div>
                 <div class="cookie-first">
                   <span>Сайт использует файлы cookie.</span>
