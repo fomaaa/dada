@@ -48,6 +48,44 @@ class AppController extends Controller
     //
     public function agency(Request $request)
     {
+        // set_time_limit(0);
+        // ini_set('max_execution_time', '99999');
+        //         \Tinify\setKey("9KvDsXlhjjRqYZsNPjlhBp6WKWlNYDVL");
+        // $full_path = base_path() .'/storage/app/public/blocks/images';
+        // $files = scandir($full_path);
+        // $files = array_reverse($files);
+        // // echo '<pre>';
+        // // print_r($files);
+
+        // foreach($files as $key => $file) {
+        //     if ($file == '.' || $file == '..' || $file == 'thumbs') continue;
+        //     if(!preg_match("/\.(gif)$/", $file)) {
+        //         // echo '<pre>';
+        //         $time = filemtime($full_path . '/' . $file);
+        //         $time = date( 'Y m d ', $time);
+        //         if ($time != '2019 06 12 ') {
+
+        //             $source = \Tinify\fromFile($full_path . '/' . $file);
+        //             $resized = $source->resize(array(
+        //                 "method" => "fit",
+        //                 "width" => 150,
+        //                 "height" => 150
+        //             ));
+        //             $source->toFile($full_path . '/' . $file);
+        //             // echo '</pre>';
+        //             // $resized->toFile($full_path . '/thumbs/' . $file);
+
+        //         }
+
+
+
+
+        //         // if ($key == 5) break;
+        //     }
+        // }
+        // exit();
+
+
         $lang = $request->lang;
         $meta = MetaData::orderBy('created_at', 'desc')->where('page', 2)->first();
         if (isset($meta)) {
@@ -372,7 +410,6 @@ class AppController extends Controller
 
         }
 
-
         foreach ($cases as $key => $item) {
             // Отправляем property title вне зависимости от языка
             if ($lang == 'ru') {
@@ -388,14 +425,22 @@ class AppController extends Controller
                 foreach ($item->blocks as $block) {
                     if ($block->type == 0) {
                         $content = $block->content;
+
+                        foreach ($content as $key => $ttt) {
+                            if ($key == 'preview_type') {
+                                $preview_type = $ttt;
+                            }
+                        }
+
+
                         if (isset($content['cursor_color'])) {
                             $item->cursor_color = $content['cursor_color'];
                         }
                         $item->preview_type = 0;
                         $item->video_preview_type = 0;
-                        if (isset($content['preview_type'])) {
-                            $item->preview_type = $content['preview_type'];
-                            switch($content['preview_type']) {
+                        if (isset($preview_type)) {
+                            $item->preview_type = $preview_type;
+                            switch($preview_type) {
                                 case 0 : {
                                     $item->cases_preview = $content['image_preview'];
                                     break;
@@ -416,15 +461,19 @@ class AppController extends Controller
                             }
                         }
                     }
+
+
                 } 
 
             }
         }
 
+
         $cases = $cases->map(function ($case) {
             return collect($case->toArray())
-                ->only(['created_at', 'id', 'sort', 'url',  'cases_preview','title', 'tags', 'campaign', 'cursor_color', 'preview_type', 'video_preview_type']);
+                ->only(['created_at', 'id', 'sort', 'url',  'cases_preview',  'title', 'tags', 'campaign', 'cursor_color', 'preview_type', 'video_preview_type']);
         });
+
         return response()->json($cases);
     }
 

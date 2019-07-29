@@ -111,9 +111,9 @@ class Blocks extends Model
                     $block->image = $item->content['image'];
                 }
 
-                if (isset($item->content['preview_type'])) {
+                // if (isset($item->content['preview_type'])) {
                     $block->preview_type = $item->content['preview_type'];
-                }
+                // }
 
                 if (isset($item->content['video_preview'])) {
                     $block->video_preview = $item->content['video_preview'];
@@ -506,16 +506,33 @@ class Blocks extends Model
            }
        }
        // Не base64, значит пришёл путь до картинки
-       else
-       {
-           if($value==null)
-           {
-               return null;
-           }
-           $pos=strpos($value, '/blocks');
+       else {
+           if ($value == null) return null;
+           
+
+           $pos = strpos($value, '/blocks');
            $imgpath=substr($value, $pos, 999);
 
-           return $imgpath;
+
+           $filename = explode('/', $value);
+           $count = count($filename);
+           $filename = $filename[$count - 1];
+
+            if (!file_exists (base_path() .'/storage/app/public/blocks/images/thumbs/'.$filename)) {
+                $source = \Tinify\fromFile($value);
+                $resized = $source->resize(array(
+                    "method" => "fit",
+                    "width" => 150,
+                    "height" => 150
+                ));
+                $resized->toFile(base_path() .'/storage/app/public/blocks/images/thumbs/'.$filename);
+            
+            }
+
+           return array(
+                 'image'  => $imgpath,
+                 'thumb' => '/blocks/images/thumbs/'.$filename,
+            ); 
        }
 
     }
@@ -610,22 +627,25 @@ class Blocks extends Model
             'video_preview' => null,
             'image_preview' => null,
             'popup' => null,
-            'cursor_color' => null
+            'cursor_color' => null,
+            'preview_type' => null
         ];
-        // dd($value);
+
         switch($type)
         {
             case 0: //0 => 'Head Image'
-                if (!empty($value['preview_type'])) {
-                    $data['preview_type'] = $value['preview_type'];
+                // if (!empty($value['preview_type'])) {
+                $data['preview_type'] = $value['preview_type'];
                     
-                }
+                // }
                 $data['cursor_color'] = $value['cursor_color'];
 
-                if (!empty($data['preview_type']) == 0) {
+                if ($value['preview_type'] == 0) {
                     if (isset($value['image_preview'])) {
                         $images = Blocks::uploadImage($value['image_preview']);
+
                         $data['image_preview'] = '/storage/app/public' . $images['image'];
+
                         if (isset($images['thumb'])) {
                             $data['image_preview_thumb'] = '/storage/app/public'. $images['thumb'];
                         }
@@ -679,10 +699,7 @@ class Blocks extends Model
                  if ($data['popup']) {
                     $data['popup_video_link'] = $value['popup_video_link'];
                  } 
-                    // $data['show_this_block_head'] = $value['show_this_block_head'];
-                 // echo '<pre>';
-                 // print_r($value);
-                 // dd($data);
+
                 break;
             case 1: //1 => 'Main Letterhead & Navigation Links'
                 // Теги в нижний кейс
@@ -769,8 +786,9 @@ class Blocks extends Model
             case 5: //5 => 'Big Image'
                 $images=Blocks::uploadImage($value['image'], 5);
                 $data['image']= $images['image'];
+
                 if (isset($images['thumb'])) {
-                    $data['image_thumb']= $images['thumb'];
+                    $data['image_thumb']= '/storage/app/public' . $images['thumb'];
                 }
                 $data['indent']=$value['indent'];
                 $data['description_ru']=$value['description_ru'];
@@ -781,14 +799,14 @@ class Blocks extends Model
 
                 $data['image']=  $images['image'];
                 if (isset($images['thumb'])) {
-                    $data['image_thumb']= $images['thumb'];
+                    $data['image_thumb']=  '/storage/app/public' . $images['thumb'];
                 }                
                 $data['description_ru']=$value['description_ru'];
                 $data['description_en']=$value['description_en'];
                 $images2 = Blocks::uploadImage($value['image2'], 6);
                 $data['image2']= $images2['image'];
                 if (isset($images2['thumb'])) {
-                    $data['image2_thumb']= $images2['thumb'];
+                    $data['image2_thumb']= '/storage/app/public' . $images2['thumb'];
                 }
                 $data['description2_ru']=$value['description2_ru'];
                 $data['description2_en']=$value['description2_en'];
@@ -798,7 +816,7 @@ class Blocks extends Model
                 $images = Blocks::uploadImage($value['image'], 7);
                 $data['image']= $images['image'];
                 if (isset($images['thumb'])) {
-                    $data['image_thumb']= $images['thumb'];
+                    $data['image_thumb']= '/storage/app/public' . $images['thumb'];
                 }                  
                 $data['indent']=$value['indent'];
                 $data['description_ru']=$value['description_ru'];
@@ -922,9 +940,9 @@ class Blocks extends Model
                 break;
         }
         //Записываем в Content
-        // dd($data);
+
         $content = json_encode($data);
-        //dd($content);
+        // dd($content);
         $this->attributes['content'] = $content;
     }
 
