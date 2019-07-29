@@ -5,6 +5,10 @@
 	z-index: 9999999;
 	position: absolute;
 
+	@include breakpoint($wideWidthMax) {
+		display: none !important;
+	}
+
 	&.is-clicked {
 
 		.cursor__default {
