@@ -9,12 +9,12 @@
 
 define('LARAVEL_START', microtime(true));
 
-//require_once(__DIR__."/tinify/lib/Tinify/Exception.php");
-//require_once(__DIR__."/tinify/lib/Tinify/ResultMeta.php");
-//require_once(__DIR__."/tinify/lib/Tinify/Result.php");
-//require_once(__DIR__."/tinify/lib/Tinify/Source.php");
-//require_once(__DIR__."/tinify/lib/Tinify/Client.php");
-//require_once(__DIR__."/tinify/lib/Tinify.php");
+require_once(__DIR__."/tinify/lib/Tinify/Exception.php");
+require_once(__DIR__."/tinify/lib/Tinify/ResultMeta.php");
+require_once(__DIR__."/tinify/lib/Tinify/Result.php");
+require_once(__DIR__."/tinify/lib/Tinify/Source.php");
+require_once(__DIR__."/tinify/lib/Tinify/Client.php");
+require_once(__DIR__."/tinify/lib/Tinify.php");
 /*
 |--------------------------------------------------------------------------
 | Register The Auto Loader
