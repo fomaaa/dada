@@ -36,6 +36,16 @@
 								 class="case-head-image"
 								 :style="{backgroundImage: 'url('+ headBlock.head_block_image +')'}"></div>
 
+              <div
+                 v-else-if="headBlock && headBlock.head_block_video_type === '0' && headBlock.head_block_video"
+                 class="case-head-image">
+                <video v-if="headBlock.head_block_video_type === '0'"
+                       width="100%" height="100%"
+                       muted playsinline autoplay loop>
+                  <source :src="headBlock.head_block_video">
+                </video>
+              </div>
+
 							<div v-else
 								 class="case-head-image"
 								 :style="{backgroundImage: 'url('+ caseData.preview +')'}"></div>
