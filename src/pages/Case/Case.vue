@@ -41,8 +41,7 @@
 							<div v-else-if="headBlock && !headBlock.popup_video_link"
 								 class="case-head-image">
 
-                <img v-lazyload
-                     :src="headBlock.head_block_image_thumb">
+                <img :src="headBlock.head_block_image_thumb">
                 <img v-lazyload :src="headBlock.head_block_image">
               </div>
 
