@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'AppController@index');
+Route::get('/generate', 'AppController@generate');
 Route::get('/works', 'AppController@works');
 Route::get('/agency', 'AppController@agency');
 Route::get('/{lang}/works', 'AppController@works');

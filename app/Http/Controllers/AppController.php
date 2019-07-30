@@ -372,11 +372,13 @@ class AppController extends Controller
                                     break;
                                 }
                                 case 1 : {
-                                    $item->video_preview_type = $content['video_preview_type'];
-                                    if (!$item->video_preview_type) {
-                                        $item->cases_preview = $content['video_preview'];
-                                    } else {
-                                        $item->cases_preview = $content['link_preview'];
+                                    if (isset($content['video_preview_type'])) {
+                                        $item->video_preview_type = $content['video_preview_type'];
+                                        if (!$item->video_preview_type) {
+                                            $item->cases_preview = $content['video_preview'];
+                                        } else {
+                                            $item->cases_preview = $content['link_preview'];
+                                        }
                                     }
                                     break;
                                 } 
@@ -437,7 +439,7 @@ class AppController extends Controller
                             $item->cursor_color = $content['cursor_color'];
                         }
                         $item->preview_type = 0;
-                        $item->video_preview_type = 0;
+                        // $item->video_preview_type = 0;
                         if (isset($preview_type)) {
                             $item->preview_type = $preview_type;
                             switch($preview_type) {
@@ -446,11 +448,13 @@ class AppController extends Controller
                                     break;
                                 }
                                 case 1 : {
-                                    $item->video_preview_type = $content['video_preview_type'];
-                                    if (!$item->video_preview_type) {
-                                        $item->cases_preview = $content['video_preview'];
-                                    } else {
-                                        $item->cases_preview = $content['link_preview'];
+                                    if (isset($content['video_preview_type'])) {
+                                        $item->video_preview_type = $content['video_preview_type'];
+                                        if (!$item->video_preview_type) {
+                                            $item->cases_preview = $content['video_preview'];
+                                        } else {
+                                            $item->cases_preview = $content['link_preview'];
+                                        }
                                     }
                                     break;
                                 } 

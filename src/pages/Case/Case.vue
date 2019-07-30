@@ -39,8 +39,12 @@
               </div>
 
 							<div v-else-if="headBlock && !headBlock.popup_video_link"
-								 class="case-head-image"
-								 :style="{backgroundImage: 'url('+ headBlock.head_block_image +')'}"></div>
+								 class="case-head-image">
+                <v-lazy-image
+                  :src="headBlock.head_block_image"
+                  :src-placeholder="headBlock.head_block_image_thumb"
+                />
+              </div>
 
 							<div v-else
 								 class="case-head-image"
