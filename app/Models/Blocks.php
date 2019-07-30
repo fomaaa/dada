@@ -129,11 +129,11 @@ class Blocks extends Model
                 }
                 if (isset($item->content['image_preview'])) {
                     $block->image_preview = $item->content['image_preview'];
-                }         
+                }
 
                 if (isset($item->content['image_preview_thumb'])) {
                     $block->image_preview_thumb = $item->content['image_preview_thumb'];
-                }               
+                }
                 if (isset($item->content['show_this_block_head'])) {
                     $block->show_this_block = $item->content['show_this_block_head'];
                 }
@@ -147,10 +147,10 @@ class Blocks extends Model
 
                     if (isset($item->content['show_this_block_video_type'])) {
                         $block->this_block_video_type = $item->content['show_this_block_video_type'];
-                    }                        
+                    }
                     if (isset($item->content['this_block_video_link'])) {
                         $block->this_block_video_link = $item->content['this_block_video_link'];
-                    }    
+                    }
 
                     if (isset($item->content['this_block_video_url'])) {
                         $block->this_block_video_url = $item->content['this_block_video_url'];
@@ -212,7 +212,7 @@ class Blocks extends Model
                         $block->block_image_thumb = $item->content['head_block_image_thumb'];
                     } else {
                         $block->video_type = $item->content['head_block_video_type'];
-                       
+
 
                         if ($block->video_type == 0) {
                             if (isset($item->content['head_block_video'])) {
@@ -224,7 +224,7 @@ class Blocks extends Model
                             }
                         }
                     }
-                    
+
                 }
 
                 if (isset($item->content['show_this_block_head'])) {
@@ -232,16 +232,16 @@ class Blocks extends Model
 
                     if (isset($item->content['show_this_block_video_type'])) {
                         $block->show_this_block_video_type = $item->content['show_this_block_video_type'];
-                    }                        
+                    }
                     if (isset($item->content['this_block_video_link'])) {
                         $block->this_block_video_link = $item->content['this_block_video_link'];
-                    }    
+                    }
 
                     if (isset($item->content['this_block_video_url'])) {
                         $block->this_block_video_url = $item->content['this_block_video_url'];
                     }
                 }
-               
+
                 break;
             case 5:
             case 7://5 => 'Big Image'
@@ -251,7 +251,7 @@ class Blocks extends Model
 
                 if (isset($item->content['image_thumb'])) {
                     $block->image_thumb = $item->content['image_thumb'];
-                }                  
+                }
                 $block->description = $item->content['description_' . $lang];
                 if (isset($item->content['indent']) && $item->content['indent'] == 1) {
                     $block->indent = true;
@@ -327,7 +327,7 @@ class Blocks extends Model
                         if ($block->video_block_video_type_1 == 0) {
                             if (isset($item->content['video_block_video1'])) {
                                 $block->video_block_video1 = $item->content['video_block_video1'];
-                                
+
                             }
                         } elseif ($block->video_block_video_type_1 == 1) {
                             if (isset($item->content['video_block_link1'])) {
@@ -341,7 +341,7 @@ class Blocks extends Model
                             $block->video_block_image1_thumb = $item->content['video_block_image1_thumb'];
                         }
                     }
-                    
+
                 }
                 // if (isset($item->content['show_this_block1'])) {
                 //     $block->show_this_block1 = $item->content['show_this_block1'];
@@ -349,17 +349,17 @@ class Blocks extends Model
                 //video2
                 if (isset($item->content['video_cursor_2'])) {
                     $block->video_cursor_2 = $item->content['video_cursor_2'];
-                }                
+                }
                 if (isset($item->content['video_block_type2'])) {
                     $block->video_block_type2 = $item->content['video_block_type2'];
 
-                }                
+                }
                 if (isset($item->content['popup_video2'])) {
                     $block->popup_video2 = $item->content['popup_video2'];
                 }
-                
-                
-                
+
+
+
 
                 if ( $block->popup_video2) {
                     $block->video_url2 = $item->content['video_url2'];
@@ -384,7 +384,7 @@ class Blocks extends Model
                             $block->video_block_image2_thumb = $item->content['video_block_image2_thumb'];
                         }
                     }
-                    
+
                 }
                 // if (isset($item->content['show_this_block2'])) {
                 //     $block->show_this_block2 = $item->content['show_this_block2'];
@@ -404,7 +404,7 @@ class Blocks extends Model
 
     public function uploadImage($value, $type = null, $width=null, $height=null)
     {
-        \Tinify\setKey("h9bvWWFbLFoNT3b8Y8DIVxaIM6egcdYl");
+        \Tinify\setKey("9KvDsXlhjjRqYZsNPjlhBp6WKWlNYDVL");
        $disk = 'public';
        $destinationPath = 'blocks/images/';
        $thumbPath = 'blocks/images/thumbs/';
@@ -496,11 +496,11 @@ class Blocks extends Model
            // return '/'.$destinationPath.$filename;
            if ($image->mime() == 'image/gif') {
                return array(
-                 'image'  => '/'.$destinationPath.$filename,   
-               ); 
+                 'image'  => '/'.$destinationPath.$filename,
+               );
            } else {
                return array(
-                 'image'  => '/'.$destinationPath.$filename,   
+                 'image'  => '/'.$destinationPath.$filename,
                  'thumb' => '/'. $thumbPath . $filename,
                );
            }
@@ -508,7 +508,7 @@ class Blocks extends Model
        // Не base64, значит пришёл путь до картинки
        else {
            if ($value == null) return null;
-           
+
 
            $pos = strpos($value, '/blocks');
            $imgpath=substr($value, $pos, 999);
@@ -526,13 +526,13 @@ class Blocks extends Model
                     "height" => 150
                 ));
                 $resized->toFile(base_path() .'/storage/app/public/blocks/images/thumbs/'.$filename);
-            
+
             }
 
            return array(
                  'image'  => $imgpath,
                  'thumb' => '/blocks/images/thumbs/'.$filename,
-            ); 
+            );
        }
 
     }
@@ -636,7 +636,7 @@ class Blocks extends Model
             case 0: //0 => 'Head Image'
                 // if (!empty($value['preview_type'])) {
                 $data['preview_type'] = $value['preview_type'];
-                    
+
                 // }
                 $data['cursor_color'] = $value['cursor_color'];
 
@@ -698,7 +698,7 @@ class Blocks extends Model
 
                  if ($data['popup']) {
                     $data['popup_video_link'] = $value['popup_video_link'];
-                 } 
+                 }
 
                 break;
             case 1: //1 => 'Main Letterhead & Navigation Links'
@@ -748,7 +748,7 @@ class Blocks extends Model
                     $data['head_block_image']=   '/storage/app/public' . $images['image'];
                     if (isset($images['thumb'])) {
                         $data['head_block_image_thumb']=   '/storage/app/public' . $images['thumb'];
-                    }                    
+                    }
                 }
 
                  $data['popup']= $value['popup'];
@@ -769,7 +769,7 @@ class Blocks extends Model
                             }
                         } else if ($data['show_this_block_video_type'] == 1) {
                             $data['this_block_video_link'] = $value['this_block_video_link'];
-                            
+
                         }
                     }
                  }
@@ -800,7 +800,7 @@ class Blocks extends Model
                 $data['image']=  $images['image'];
                 if (isset($images['thumb'])) {
                     $data['image_thumb']=  '/storage/app/public' . $images['thumb'];
-                }                
+                }
                 $data['description_ru']=$value['description_ru'];
                 $data['description_en']=$value['description_en'];
                 $images2 = Blocks::uploadImage($value['image2'], 6);
@@ -817,7 +817,7 @@ class Blocks extends Model
                 $data['image']= $images['image'];
                 if (isset($images['thumb'])) {
                     $data['image_thumb']= '/storage/app/public' . $images['thumb'];
-                }                  
+                }
                 $data['indent']=$value['indent'];
                 $data['description_ru']=$value['description_ru'];
                 $data['description_en']=$value['description_en'];
@@ -873,7 +873,7 @@ class Blocks extends Model
 
                 if ($data['popup_video1']) {
                     $data['video_url1'] = $value['video_url1'];
-                } 
+                }
                 // else {
                 //     $data['show_this_block1'] = $value['show_this_block1'];
                 // }
@@ -897,7 +897,7 @@ class Blocks extends Model
                     $data['video_block_image1'] = '/storage/app/public' . $images['image'];
                     if (isset($images['thumb'])) {
                         $data['video_block_image1_thumb'] = '/storage/app/public' . $images['thumb'];
-                    }  
+                    }
 
 
                 }
@@ -909,7 +909,7 @@ class Blocks extends Model
                 $data['popup_video2'] = $value['popup_video2'];
                 if ($data['popup_video2']) {
                     $data['video_url2'] = $value['video_url2'];
-                } 
+                }
                 // else {
                 //     $data['show_this_block2'] = $value['show_this_block2'];
                 // }

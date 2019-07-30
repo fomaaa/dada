@@ -22,9 +22,12 @@ import InfiniteLoading from 'vue-infinite-loading';
 import VueResource from 'vue-resource';
 import VueLazyload from 'vue-lazyload'
 import VueTinyLazyloadImg from 'vue-tiny-lazyload-img'
+// import { VLazyImagePlugin } from "v-lazy-image";
 
+
+Vue.use(VueLazyload);
 Vue.use(VueTinyLazyloadImg);
-Vue.use(VueLazyload)
+// Vue.use(VLazyImagePlugin);
 
 const {detect} = require('detect-browser');
 const browser = detect();
