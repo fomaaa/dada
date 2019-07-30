@@ -14,11 +14,49 @@ use Symfony\Component\HttpFoundation\Response;
 class AppController extends Controller
 {
 
+
+    public function generate(Request $request)
+    {
+        $files = scandir(base_path() .'/storage/app/public/blocks/images/thumbs');
+
+        foreach($files as $key => $item) {
+            print_r($item);
+        }
+
+        exit();
+    }
     //
     //      Главная
     //
     public function index(Request $request)
     {
+        // \Tinify\setKey("h9bvWWFbLFoNT3b8Y8DIVxaIM6egcdYl");
+        // $full_path = base_path() .'/storage/app/public/blocks/images';
+        // $files = scandir($full_path);
+
+        // foreach($files as $key => $file) {
+        //     if ($file == '.' || $file == '..' || $file == 'thumbs') continue;
+
+        //     // echo '<pre>';
+        //     // print_r($file);
+        //     // echo '</pre>';
+
+        //     $source = \Tinify\fromFile($full_path . '/' . $file);
+        //     $resized = $source->resize(array(
+        //         "method" => "fit",
+        //         "width" => 150,
+        //         "height" => 150
+        //     ));
+        //     $source->toFile($full_path . '/' . $file);
+        //     $resized->toFile($full_path . '/thumbs/' . $file);
+
+
+        //     if ($key == 5) break;
+        // }
+
+        // exit();
+
+        
         $meta = MetaData::orderBy('created_at', 'desc')->where('page', 0)->first();
         $lang = $request->lang;
         if (isset($meta)) {
@@ -520,5 +558,6 @@ class AppController extends Controller
         $cases_to_send = $cases_to_send->only(['id', 'url', 'preview', 'title', 'tags', 'urlNext', 'urlPrev', 'titleNext', 'titlePrev', 'campaignNext', 'campaignPrev', 'campaign']);
         return response()->json(['blocks' => $blocksAll, 'cases' => $cases_to_send, 'headBlock' => $headBlock]);
     }
+
 
 }
