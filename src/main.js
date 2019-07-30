@@ -21,13 +21,13 @@ import Logo from './components/Logo/Logo';
 import InfiniteLoading from 'vue-infinite-loading';
 import VueResource from 'vue-resource';
 import VueLazyload from 'vue-lazyload'
-// import VueTinyLazyloadImg from 'vue-tiny-lazyload-img'
-import { VLazyImagePlugin } from "v-lazy-image";
+import VueTinyLazyloadImg from 'vue-tiny-lazyload-img'
+// import { VLazyImagePlugin } from "v-lazy-image";
 
 
-// Vue.use(VueTinyLazyloadImg);
 Vue.use(VueLazyload);
-Vue.use(VLazyImagePlugin);
+Vue.use(VueTinyLazyloadImg);
+// Vue.use(VLazyImagePlugin);
 
 const {detect} = require('detect-browser');
 const browser = detect();

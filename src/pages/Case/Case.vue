@@ -40,10 +40,10 @@
 
 							<div v-else-if="headBlock && !headBlock.popup_video_link"
 								 class="case-head-image">
-                <v-lazy-image
-                  :src="headBlock.head_block_image"
-                  :src-placeholder="headBlock.head_block_image_thumb"
-                />
+
+                <img v-lazyload
+                     :src="headBlock.head_block_image_thumb">
+                <img v-lazyload :src="headBlock.head_block_image">
               </div>
 
 							<div v-else
