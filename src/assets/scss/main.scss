@@ -178,7 +178,7 @@ h3 {
 	color: white;
 	@include breakpoint($wideWidthMax) {
 		width: calc(100vw - .6em * 2);
-		word-break: break-word;
+		//word-break: break-word;
 	}
 	@include breakpoint($wideWidth) {
 		font-family: 'MabryPro-Medium', sans-serif;
@@ -2147,3 +2147,7 @@ canvas[resize] {
 	opacity: 0;
 }
 
+
+.case-head-image {
+	transition: .3s all;
+}

@@ -14,8 +14,9 @@
             </div>
             <div class="overlay-card">
               <div class="projects-card-img"
-                   v-if="previewType === '0'"
-                   :style="{backgroundImage: 'url('+ getSrc(preview) +')'}"></div>
+                   v-if="previewType === '0' && preview"
+                   :style="{backgroundImage: 'url('+ preview +')'}">
+              </div>
               <div class="projects-card-img"
                    v-if="previewType === '1'">
                 <video v-if="preview"

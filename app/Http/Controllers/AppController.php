@@ -14,49 +14,11 @@ use Symfony\Component\HttpFoundation\Response;
 class AppController extends Controller
 {
 
-
-    public function generate(Request $request)
-    {
-        $files = scandir(base_path() .'/storage/app/public/blocks/images/thumbs');
-
-        foreach($files as $key => $item) {
-            print_r($item);
-        }
-
-        exit();
-    }
     //
     //      Главная
     //
     public function index(Request $request)
     {
-        // \Tinify\setKey("h9bvWWFbLFoNT3b8Y8DIVxaIM6egcdYl");
-        // $full_path = base_path() .'/storage/app/public/blocks/images';
-        // $files = scandir($full_path);
-
-        // foreach($files as $key => $file) {
-        //     if ($file == '.' || $file == '..' || $file == 'thumbs') continue;
-
-        //     // echo '<pre>';
-        //     // print_r($file);
-        //     // echo '</pre>';
-
-        //     $source = \Tinify\fromFile($full_path . '/' . $file);
-        //     $resized = $source->resize(array(
-        //         "method" => "fit",
-        //         "width" => 150,
-        //         "height" => 150
-        //     ));
-        //     $source->toFile($full_path . '/' . $file);
-        //     $resized->toFile($full_path . '/thumbs/' . $file);
-
-
-        //     if ($key == 5) break;
-        // }
-
-        // exit();
-
-        
         $meta = MetaData::orderBy('created_at', 'desc')->where('page', 0)->first();
         $lang = $request->lang;
         if (isset($meta)) {
@@ -86,6 +48,44 @@ class AppController extends Controller
     //
     public function agency(Request $request)
     {
+        // set_time_limit(0);
+        // ini_set('max_execution_time', '99999');
+        //         \Tinify\setKey("9KvDsXlhjjRqYZsNPjlhBp6WKWlNYDVL");
+        // $full_path = base_path() .'/storage/app/public/blocks/images';
+        // $files = scandir($full_path);
+        // $files = array_reverse($files);
+        // // echo '<pre>';
+        // // print_r($files);
+
+        // foreach($files as $key => $file) {
+        //     if ($file == '.' || $file == '..' || $file == 'thumbs') continue;
+        //     if(!preg_match("/\.(gif)$/", $file)) {
+        //         // echo '<pre>';
+        //         $time = filemtime($full_path . '/' . $file);
+        //         $time = date( 'Y m d ', $time);
+        //         if ($time != '2019 06 12 ') {
+
+        //             $source = \Tinify\fromFile($full_path . '/' . $file);
+        //             $resized = $source->resize(array(
+        //                 "method" => "fit",
+        //                 "width" => 150,
+        //                 "height" => 150
+        //             ));
+        //             $source->toFile($full_path . '/' . $file);
+        //             // echo '</pre>';
+        //             // $resized->toFile($full_path . '/thumbs/' . $file);
+
+        //         }
+
+
+
+
+        //         // if ($key == 5) break;
+        //     }
+        // }
+        // exit();
+
+
         $lang = $request->lang;
         $meta = MetaData::orderBy('created_at', 'desc')->where('page', 2)->first();
         if (isset($meta)) {
@@ -372,11 +372,13 @@ class AppController extends Controller
                                     break;
                                 }
                                 case 1 : {
-                                    $item->video_preview_type = $content['video_preview_type'];
-                                    if (!$item->video_preview_type) {
-                                        $item->cases_preview = $content['video_preview'];
-                                    } else {
-                                        $item->cases_preview = $content['link_preview'];
+                                    if (isset($content['video_preview_type'])) {
+                                        $item->video_preview_type = $content['video_preview_type'];
+                                        if (!$item->video_preview_type) {
+                                            $item->cases_preview = $content['video_preview'];
+                                        } else {
+                                            $item->cases_preview = $content['link_preview'];
+                                        }
                                     }
                                     break;
                                 } 
@@ -410,7 +412,6 @@ class AppController extends Controller
 
         }
 
-
         foreach ($cases as $key => $item) {
             // Отправляем property title вне зависимости от языка
             if ($lang == 'ru') {
@@ -426,24 +427,34 @@ class AppController extends Controller
                 foreach ($item->blocks as $block) {
                     if ($block->type == 0) {
                         $content = $block->content;
+
+                        foreach ($content as $key => $ttt) {
+                            if ($key == 'preview_type') {
+                                $preview_type = $ttt;
+                            }
+                        }
+
+
                         if (isset($content['cursor_color'])) {
                             $item->cursor_color = $content['cursor_color'];
                         }
                         $item->preview_type = 0;
-                        $item->video_preview_type = 0;
-                        if (isset($content['preview_type'])) {
-                            $item->preview_type = $content['preview_type'];
-                            switch($content['preview_type']) {
+                        // $item->video_preview_type = 0;
+                        if (isset($preview_type)) {
+                            $item->preview_type = $preview_type;
+                            switch($preview_type) {
                                 case 0 : {
                                     $item->cases_preview = $content['image_preview'];
                                     break;
                                 }
                                 case 1 : {
-                                    $item->video_preview_type = $content['video_preview_type'];
-                                    if (!$item->video_preview_type) {
-                                        $item->cases_preview = $content['video_preview'];
-                                    } else {
-                                        $item->cases_preview = $content['link_preview'];
+                                    if (isset($content['video_preview_type'])) {
+                                        $item->video_preview_type = $content['video_preview_type'];
+                                        if (!$item->video_preview_type) {
+                                            $item->cases_preview = $content['video_preview'];
+                                        } else {
+                                            $item->cases_preview = $content['link_preview'];
+                                        }
                                     }
                                     break;
                                 } 
@@ -454,15 +465,19 @@ class AppController extends Controller
                             }
                         }
                     }
+
+
                 } 
 
             }
         }
 
+
         $cases = $cases->map(function ($case) {
             return collect($case->toArray())
-                ->only(['created_at', 'id', 'sort', 'url',  'cases_preview','title', 'tags', 'campaign', 'cursor_color', 'preview_type', 'video_preview_type']);
+                ->only(['created_at', 'id', 'sort', 'url',  'cases_preview',  'title', 'tags', 'campaign', 'cursor_color', 'preview_type', 'video_preview_type']);
         });
+
         return response()->json($cases);
     }
 
@@ -558,6 +573,5 @@ class AppController extends Controller
         $cases_to_send = $cases_to_send->only(['id', 'url', 'preview', 'title', 'tags', 'urlNext', 'urlPrev', 'titleNext', 'titlePrev', 'campaignNext', 'campaignPrev', 'campaign']);
         return response()->json(['blocks' => $blocksAll, 'cases' => $cases_to_send, 'headBlock' => $headBlock]);
     }
-
 
 }
