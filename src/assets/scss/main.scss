@@ -2151,3 +2151,8 @@ canvas[resize] {
 .case-head-image {
 	transition: .3s all;
 }
+
+.projects-card-img img {
+  height: 100%;
+  object-fit: cover;
+}
