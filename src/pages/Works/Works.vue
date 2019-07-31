@@ -67,6 +67,7 @@
 														  :cardsTrigger="cardsPreviewOverlayTrigger"
 														  :index="index"
 														  :preview="card.cases_preview"
+														  :previewThumb="card.head_block_image_thumb"
 														  :title="card.title"
 														  :campaign="card.campaign" :url="card.url"
 														  :key='index'>

@@ -14,8 +14,11 @@
             </div>
             <div class="overlay-card">
               <div class="projects-card-img"
-                   v-if="previewType === '0' && preview"
-                   :style="{backgroundImage: 'url('+ preview +')'}">
+                   v-if="previewType === '0' && preview">
+                <img v-lazyload
+                     :src="previewThumb"
+                     :data-src="preview"
+                     :data-err="previewThumb">
               </div>
               <div class="projects-card-img"
                    v-if="previewType === '1'">
@@ -154,6 +157,6 @@
     destroyed() {
       console.log('casePreview-destroyed');
     },
-    props: ['cardsTrigger', 'fontGlobalMy', 'screenWidth', 'screenHeight', 'index', 'url', 'preview', 'previewType', 'title', 'campaign']
+    props: ['cardsTrigger', 'fontGlobalMy', 'screenWidth', 'screenHeight', 'index', 'url', 'preview', 'previewThumb', 'previewType', 'title', 'campaign']
   }
 </script>

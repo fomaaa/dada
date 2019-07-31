@@ -187,6 +187,11 @@ class Blocks extends Model
                     $block->wide = true;
                 } else {
                     $block->wide = false;
+                }                
+                if (isset($item->content['indent']) && $item->content['indent'] == 1) {
+                    $block->indent = true;
+                } else {
+                    $block->indent = false;
                 }
                 if (isset($item->content['popup']) && $item->content['popup'] == 1) {
                     $block->popup = true;
@@ -725,7 +730,9 @@ class Blocks extends Model
             case 4: //4 => 'Video Container'
                 $data['head_block_type'] = $value['head_block_type'];
                 $data['head_cursor_color'] = $value['head_cursor_color'];
-
+                if (isset($value['indent'])) {
+                    $data['indent']=$value['indent'];
+                }
                 if ($data['head_block_type'] == 1) {
                     if (isset($value['head_block_video_type'])) {
                         $data['head_block_video_type'] = $value['head_block_video_type'];
