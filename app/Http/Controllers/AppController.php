@@ -445,6 +445,9 @@ class AppController extends Controller
                             switch($preview_type) {
                                 case 0 : {
                                     $item->cases_preview = $content['image_preview'];
+                                    if (isset($content['head_block_image_thumb'])) {
+                                        $item->head_block_image_thumb = $content['head_block_image_thumb'];
+                                    }
                                     break;
                                 }
                                 case 1 : {
@@ -456,10 +459,14 @@ class AppController extends Controller
                                             $item->cases_preview = $content['link_preview'];
                                         }
                                     }
+
                                     break;
                                 } 
                                 case 2 : {
                                     $item->cases_preview = $block->preview;
+                                    if (isset($content['head_block_image_thumb'])) {
+                                        $item->head_block_image_thumb = $content['head_block_image_thumb'];
+                                    }
                                     break;
                                 }
                             }
@@ -475,7 +482,7 @@ class AppController extends Controller
 
         $cases = $cases->map(function ($case) {
             return collect($case->toArray())
-                ->only(['created_at', 'id', 'sort', 'url',  'cases_preview',  'title', 'tags', 'campaign', 'cursor_color', 'preview_type', 'video_preview_type']);
+                ->only(['created_at', 'id', 'sort', 'url',  'cases_preview', 'head_block_image_thumb',  'title', 'tags', 'campaign', 'cursor_color', 'preview_type', 'video_preview_type']);
         });
 
         return response()->json($cases);
