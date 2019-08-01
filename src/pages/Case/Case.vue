@@ -14,11 +14,12 @@
 							<header-mini></header-mini>
 						</header>
 						<div class="case-head-image-overlay">
+
 							<a :href="headBlock.popup_video_link"
 							   v-if="headBlock && headBlock.popup_video_link"
 							   class="case-head-image"
 							   data-fancybox
-							   :data-cursor="headBlock.cursor_color === '0' || headBlock.cursor_color === '1' ? 'PLAY' : ''"
+							   :data-cursor="headBlock.cursor_color === '0' || headBlock.cursor_color === '1' ? playText : ''"
 							   :data-cursor-color="headBlock.cursor_color === '0' ? 'white' : 'black'"
 							   :style="{backgroundImage: 'url('+ headBlock.head_block_image +')'}">
 								<video v-if="headBlock.head_block_video_type === '0'"
@@ -27,6 +28,8 @@
 									<source :src="headBlock.head_block_video">
 								</video>
 							</a>
+
+
 
               <div
                 v-else-if="headBlock && headBlock.head_block_video_type === '0' && headBlock.head_block_video"
@@ -300,6 +303,14 @@
 
       },
     },
+    computed: {
+      playText() {
+        return this.$route.params.lang === 'ru' ? 'ВКЛ' : 'PLAY'
+      },
+      pauseText() {
+        return this.$route.params.lang === 'ru' ? 'ВЫКЛ' : 'PAUSE'
+      }
+    },
     beforeCreate() {
       console.log('beforeCreate');
       this.$http.get('/api/' + this.$route.params.lang + '/' + this.$route.params.case).then(response => {
@@ -346,6 +357,7 @@
     },
     mounted() {
       console.log('case-mounted');
+
       this.handleResize();
       this.container100vh = document.getElementsByClassName('container-100vh');
       let md = new MobileDetect(window.navigator.userAgent);

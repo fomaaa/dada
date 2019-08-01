@@ -4,7 +4,7 @@
 
 			<a v-if="block.popup_video1 && block.video_block_type1 === '0'"
 			   class="popupVideoLink"
-			   :data-cursor="block.video_cursor_1 === '0' || block.video_cursor_1 === '1' ? 'PLAY' : ''"
+			   :data-cursor="block.video_cursor_1 === '0' || block.video_cursor_1 === '1' ? playText : ''"
 			   :data-cursor-color="block.video_cursor_1 === '0' ? 'white' : 'black'"
 			   :class="{'cursorColorBlack': block.video_cursor_1 === '1', 'cursorColorWhite': block.video_cursor_1 === '0'}"
 			   data-fancybox
@@ -45,7 +45,7 @@
 
 			<a v-if="block.popup_video1 && block.video_block_type1 === '1'"
 			   class="popupVideoLink"
-			   :data-cursor="block.video_cursor_1 === '0' || block.video_cursor_1 === '1' ? 'PLAY' : ''"
+			   :data-cursor="block.video_cursor_1 === '0' || block.video_cursor_1 === '1' ? playText : ''"
 			   :data-cursor-color="block.video_cursor_1 === '0' ? 'white' : 'black'"
 			   data-fancybox
 			   :href="block.video_url1 || block.video_block_video1">
@@ -64,7 +64,7 @@
 
 			<a v-if="block.popup_video2 && block.video_block_type2 === '0'"
 			   class="popupVideoLink"
-			   :data-cursor="block.video_cursor_2 === '0' || block.video_cursor_2 === '1' ? 'PLAY' : ''"
+			   :data-cursor="block.video_cursor_2 === '0' || block.video_cursor_2 === '1' ? playText : ''"
 			   :data-cursor-color="block.video_cursor_2 === '0' ? 'white' : 'black'"
 			   :class="{'cursorColorBlack': block.video_cursor_2 === '1', 'cursorColorWhite': block.video_cursor_2 === '0'}"
 			   data-fancybox
@@ -106,7 +106,7 @@
 			<a v-if="block.popup_video2 && block.video_block_type2 === '1'"
 			   class="popupVideoLink"
 			   data-fancybox
-			   :data-cursor="block.video_cursor_2 === '0' || block.video_cursor_2 === '1' ? 'PLAY' : ''"
+			   :data-cursor="block.video_cursor_2 === '0' || block.video_cursor_2 === '1' ? playText : ''"
 			   :data-cursor-color="block.video_cursor_2 === '0' ? 'white' : 'black'"
 			   :href="block.video_url2">
 				<div class="video-overlay">
@@ -130,6 +130,13 @@
   export default {
     name: "CaseDoubleVideo",
     props: ['block'],
-    components: {},
+    computed: {
+      playText() {
+        return this.$route.params.lang === 'ru' ? 'ВКЛ' : 'PLAY'
+      },
+      pauseText() {
+        return this.$route.params.lang === 'ru' ? 'ВЫКЛ' : 'PAUSE'
+      }
+    },
   }
 </script>
