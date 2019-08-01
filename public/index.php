@@ -6,9 +6,10 @@
  * @package  Laravel
  * @author   Taylor Otwell <taylor@laravel.com>
  */
-
 define('LARAVEL_START', microtime(true));
 
+ini_set('upload_max_filesize', '100M');
+ini_set('post_max_size', '100M');
 require_once(__DIR__."/tinify/lib/Tinify/Exception.php");
 require_once(__DIR__."/tinify/lib/Tinify/ResultMeta.php");
 require_once(__DIR__."/tinify/lib/Tinify/Result.php");
