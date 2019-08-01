@@ -105,12 +105,17 @@ class Blocks extends Model
 
     public static function fillContentData($block, $item,  $lang)
     {
+        if (isset($item->content['is_published']) && $item->content['is_published'] == 1) {
+            $block->is_published = true;
+        } else {
+            $block->is_published = false;
+        }
+
         switch ($block->type) {
             case 0: //0 => 'Head Image'
                 if (isset($item->content['image'])) {
                     $block->image = $item->content['image'];
                 }
-
                 // if (isset($item->content['preview_type'])) {
                     $block->preview_type = $item->content['preview_type'];
                 // }
@@ -960,6 +965,7 @@ class Blocks extends Model
 
                 break;
         }
+        $data['is_published']= $value['is_published'];
         //Записываем в Content
 
         $content = json_encode($data);
