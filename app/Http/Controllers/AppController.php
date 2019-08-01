@@ -573,7 +573,14 @@ class AppController extends Controller
         // print_r($headBlock);
 
         foreach ($blocksContent as $key => $item) {
+            // print_r($item);
             Blocks::fillContentData($blocksAll[$key], $item, $lang);
+        }
+
+        foreach ($blocksAll as $key => $item) {
+            if ($item->is_published) {
+                unset($blocksAll[$key]);
+            }
         }
 
         $blocksAll = Blocks::sortBlocks($blocksAll);

@@ -105,12 +105,17 @@ class Blocks extends Model
 
     public static function fillContentData($block, $item,  $lang)
     {
+        if (isset($item->content['is_published']) && $item->content['is_published'] == 1) {
+            $block->is_published = true;
+        } else {
+            $block->is_published = false;
+        }
+
         switch ($block->type) {
             case 0: //0 => 'Head Image'
                 if (isset($item->content['image'])) {
                     $block->image = $item->content['image'];
                 }
-
                 // if (isset($item->content['preview_type'])) {
                     $block->preview_type = $item->content['preview_type'];
                 // }
@@ -402,9 +407,15 @@ class Blocks extends Model
         $destinationPath = 'blocks/videos/';
         $extension = $file->getClientOriginalExtension();
         $filename = md5($file->getFilename() . time()) . '.' . $extension;
-        \Storage::disk($disk)->put($destinationPath . '/' . $filename, File::get($file));
+        // if (!$file->getError()) {
+	        if (!$filename) {
+	        	$filename =  md5(data('Ymdd') . time()) . '.' . $extension;
+	        }
 
-        return '/'.$destinationPath.$filename;
+	        \Storage::disk($disk)->put($destinationPath . '/' . $filename, File::get($file));
+
+	        return '/'.$destinationPath.$filename;
+        // }
     }
 
     public function uploadImage($value, $type = null, $width=null, $height=null)
@@ -728,6 +739,7 @@ class Blocks extends Model
                 $data['text_ru']= $value['text_ru'];
                 break;
             case 4: //4 => 'Video Container'
+            // dd($value);
                 $data['head_block_type'] = $value['head_block_type'];
                 $data['head_cursor_color'] = $value['head_cursor_color'];
                 if (isset($value['indent'])) {
@@ -751,11 +763,13 @@ class Blocks extends Model
                         }
                     }
                 } else {
-                    $images = Blocks::uploadImage($value['head_block_image']);
-                    $data['head_block_image']=   '/storage/app/public' . $images['image'];
-                    if (isset($images['thumb'])) {
-                        $data['head_block_image_thumb']=   '/storage/app/public' . $images['thumb'];
-                    }
+                	if ($value['head_block_image']) {
+	                    $images = Blocks::uploadImage($value['head_block_image']);
+	                    $data['head_block_image']=   '/storage/app/public' . $images['image'];
+	                    if (isset($images['thumb'])) {
+	                        $data['head_block_image_thumb']=   '/storage/app/public' . $images['thumb'];
+	                    }
+                	}
                 }
 
                  $data['popup']= $value['popup'];
@@ -767,8 +781,13 @@ class Blocks extends Model
                     if ($data['show_this_block_head']) {
                         $data['show_this_block_video_type'] = $value['show_this_block_video_type'];
                         if ($data['show_this_block_video_type'] == 0) {
-                            if (isset($value['this_block_video_url'])) {
-                                $data['this_block_video_url'] = '/storage/app/public' . Blocks::uploadFile($value['this_block_video_url']);
+                            if ($value['this_block_video_url']) {
+	                            $file = $value['this_block_video_url'];
+	                            $file = $this->uploadFile($file);
+
+	                            if ($file) {
+	                                $data['this_block_video_url'] = '/storage/app/public' . $file;
+	                            }
                             } else {
                                 if (isset($old->this_block_video_url)) {
                                     $data['this_block_video_url'] = $old->this_block_video_url;
@@ -946,6 +965,7 @@ class Blocks extends Model
 
                 break;
         }
+        $data['is_published']= $value['is_published'];
         //Записываем в Content
 
         $content = json_encode($data);
