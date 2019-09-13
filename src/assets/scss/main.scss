@@ -2156,3 +2156,9 @@ canvas[resize] {
   height: 100%;
   object-fit: cover;
 }
+
+@media (max-width: 1024px) {
+	.case .case-page .case-content .case-section-first .case-head-text {
+		z-index: 100;
+	}
+}
